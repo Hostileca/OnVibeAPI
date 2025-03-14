@@ -1,0 +1,13 @@
+using Application.DI;
+using DataAccess.DI;
+using OnVibeAPI.DI;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDataAccess(builder.Configuration);
+builder.Services.AddApplication();
+builder.Services.AddPresentation(builder.Configuration);
+
+var app = builder.Build();
+
+app.StartApplication();

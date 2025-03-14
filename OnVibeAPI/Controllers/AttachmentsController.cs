@@ -1,0 +1,18 @@
+﻿using Application.Enums;
+using Application.UseCases.Attachment.Queries;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace OnVibeAPI.Controllers;
+
+public class AttachmentsController(IMediator mediator) : ControllerBase
+{
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetAttachmentById(Guid id, AttachmentType type, CancellationToken cancellationToken)
+    {
+        var query = new GetAttachmentByIdQuery(id, UserId, type);
+        var attachment = await mediator.Send(query, cancellationToken);
+        
+        return File(attachment.File, attachment.ContentType, attachment.FileName); 
+    }
+}

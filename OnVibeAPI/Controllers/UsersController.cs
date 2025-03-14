@@ -1,0 +1,56 @@
+﻿using Application.Dtos.Page;
+using Application.UseCases.Post.Queries.GetUserPosts;
+using Application.UseCases.User.Commands.Login;
+using Application.UseCases.User.Commands.Register;
+using Application.UseCases.User.Queries.GetUserById;
+using Mapster;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using OnVibeAPI.Requests;
+using OnVibeAPI.Requests.General;
+using OnVibeAPI.Requests.User;
+
+namespace OnVibeAPI.Controllers;
+
+public class UsersController(IMediator mediator) : ControllerBase
+{
+    [AllowAnonymous]
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] RegisterRequest registerRequest, CancellationToken cancellationToken)
+    {
+        var command = registerRequest.Adapt<RegisterCommand>();
+
+        return Ok(await mediator.Send(command, cancellationToken));
+    }
+
+    [AllowAnonymous]
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest, CancellationToken cancellationToken)
+    {
+        var command = loginRequest.Adapt<LoginCommand>();
+        
+        return Ok(await mediator.Send(command, cancellationToken));
+    }
+    
+    [HttpGet("me")]
+    public async Task<IActionResult> GetMe(CancellationToken cancellationToken)
+    {
+        return Ok(await mediator.Send(new GetUserByIdCommand(UserId), cancellationToken));
+    }
+    
+    [HttpGet("{id:guid}")] 
+    public async Task<IActionResult> GetUser([FromRoute] Guid id, CancellationToken cancellationToken)
+    {
+        return Ok(await mediator.Send(new GetUserByIdCommand(id), cancellationToken));
+    }
+    
+    [HttpGet("{userId:guid}/posts")]
+    public async Task<IActionResult> GetUserPosts(
+        [FromRoute] Guid userId,
+        [FromQuery] PageRequest pageRequest, 
+        CancellationToken cancellationToken)
+    {
+        return Ok(await mediator.Send(new GetUserPostsQuery(userId, pageRequest.Adapt<PageData>()), cancellationToken));
+    }
+}

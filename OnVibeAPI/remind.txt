@@ -1,0 +1,2 @@
+﻿dotnet ef migrations add Init --verbose --project Infrastructure.DataAccess --startup-project OnVibeAPI
+dotnet ef database update --verbose --project Infrastructure.DataAccess --startup-project OnVibeAPI
