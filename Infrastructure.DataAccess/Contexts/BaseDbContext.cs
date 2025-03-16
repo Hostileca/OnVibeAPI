@@ -15,6 +15,7 @@ public class BaseDbContext(DbContextOptions<BaseDbContext> options) : DbContext(
     public DbSet<Reaction> Reactions { get; init; }
     public DbSet<Subscription?> Subscriptions { get; init; }
     public DbSet<User> Users { get; init; }
+    public DbSet<ChatMember> ChatMembers { get; init; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

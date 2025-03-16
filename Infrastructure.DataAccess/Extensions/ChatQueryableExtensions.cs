@@ -14,6 +14,6 @@ public static class ChatQueryableExtensions
             return chats;
         }
 
-        return chats.Include(chat => chat.ChatsMembers);
+        return chats.Include(chat => chat.Members);
     }
 }

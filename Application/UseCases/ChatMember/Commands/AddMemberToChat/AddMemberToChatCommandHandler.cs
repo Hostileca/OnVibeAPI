@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.Chat;
+using Application.Helpers.PermissionsHelpers;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models.Include;
 using Domain.Entities;
@@ -6,7 +7,7 @@ using Domain.Exceptions;
 using Mapster;
 using MediatR;
 
-namespace Application.UseCases.Chat.Commands.AddMemberToChat;
+namespace Application.UseCases.ChatMember.Commands.AddMemberToChat;
 
 public class AddMemberToChatCommandHandler(
     IChatRepository chatRepository,
@@ -26,19 +27,19 @@ public class AddMemberToChatCommandHandler(
             throw new NotFoundException(typeof(Domain.Entities.Chat), request.ChatId.ToString());
         }
         
-        var initiatorToChat = chat.ChatsMembers.FirstOrDefault(m => m.UserId == request.InitiatorId);
+        var initiatorToChat = chat.Members.FirstOrDefault(m => m.UserId == request.InitiatorId);
 
         if (initiatorToChat is null)
         {
             throw new ForbiddenException("You are not a member of this chat");
         }
         
-        if (initiatorToChat.Role == ChatRoles.Member)
+        if (ChatPermissionsHelper.IsUserHasAccessToManageChat(chat, request.InitiatorId))
         {
             throw new ForbiddenException("You don't have permissions to add members to this chat");
         }
         
-        if(chat.ChatsMembers.Any(m => m.UserId == request.UserId))
+        if(chat.Members.Any(m => m.UserId == request.UserId))
         {
             throw new ConflictException("User is already a member of this chat");
         }
@@ -50,8 +51,8 @@ public class AddMemberToChatCommandHandler(
             throw new NotFoundException(typeof(Domain.Entities.User), request.UserId.ToString());
         }
         
-        chat.ChatsMembers.Add(
-            new ChatMember
+        chat.Members.Add(
+            new Domain.Entities.ChatMember
             {
                 Chat = chat, 
                 User = user,

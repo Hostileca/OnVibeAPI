@@ -17,12 +17,11 @@ public class MessageConfiguration : IEntityTypeConfiguration<Message>
         builder
             .HasIndex(x => x.Date)
             .IsDescending();
-        
+
         builder
             .HasOne(x => x.Sender)
             .WithMany(x => x.Messages)
-            .HasForeignKey(x => x.SenderId)
-            .IsRequired();
+            .HasForeignKey(x => x.SenderId);
         
         builder
             .HasOne(x => x.Chat)

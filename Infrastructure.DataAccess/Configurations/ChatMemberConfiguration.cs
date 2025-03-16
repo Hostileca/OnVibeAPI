@@ -12,7 +12,7 @@ public class ChatMemberConfiguration : IEntityTypeConfiguration<ChatMember>
         
         builder
             .HasOne(x => x.Chat)
-            .WithMany(x => x.ChatsMembers)
+            .WithMany(x => x.Members)
             .HasForeignKey(x => x.ChatId)
             .IsRequired();
         

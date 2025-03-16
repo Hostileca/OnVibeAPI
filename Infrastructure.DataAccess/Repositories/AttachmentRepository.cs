@@ -29,6 +29,6 @@ public class AttachmentRepository(BaseDbContext context) : IAttachmentRepository
 
     public async Task<bool> IsUserHasAccessToMessageAttachment(Guid attachmentId, Guid userId, CancellationToken cancellationToken)
     {
-        return await context.MessageAttachments.AnyAsync(a => a.Message.Chat.ChatsMembers.Any(cm => cm.UserId == userId), cancellationToken);
+        return await context.MessageAttachments.AnyAsync(a => a.Message.Chat.Members.Any(cm => cm.UserId == userId), cancellationToken);
     }
 }

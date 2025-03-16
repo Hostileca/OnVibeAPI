@@ -1,4 +1,5 @@
 ﻿using Contracts.DataAccess.Interfaces;
+using Contracts.DataAccess.Models;
 using Contracts.DataAccess.Models.Include;
 using DataAccess.Contexts;
 using DataAccess.Extensions;
@@ -16,6 +17,23 @@ public class ChatRepository(BaseDbContext context) : IChatRepository
             .IncludeChatMembers(includes.IncludeChatMembers)
             .TrackChanges(trackChanges)
             .FirstOrDefaultAsync(x => x.Id == chatId, cancellationToken);
+    }
+
+    public async Task<IList<Chat>> GetUserChatsAsync(Guid userId, ChatIncludes includes, PageInfo pageInfo, CancellationToken cancellationToken)
+    {
+        return await context.Chats
+            .IncludeChatMembers(includes.IncludeChatMembers)
+            .Where(x => x.Members.Any(cm => cm.UserId == userId))
+            .Paged(pageInfo)
+            .ToListAsync(cancellationToken);
+    }
+
+    public async Task<IList<Guid>> GetChatMembersIdsAsync(Guid chatId, CancellationToken cancellationToken)
+    {
+        return await context.ChatMembers
+            .Where(x => x.ChatId == chatId)
+            .Select(x => x.UserId)
+            .ToListAsync(cancellationToken);
     }
 
     public async Task AddChatAsync(Chat chat, CancellationToken cancellationToken)

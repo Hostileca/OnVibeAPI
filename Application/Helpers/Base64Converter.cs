@@ -17,4 +17,9 @@ public static class Base64Converter
 
         return Convert.ToBase64String(fileBytes);
     }
+    
+    public static byte[] ConvertToByteArray(string base64String)
+    {
+        return Convert.FromBase64String(base64String);
+    }
 }

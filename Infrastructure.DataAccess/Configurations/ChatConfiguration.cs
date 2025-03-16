@@ -13,6 +13,9 @@ public class ChatConfiguration : IEntityTypeConfiguration<Chat>
         builder
             .Property(x => x.Name)
             .IsRequired();
+
+        builder
+            .Property(x => x.Image);
         
         builder
             .HasMany(x => x.Messages)
@@ -20,7 +23,7 @@ public class ChatConfiguration : IEntityTypeConfiguration<Chat>
             .HasForeignKey(x => x.ChatId);
 
         builder
-            .HasMany(x => x.ChatsMembers)
+            .HasMany(x => x.Members)
             .WithOne(x => x.Chat)
             .HasForeignKey(x => x.ChatId);
     }

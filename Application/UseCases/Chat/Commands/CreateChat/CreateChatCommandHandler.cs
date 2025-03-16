@@ -22,8 +22,8 @@ public class CreateChatCommandHandler(
         }
         
         var chat = request.Adapt<Domain.Entities.Chat>();
-        chat.ChatsMembers = users.Select(u => 
-            new ChatMember
+        chat.Members = users.Select(u => 
+            new Domain.Entities.ChatMember
             {
                 UserId = u.Id,
                 JoinDate = DateTime.UtcNow,
