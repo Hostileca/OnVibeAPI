@@ -24,7 +24,7 @@ public class GetChatByIdQueryHandler(
             throw new NotFoundException(typeof(Domain.Entities.Chat), request.ChatId.ToString());
         }
 
-        if (ChatPermissionsHelper.IsUserHasAccessToChat(chat, request.InitiatorId))
+        if (!ChatPermissionsHelper.IsUserHasAccessToChat(chat, request.InitiatorId))
         {
             throw new ForbiddenException("You don't have access to this chat");
         }

@@ -15,6 +15,14 @@ public class AttachmentRepository(BaseDbContext context) : IAttachmentRepository
             .ToListAsync(cancellationToken);
     }
 
+    public async Task<IList<Guid>> GetAttachmentsIdsByMessageIdAsync(Guid messageId, CancellationToken cancellationToken)
+    {
+        return await context.MessageAttachments
+            .Where(x => x.MessageId == messageId)
+            .Select(x => x.Id)
+            .ToListAsync(cancellationToken);
+    }
+
     public async Task<PostAttachment?> GetPostAttachmentByIdAsync(Guid id, CancellationToken cancellationToken)
     {
         return await context.PostAttachments
