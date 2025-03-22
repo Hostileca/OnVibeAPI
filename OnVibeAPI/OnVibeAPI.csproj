@@ -27,6 +27,7 @@
       <ProjectReference Include="..\Application\Application.csproj" />
       <ProjectReference Include="..\Infrastructure.DataAccess\Infrastructure.DataAccess.csproj" />
       <ProjectReference Include="..\Infrastructure.Hangfire\Infrastructure.Hangfire.csproj" />
+      <ProjectReference Include="..\Infrastructure.SignalR\Infrastructure.SignalR.csproj" />
     </ItemGroup>
 
 </Project>

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Query;
 
 namespace DataAccess.Repositories;
 
-public class PostRepository(BaseDbContext context) : IPostRepository
+internal class PostRepository(BaseDbContext context) : IPostRepository
 {
     public async Task AddPostAsync(Post post, CancellationToken cancellationToken)
     {

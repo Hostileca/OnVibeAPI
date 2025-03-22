@@ -1,4 +1,5 @@
 ﻿using Hangfire;
+using Hangfire.PostgreSql;
 using Hangfire.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +15,8 @@ public static class Registration
             config.SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
                 .UseSimpleAssemblyNameTypeSerializer()
                 .UseRecommendedSerializerSettings()
-                .UseSqlServerStorage(connection, new SqlServerStorageOptions()));
+                .UsePostgreSqlStorage(bo => 
+                    bo.UseNpgsqlConnection(connection), new PostgreSqlStorageOptions()));
         
         services.AddHangfireServer();
 

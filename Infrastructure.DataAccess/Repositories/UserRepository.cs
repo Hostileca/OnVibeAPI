@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories;
 
-public class UserRepository(BaseDbContext context) : IUserRepository
+internal class UserRepository(BaseDbContext context) : IUserRepository
 {
     public async Task<User> RegisterUserAsync(User user, CancellationToken cancellationToken)
     {

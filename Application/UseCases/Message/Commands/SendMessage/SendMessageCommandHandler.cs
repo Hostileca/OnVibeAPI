@@ -2,6 +2,8 @@
 using Application.Helpers.PermissionsHelpers;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models.Include;
+using Contracts.SignalR.Dtos;
+using Contracts.SignalR.NotificationServices;
 using Domain.Exceptions;
 using Hangfire;
 using Mapster;
@@ -11,7 +13,8 @@ namespace Application.UseCases.Message.Commands.SendMessage;
 
 public class SendMessageCommandHandler(
     IChatRepository chatRepository,
-    IMessageRepository messageRepository)
+    IMessageRepository messageRepository,
+    IMessageNotificationService messageNotificationService)
     : IRequestHandler<SendMessageCommand, MessageReadDtoBase>
 {
     public async Task<MessageReadDtoBase> Handle(SendMessageCommand request, CancellationToken cancellationToken)
@@ -53,5 +56,7 @@ public class SendMessageCommandHandler(
         
         await messageRepository.AddAsync(message, cancellationToken);
         await messageRepository.SaveChangesAsync(cancellationToken);
+
+        await messageNotificationService.SendMessageAsync(message.Adapt<MessageSendDto>(), cancellationToken);
     }
 }

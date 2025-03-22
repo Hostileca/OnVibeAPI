@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories;
 
-public class ChatRepository(BaseDbContext context) : IChatRepository
+internal class ChatRepository(BaseDbContext context) : IChatRepository
 {
     public Task<Chat?> GetChatByIdAsync(Guid chatId, ChatIncludes includes, CancellationToken cancellationToken,
         bool trackChanges = false)

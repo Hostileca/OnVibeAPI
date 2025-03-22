@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Extensions;
 
-public static class BaseQueryableExtensions
+internal static class BaseQueryableExtensions
 {
     public static IQueryable<TEntity> Paged<TEntity>(this IQueryable<TEntity> query, PageInfo pageInfo)
     {

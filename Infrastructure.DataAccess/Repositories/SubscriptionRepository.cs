@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories;
 
-public class SubscriptionRepository(BaseDbContext context) : ISubscriptionRepository
+internal class SubscriptionRepository(BaseDbContext context) : ISubscriptionRepository
 {
     public async Task AddSubscriptionAsync(Subscription? subscription, CancellationToken cancellationToken)
     {

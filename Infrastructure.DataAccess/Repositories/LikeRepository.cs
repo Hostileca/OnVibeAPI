@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories;
 
-public class LikeRepository(BaseDbContext context) : ILikeRepository
+internal class LikeRepository(BaseDbContext context) : ILikeRepository
 {
     public async Task SaveChangesAsync(CancellationToken cancellationToken)
     {

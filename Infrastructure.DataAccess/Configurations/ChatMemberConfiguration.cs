@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccess.Configurations;
 
-public class ChatMemberConfiguration : IEntityTypeConfiguration<ChatMember>
+internal class ChatMemberConfiguration : IEntityTypeConfiguration<ChatMember>
 {
     public void Configure(EntityTypeBuilder<ChatMember> builder)
     {

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories;
 
-public class MessageRepository(BaseDbContext context) : IMessageRepository
+internal class MessageRepository(BaseDbContext context) : IMessageRepository
 {
     public async Task<IList<Message>> GetMessagesByChatIdAsync(Guid chatId, PageInfo pageInfo, CancellationToken cancellationToken)
     {

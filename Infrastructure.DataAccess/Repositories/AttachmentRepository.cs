@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories;
 
-public class AttachmentRepository(BaseDbContext context) : IAttachmentRepository
+internal class AttachmentRepository(BaseDbContext context) : IAttachmentRepository
 {
     public async Task<IList<Guid>> GetAttachmentsIdsByPostIdAsync(Guid postId, CancellationToken cancellationToken)
     {

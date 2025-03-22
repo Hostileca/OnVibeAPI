@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccess.Configurations;
 
-public class PostAttachmentConfiguration : IEntityTypeConfiguration<PostAttachment>
+internal class PostAttachmentConfiguration : IEntityTypeConfiguration<PostAttachment>
 {
     public void Configure(EntityTypeBuilder<PostAttachment> builder)
     {

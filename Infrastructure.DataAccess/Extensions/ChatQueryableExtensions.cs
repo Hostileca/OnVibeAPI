@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Extensions;
 
-public static class ChatQueryableExtensions
+internal static class ChatQueryableExtensions
 {
     public static IQueryable<Chat> IncludeChatMembers(
         this IQueryable<Chat> chats,

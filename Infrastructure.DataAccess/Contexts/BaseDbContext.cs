@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Contexts;
 
-public class BaseDbContext(DbContextOptions<BaseDbContext> options) : DbContext(options)
+internal class BaseDbContext(DbContextOptions<BaseDbContext> options) : DbContext(options)
 {
     public DbSet<Chat> Chats { get; init; }
     public DbSet<Comment> Comments { get; init; }

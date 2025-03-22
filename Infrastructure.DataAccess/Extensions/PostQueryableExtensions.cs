@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Extensions;
 
-public static class PostQueryableExtensions
+internal static class PostQueryableExtensions
 {
     public static IQueryable<Post> IncludeUser(
         this IQueryable<Post> posts,
