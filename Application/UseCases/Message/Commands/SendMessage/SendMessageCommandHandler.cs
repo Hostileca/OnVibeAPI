@@ -1,9 +1,8 @@
 ﻿using Application.Dtos.Message;
 using Application.Helpers.PermissionsHelpers;
+using Application.Services.Interfaces.Notification;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models.Include;
-using Contracts.SignalR.Dtos;
-using Contracts.SignalR.NotificationServices;
 using Domain.Exceptions;
 using Hangfire;
 using Mapster;
@@ -57,6 +56,6 @@ public class SendMessageCommandHandler(
         await messageRepository.AddAsync(message, cancellationToken);
         await messageRepository.SaveChangesAsync(cancellationToken);
 
-        await messageNotificationService.SendMessageAsync(message.Adapt<MessageSendDto>(), cancellationToken);
+        await messageNotificationService.SendMessageAsync(message, cancellationToken);
     }
 }

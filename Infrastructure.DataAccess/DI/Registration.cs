@@ -38,5 +38,7 @@ public static class Registration
         services.AddScoped<ILikeRepository, LikeRepository>();
         services.AddScoped<IChatRepository, ChatRepository>();
         services.AddScoped<IMessageRepository, MessageRepository>();
+        services.AddScoped<INotificationRepository, NotificationRepository>();
+        services.AddScoped<IChatMembersRepository, ChatMembersRepository>();
     }
 }

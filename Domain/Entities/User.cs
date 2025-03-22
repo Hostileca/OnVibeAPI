@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities;
+﻿using Domain.Entities.Notifications;
+
+namespace Domain.Entities;
 
 public class User
 {
@@ -19,4 +21,5 @@ public class User
     public IList<Like> Likes { get; set; }
     public IList<Subscription> Subscriptions { get; set; }
     public IList<Subscription> Subscribers { get; set; }
+    public IList<NotificationBase> Notifications { get; set; }
 }

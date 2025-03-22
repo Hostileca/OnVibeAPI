@@ -1,7 +1,10 @@
-﻿using Application.UseCases.Post.Commands.Create;
+﻿using Application.Dtos.Page;
+using Application.UseCases.Post.Commands.Create;
+using Application.UseCases.Post.Queries.GetUserPosts;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using OnVibeAPI.Requests.General;
 using OnVibeAPI.Requests.Post;
 
 namespace OnVibeAPI.Controllers;
@@ -16,6 +19,19 @@ public class PostsController(IMediator mediator) : ControllerBase
         command.Attachments = request.Attachments;
         
         var result = await mediator.Send(command, cancellationToken);
+        
+        return Ok(result);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetUserPosts(
+        [FromQuery] Guid userId, 
+        [FromQuery] PageRequest pageRequest, 
+        CancellationToken cancellationToken)
+    {
+        var query = new GetUserPostsQuery(userId, pageRequest.Adapt<PageData>());
+        
+        var result = await mediator.Send(query, cancellationToken);
         
         return Ok(result);
     }

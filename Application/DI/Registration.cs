@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using Application.Services.Implementations;
+using Application.Services.Implementations.Notification;
 using Application.Services.Interfaces;
+using Application.Services.Interfaces.Notification;
 using Mapster;
 using MapsterMapper;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +24,8 @@ public static class Registration
     {
         services.AddScoped<IHashingService, HashingService>();
         services.AddScoped<ITokenService, TokenService>();
+        
+        services.AddScoped<IMessageNotificationService, MessageNotificationService>();
     }
     
     private static void MediatorConfigure(this IServiceCollection services)

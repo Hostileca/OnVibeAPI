@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities;
+﻿using Domain.Entities.Notifications;
+
+namespace Domain.Entities;
 
 public class Message
 {
@@ -11,4 +13,5 @@ public class Message
     public Guid ChatId { get; set; }
     public IList<Reaction> Reactions { get; set; }
     public IList<MessageAttachment> Attachments { get; set; }
+    public IList<MessageNotification> Notifications { get; set; }
 }

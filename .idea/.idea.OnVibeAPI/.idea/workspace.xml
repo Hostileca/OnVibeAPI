@@ -9,66 +9,60 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts.SignalR/Contracts.SignalR.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts.SignalR/Dtos/MessageSendDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts.SignalR/NotificationServices/IMessageNotificationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure.SignalR/DI/Registration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure.SignalR/Hubs/ChatHub.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure.SignalR/Hubs/ChatHubEvents.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure.SignalR/Infrastructure.SignalR.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure.SignalR/NotificationServices/MessageNotificationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/MessagesController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Requests/Message/SendMessageRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/Application/Dtos/Comment/CommentReadDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Dtos/Notification/NotificationBaseReadDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/MappingConfigs/CommentConfigs.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/MappingConfigs/NotificationConfigs.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Services/Implementations/Notification/MessageNotificationService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Services/Interfaces/Notification/IMessageNotificationService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Comment/Commands/SendCommentToPost/SendCommentToPostCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Comment/Commands/SendCommentToPost/SendCommentToPostCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Comment/Queries/GetPostComments/GetPostCommentsQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Comment/Queries/GetPostComments/GetPostCommentsQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Notification/Commands/UpdateNotificationsByIds/UpdateNotificationsByIdsCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Notification/Commands/UpdateNotificationsByIds/UpdateNotificationsByIdsCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Notification/Queries/GetUserNotifications/GetUserNotificationsQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Notification/Queries/GetUserNotifications/GetUserNotificationsQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IChatMembersRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ICommentRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/INotificationRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts.DataAccess/Models/Include/CommentIncludes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Entities/Notifications/MessageNotification.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Entities/Notifications/NotificationBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Entities/Notifications/NotificationType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Exceptions/BadRequestException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/MessageNotificationConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/NotificationBaseConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/CommentQueryableExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatMembersRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/CommentRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/NotificationRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/CommentsController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/NotificationsController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Requests/Comment/SendCommentRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Requests/Notification/UpdateNotificationsRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Requests/User/UpdateUserProfileRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DI/Registration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dtos/Message/MessageReadDtoBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Message/MessageReadDtoBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/ChatConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/ChatConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/ChatMemberConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/ChatMemberConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/CommentConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/CommentConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/LikeConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/LikeConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/MessageAttachmentConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/MessageAttachmentConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/MessageConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/MessageConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/PostAttachmentConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/PostAttachmentConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/PostConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/PostConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/ReactionConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/ReactionConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/SubscriptionConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/SubscriptionConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/UserConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/UserConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.SignalR/Contracts.SignalR.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.SignalR/Dtos/MessageSendDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.SignalR/NotificationServices/IMessageNotificationService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/Message.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Message.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Contexts/BaseDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Contexts/BaseDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/DI/Registration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/BaseQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/BaseQueryableExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatQueryableExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/PostQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/PostQueryableExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/AttachmentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/AttachmentRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/LikeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/LikeRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/PostRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/PostRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/SubscriptionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/SubscriptionRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.Hangfire/DI/Registration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/Infrastructure.Hangfire.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.Hangfire/Infrastructure.Hangfire.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/Debug/net9.0/Infrastructure.Hangfire.AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/Debug/net9.0/Infrastructure.Hangfire.AssemblyInfoInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/Debug/net9.0/Infrastructure.Hangfire.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/Debug/net9.0/Infrastructure.Hangfire.GlobalUsings.g.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/Debug/net9.0/Infrastructure.Hangfire.assets.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/Debug/net9.0/Infrastructure.Hangfire.csproj.AssemblyReference.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/Infrastructure.Hangfire.csproj.nuget.dgspec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/Infrastructure.Hangfire.csproj.nuget.g.props" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/Infrastructure.Hangfire.csproj.nuget.g.targets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/project.assets.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/project.nuget.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/project.packagespec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/rider.project.model.nuget.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/obj/rider.project.restore.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.SignalR/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.SignalR/DI/Registration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.SignalR/Infrastructure.SignalR.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.SignalR/Infrastructure.SignalR.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.SignalR/NotificationServices/MessageNotificationService.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/OnVibeAPI.sln" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/PostsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/PostsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/UsersController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +89,8 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/MessageNotification.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/NotificationBase.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -111,29 +107,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.OnVibeAPI: IIS Express.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.OnVibeAPI: https.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.OnVibeAPI: IIS Express.executor": "Run",
+    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Run",
+    ".NET Launch Settings Profile.OnVibeAPI: https.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;yaml&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "yaml"
     ]
   }
-}</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.OnVibeAPI: https">
+}]]></component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.OnVibeAPI: http">
     <configuration name="OnVibeAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -241,6 +238,7 @@
       <workItem from="1742631579807" duration="4020000" />
       <workItem from="1742635893920" duration="146000" />
       <workItem from="1742636059839" duration="287000" />
+      <workItem from="1742636367191" duration="13010000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -298,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742636023180</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update">
+      <option name="closed" value="true" />
+      <created>1742636430657</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1742636430657</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,6 +321,7 @@
     <MESSAGE value="iu" />
     <MESSAGE value="add hangfire" />
     <MESSAGE value="gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>

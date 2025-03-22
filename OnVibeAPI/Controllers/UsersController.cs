@@ -1,14 +1,11 @@
-﻿using Application.Dtos.Page;
-using Application.UseCases.Post.Queries.GetUserPosts;
-using Application.UseCases.User.Commands.Login;
+﻿using Application.UseCases.User.Commands.Login;
 using Application.UseCases.User.Commands.Register;
+using Application.UseCases.User.Commands.UpdateUserProfile;
 using Application.UseCases.User.Queries.GetUserById;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnVibeAPI.Requests;
-using OnVibeAPI.Requests.General;
 using OnVibeAPI.Requests.User;
 
 namespace OnVibeAPI.Controllers;
@@ -45,12 +42,12 @@ public class UsersController(IMediator mediator) : ControllerBase
         return Ok(await mediator.Send(new GetUserByIdCommand(id), cancellationToken));
     }
     
-    [HttpGet("{userId:guid}/posts")]
-    public async Task<IActionResult> GetUserPosts(
-        [FromRoute] Guid userId,
-        [FromQuery] PageRequest pageRequest, 
-        CancellationToken cancellationToken)
+    [HttpPut]
+    public async Task<IActionResult> UpdateProfile([FromForm] UpdateUserProfileRequest updateUserProfileRequest, CancellationToken cancellationToken)
     {
-        return Ok(await mediator.Send(new GetUserPostsQuery(userId, pageRequest.Adapt<PageData>()), cancellationToken));
+        var command = updateUserProfileRequest.Adapt<UpdateUserProfileCommand>();
+        command.Id = UserId;
+        
+        return Ok(await mediator.Send(command, cancellationToken));
     }
 }

@@ -7,9 +7,9 @@ internal static class PostQueryableExtensions
 {
     public static IQueryable<Post> IncludeUser(
         this IQueryable<Post> posts,
-        bool includeUsers)
+        bool includeUser)
     {
-        if (!includeUsers)
+        if (!includeUser)
         {
             return posts;
         }
