@@ -1,5 +1,6 @@
 ﻿using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models;
+using Contracts.DataAccess.Models.Include;
 using DataAccess.Contexts;
 using DataAccess.Extensions;
 using Domain.Entities;
@@ -9,10 +10,11 @@ namespace DataAccess.Repositories;
 
 internal class MessageRepository(BaseDbContext context) : IMessageRepository
 {
-    public async Task<IList<Message>> GetMessagesByChatIdAsync(Guid chatId, PageInfo pageInfo, CancellationToken cancellationToken)
+    public async Task<IList<Message>> GetMessagesByChatIdAsync(Guid chatId, PageInfo pageInfo, MessageIncludes includes, CancellationToken cancellationToken)
     {
         return await context.Messages
             .Where(x => x.ChatId == chatId)
+            .IncludeReactions(includes.IncludeReactions)
             .Paged(pageInfo)
             .ToListAsync(cancellationToken);
     }
@@ -20,6 +22,15 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
     public async Task AddAsync(Message message, CancellationToken cancellationToken)
     {
         await context.AddAsync(message, cancellationToken);
+    }
+
+    public async Task<Message?> GetAvailableToUserMessageAsync(Guid messageId, Guid userId, MessageIncludes includes,
+        CancellationToken cancellationToken, bool trackChanges = false)
+    {
+        return await context.Messages
+            .IncludeReactions(includes.IncludeReactions)
+            .TrackChanges(trackChanges)
+            .FirstOrDefaultAsync(x => x.Id == messageId && x.Chat.Members.Any(cm => cm.UserId == userId), cancellationToken);
     }
 
     public async Task SaveChangesAsync(CancellationToken cancellationToken)

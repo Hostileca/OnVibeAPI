@@ -14,6 +14,6 @@ public static class CommentQueryableExtensions
             return comments;
         }
 
-        return comments.Include(post => post.User);
+        return comments.Include(comment => comment.User);
     }
 }
