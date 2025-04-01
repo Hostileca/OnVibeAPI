@@ -9,16 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/AttachmentBaseConfiguration.cs" afterDir="false" />
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="Fix">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Attachment/Queries/GetAttachmentByIdQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Attachment/Queries/GetAttachmentByIdQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Entities/Attachment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/AttachmentBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Entities/MessageAttachment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/MessageAttachment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Entities/PostAttachment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/PostAttachment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/MessageAttachmentConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/MessageAttachmentConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/PostAttachmentConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/PostAttachmentConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/DI/Registration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/Subscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Subscription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/SubscriptionConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/SubscriptionConfiguration.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +189,7 @@
       <workItem from="1742635893920" duration="146000" />
       <workItem from="1742636059839" duration="287000" />
       <workItem from="1742636367191" duration="13010000" />
-      <workItem from="1743521666280" duration="2406000" />
+      <workItem from="1743521666280" duration="4087000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -261,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742636430657</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fix">
+      <option name="closed" value="true" />
+      <created>1743524226593</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1743524226593</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +281,7 @@
     <MESSAGE value="add hangfire" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix" />
   </component>
 </project>
