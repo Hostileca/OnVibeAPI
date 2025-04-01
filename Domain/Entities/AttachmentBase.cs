@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities;
 
-public abstract class Attachment
+public abstract class AttachmentBase
 {
     public Guid Id { get; set; }
     public string Data { get; set; }
