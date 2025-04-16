@@ -37,7 +37,10 @@ public class GetUserChatsQueryHandler(
         {
             var message = (await messageRepository.GetMessagesByChatIdAsync(chatReadDto.Id, new PageInfo(1, 1), cancellationToken)).FirstOrDefault();
 
-            chatReadDto.Preview = message.Adapt<MessageReadDto>();
+            if (message is not null)
+            {
+                chatReadDto.Preview = message.Adapt<MessageReadDto>();
+            }
         }
     }
 }
