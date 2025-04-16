@@ -1,9 +1,11 @@
 ﻿using System.Reflection;
 using System.Text;
+using Hangfire;
 using Mapster;
 using MapsterMapper;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using OnVibeAPI.Middlewares;
 
 namespace OnVibeAPI.DI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -13,11 +15,11 @@ public static class Registration
     public static void AddPresentation(this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddControllers();
+        services.CorsConfigure();
         services.AddEndpointsApiExplorer();
         services.SwaggerConfigure();
         services.AuthorizationConfigure(configuration);
-        //services.AddScoped<ExceptionHandlingMiddleware>();
+        services.AddScoped<ExceptionHandlingMiddleware>();
         //services.AddScoped<LoggingMiddleware>();
     }
     
@@ -93,16 +95,32 @@ public static class Registration
             });
         });
     }
+
+    private static void CorsConfigure(this IServiceCollection services)
+    {
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAngularLocalhost",
+                builder => builder
+                    .WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod());
+        });
+
+        services.AddControllers();
+    }
     
     public static void StartApplication(this WebApplication webApplication)
     {
         webApplication.UseSwagger();
         webApplication.UseSwaggerUI();
         //webApplication.MapHub<ChatHub>("/chats/hub");
-        //webApplication.UseHangfireDashboard();
+        webApplication.UseRouting();
+        webApplication.UseCors("AllowAngularLocalhost");
+        webApplication.UseHangfireDashboard();
         webApplication.MapControllers();
         webApplication.UseHttpsRedirection();
-        //webApplication.UseMiddleware<ExceptionHandlingMiddleware>();
+        webApplication.UseMiddleware<ExceptionHandlingMiddleware>();
         //webApplication.UseMiddleware<LoggingMiddleware>();
         webApplication.UseAuthentication();
         webApplication.UseAuthorization();

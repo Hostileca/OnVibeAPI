@@ -31,9 +31,13 @@ public class ChatsController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> UpdateChat(Guid chatId, [FromForm] UpdateChatRequest updateChatRequest,
         CancellationToken cancellationToken)
     {
-        var command = updateChatRequest.Adapt<UpdateChatCommand>();
-        command.ChatId = chatId;
-        command.InitiatorId = UserId;
+        var command = new UpdateChatCommand
+        {
+            ChatId = chatId, 
+            InitiatorId = UserId, 
+            Image = updateChatRequest.Image, 
+            Name = updateChatRequest.Name
+        };
 
         var result = await mediator.Send(command, cancellationToken);
         
@@ -51,7 +55,7 @@ public class ChatsController(IMediator mediator) : ControllerBase
     }
     
     [HttpGet("my")]
-    public async Task<IActionResult> GetMyChats(PageRequest pageRequest, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetMyChats([FromQuery]PageRequest pageRequest, CancellationToken cancellationToken)
     {
         var result = await mediator.Send(new GetUserChatsQuery(UserId, pageRequest.Adapt<PageData>()), cancellationToken);
         

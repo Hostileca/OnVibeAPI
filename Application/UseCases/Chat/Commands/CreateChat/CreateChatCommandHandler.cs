@@ -14,6 +14,11 @@ public class CreateChatCommandHandler(
 {
     public async Task<ChatReadDto> Handle(CreateChatCommand request, CancellationToken cancellationToken)
     {
+        if (!request.UserIds.Contains(request.InitiatorId))
+        {
+            request.UserIds.Add(request.InitiatorId);
+        }
+        
         var users = await userRepository.GetUsersByIdsAsync(request.UserIds, cancellationToken);
         
         if(users.Count != request.UserIds.Count)
