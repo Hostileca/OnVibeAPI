@@ -37,7 +37,7 @@ public class UpdateChatCommandHandler(
             throw new ForbiddenException("You don't have permissions to update this chat");
         }
 
-        chat.Adapt(request);
+        request.Adapt(chat);
         
         await chatRepository.SaveChangesAsync(cancellationToken);
         

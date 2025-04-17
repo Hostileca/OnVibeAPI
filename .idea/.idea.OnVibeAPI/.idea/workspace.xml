@@ -10,15 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Middlewares/ExceptionHandlingMiddleware.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dtos/Chat/ChatReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Chat/ChatReadDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/CreateChat/CreateChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/CreateChat/CreateChatCommandHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/UpdateChat/UpdateChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/UpdateChat/UpdateChatCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/ChatsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/ChatsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/DI/Registration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Requests/Chat/UpdateChatRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Requests/Chat/UpdateChatRequest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +39,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQueryHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/MessageNotification.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/NotificationBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Post.cs" root0="FORCE_HIGHLIGHTING" />
@@ -201,7 +195,8 @@
       <workItem from="1743610352546" duration="8000" />
       <workItem from="1744725296109" duration="5395000" />
       <workItem from="1744743565522" duration="2419000" />
-      <workItem from="1744827408911" duration="3195000" />
+      <workItem from="1744827408911" duration="4750000" />
+      <workItem from="1744907312681" duration="4134000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -283,7 +278,31 @@
       <option name="project" value="LOCAL" />
       <updated>1743525821497</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add middleware and message preview for chat">
+      <option name="closed" value="true" />
+      <created>1744833861599</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1744833861599</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fix">
+      <option name="closed" value="true" />
+      <created>1744833928067</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1744833928067</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix">
+      <option name="closed" value="true" />
+      <created>1744833943123</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1744833943123</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,7 +312,6 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="fix" />
     <MESSAGE value="git" />
     <MESSAGE value="add gitignore" />
     <MESSAGE value="git init" />
@@ -303,7 +321,9 @@
     <MESSAGE value="update" />
     <MESSAGE value="Fix" />
     <MESSAGE value="keep it simple" />
-    <option name="LAST_COMMIT_MESSAGE" value="keep it simple" />
+    <MESSAGE value="Add middleware and message preview for chat" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -320,6 +340,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetChatImage/GetChatImageQueryHandler.cs</url>
+          <line>30</line>
+          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Application\UseCases\Chat\Queries\GetChatImage\GetChatImageQueryHandler.cs" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="1028" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1108" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
