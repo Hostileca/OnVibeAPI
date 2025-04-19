@@ -19,8 +19,13 @@ public class ChatsController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> CreateChat([FromForm] CreateChatRequest createChatRequest, 
         CancellationToken cancellationToken)
     {
-        var command = createChatRequest.Adapt<CreateChatCommand>();
-        command.InitiatorId = UserId;
+        var command = new CreateChatCommand()
+        {
+            InitiatorId = UserId,
+            Image = createChatRequest.Image,
+            Name = createChatRequest.Name,
+            UserIds = createChatRequest.UserIds
+        };
         
         var result = await mediator.Send(command, cancellationToken);
 
