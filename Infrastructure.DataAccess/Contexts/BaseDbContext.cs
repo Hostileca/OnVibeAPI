@@ -10,8 +10,9 @@ internal class BaseDbContext(DbContextOptions<BaseDbContext> options) : DbContex
     public DbSet<Comment> Comments { get; init; }
     public DbSet<Like> Likes { get; init; }
     public DbSet<Message> Messages { get; init; }
-    public DbSet<MessageAttachment> MessageAttachments { get; init; }
     public DbSet<Post> Posts { get; init; }
+    public DbSet<AttachmentBase> Attachments { get; init; }
+    public DbSet<MessageAttachment> MessageAttachments { get; init; }
     public DbSet<PostAttachment> PostAttachments { get; init; }
     public DbSet<Reaction> Reactions { get; init; }
     public DbSet<Subscription> Subscriptions { get; init; }

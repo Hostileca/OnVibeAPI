@@ -32,12 +32,12 @@ public class UpdateChatCommandHandler(
             throw new ForbiddenException("You are not a member of this chat");
         }
         
-        if (ChatPermissionsHelper.IsUserHasAccessToManageChat(chat, request.InitiatorId))
+        if (!ChatPermissionsHelper.IsUserHasAccessToManageChat(chat, request.InitiatorId))
         {
             throw new ForbiddenException("You don't have permissions to update this chat");
         }
 
-        chat.Adapt(request);
+        request.Adapt(chat);
         
         await chatRepository.SaveChangesAsync(cancellationToken);
         

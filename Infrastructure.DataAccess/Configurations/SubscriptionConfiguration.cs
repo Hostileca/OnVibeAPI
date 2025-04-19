@@ -8,7 +8,7 @@ internal class SubscriptionConfiguration : IEntityTypeConfiguration<Subscription
 {
     public void Configure(EntityTypeBuilder<Subscription> builder)
     {
-        builder.HasKey(x => x.Id);
+        builder.HasKey(x => new { x.SubscribedById, x.SubscribedToId });
 
         builder
             .HasOne(s => s.SubscribedBy)

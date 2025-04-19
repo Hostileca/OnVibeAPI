@@ -2,7 +2,6 @@
 
 public class Subscription
 {
-    public Guid Id { get; set; }
     public User SubscribedTo { get; set; }
     public Guid SubscribedToId { get; set; }
     public User SubscribedBy { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.Chat;
+using Application.Dtos.Message;
 using Application.Dtos.Page;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models;
@@ -9,7 +10,8 @@ using MediatR;
 namespace Application.UseCases.Chat.Queries.GetUserChats;
 
 public class GetUserChatsQueryHandler(
-    IChatRepository chatRepository)
+    IChatRepository chatRepository,
+    IMessageRepository messageRepository)
     : IRequestHandler<GetUserChatsQuery, PageResponse<ChatReadDto>>
 {
     public async Task<PageResponse<ChatReadDto>> Handle(GetUserChatsQuery request, CancellationToken cancellationToken)
@@ -20,8 +22,25 @@ public class GetUserChatsQueryHandler(
             request.PageData.Adapt<PageInfo>(), 
             cancellationToken);
 
-        var response = new PageResponse<ChatReadDto>(chats.Adapt<IList<ChatReadDto>>(), request.PageData.PageNumber, request.PageData.PageSize);
+        var chatsReadDto = chats.Adapt<IList<ChatReadDto>>();
+
+        await LoadChatsPreview(chatsReadDto, cancellationToken);
+        
+        var response = new PageResponse<ChatReadDto>(chatsReadDto, request.PageData.PageNumber, request.PageData.PageSize);
         
         return response;
+    }
+
+    private async Task LoadChatsPreview(IList<ChatReadDto> chatReadDtos, CancellationToken cancellationToken)
+    {
+        foreach (var chatReadDto in chatReadDtos)
+        {
+            var message = (await messageRepository.GetMessagesByChatIdAsync(chatReadDto.Id, new PageInfo(1, 1), cancellationToken)).FirstOrDefault();
+
+            if (message is not null)
+            {
+                chatReadDto.Preview = message.Adapt<MessageReadDto>();
+            }
+        }
     }
 }

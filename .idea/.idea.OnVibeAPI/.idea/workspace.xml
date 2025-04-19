@@ -9,20 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="It is hard to work on saturday :(">
-      <change afterPath="$PROJECT_DIR$/Application/MappingConfigs/ReactionConfigs.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/UseCases/Reaction/UpsertReaction/UpsertReactionCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/UseCases/Reaction/UpsertReaction/UpsertReactionCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts.DataAccess/Models/Include/MessageIncludes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/ReactionsController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Requests/Reaction/UpsertReactionRequest.cs" afterDir="false" />
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dtos/Message/MessageReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Message/MessageReadDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IMessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IMessageRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/CommentQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/CommentQueryableExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/UpdateChat/UpdateChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/UpdateChat/UpdateChatCommandHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,14 +32,17 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Hostileca/SocialNetworkAPI.git&quot;,
-    &quot;accountId&quot;: &quot;8d8d9f85-7bb7-49ee-a25a-671a2cce4694&quot;
+    &quot;url&quot;: &quot;https://github.com/Hostileca/OnVibeAPI.git&quot;,
+    &quot;accountId&quot;: &quot;188eeed8-6339-4a2a-ae10-80c64d1a2f15&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Application/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQueryHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/MessageNotification.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/NotificationBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/Entities/Post.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -198,7 +190,13 @@
       <workItem from="1742631579807" duration="4020000" />
       <workItem from="1742635893920" duration="146000" />
       <workItem from="1742636059839" duration="287000" />
-      <workItem from="1742636367191" duration="17615000" />
+      <workItem from="1742636367191" duration="13010000" />
+      <workItem from="1743521666280" duration="5493000" />
+      <workItem from="1743610352546" duration="8000" />
+      <workItem from="1744725296109" duration="5395000" />
+      <workItem from="1744743565522" duration="2419000" />
+      <workItem from="1744827408911" duration="4750000" />
+      <workItem from="1744907312681" duration="4134000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -264,15 +262,47 @@
       <option name="project" value="LOCAL" />
       <updated>1742636430657</updated>
     </task>
-    <task id="LOCAL-00009" summary="It is hard to work on saturday :(">
+    <task id="LOCAL-00009" summary="Fix">
       <option name="closed" value="true" />
-      <created>1742658629614</created>
+      <created>1743524226593</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1742658629614</updated>
+      <updated>1743524226593</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="keep it simple">
+      <option name="closed" value="true" />
+      <created>1743525821497</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1743525821497</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add middleware and message preview for chat">
+      <option name="closed" value="true" />
+      <created>1744833861599</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1744833861599</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fix">
+      <option name="closed" value="true" />
+      <created>1744833928067</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1744833928067</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix">
+      <option name="closed" value="true" />
+      <created>1744833943123</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1744833943123</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,7 +312,6 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="fix" />
     <MESSAGE value="git" />
     <MESSAGE value="add gitignore" />
     <MESSAGE value="git init" />
@@ -290,7 +319,42 @@
     <MESSAGE value="add hangfire" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="update" />
-    <MESSAGE value="It is hard to work on saturday :(" />
-    <option name="LAST_COMMIT_MESSAGE" value="It is hard to work on saturday :(" />
+    <MESSAGE value="Fix" />
+    <MESSAGE value="keep it simple" />
+    <MESSAGE value="Add middleware and message preview for chat" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/UseCases/Chat/Commands/UpdateChat/UpdateChatCommandHandler.cs</url>
+          <line>43</line>
+          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Application\UseCases\Chat\Commands\UpdateChat\UpdateChatCommandHandler.cs" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="1461" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1494" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetChatImage/GetChatImageQueryHandler.cs</url>
+          <line>30</line>
+          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Application\UseCases\Chat\Queries\GetChatImage\GetChatImageQueryHandler.cs" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="1028" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1108" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
