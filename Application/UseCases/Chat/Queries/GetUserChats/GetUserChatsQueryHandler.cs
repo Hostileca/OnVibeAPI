@@ -35,7 +35,13 @@ public class GetUserChatsQueryHandler(
     {
         foreach (var chatReadDto in chatReadDtos)
         {
-            var message = (await messageRepository.GetMessagesByChatIdAsync(chatReadDto.Id, new PageInfo(1, 1), cancellationToken)).FirstOrDefault();
+            var message = (await messageRepository.GetMessagesByChatIdAsync(
+                chatReadDto.Id, 
+                new PageInfo(1, 1), 
+                new MessageIncludes
+                {
+                    IncludeReactions = true
+                }, cancellationToken)).FirstOrDefault();
 
             if (message is not null)
             {
