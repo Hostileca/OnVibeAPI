@@ -20,7 +20,10 @@ public class GetChatMessagesQueryHandler(
     {
         var chat = await chatRepository.GetChatByIdAsync(
             request.ChatId,
-            new ChatIncludes { IncludeChatMembers = true },
+            new ChatIncludes
+            {
+                IncludeChatMembers = true
+            },
             cancellationToken);
         
         if (chat is null)
@@ -36,7 +39,11 @@ public class GetChatMessagesQueryHandler(
         var messages = await messageRepository.GetMessagesByChatIdAsync(
             request.ChatId,
             request.PageData.Adapt<PageInfo>(),
-            new MessageIncludes { IncludeReactions = true },
+            new MessageIncludes
+            {
+                IncludeReactions = true,
+                IncludeSender = true
+            },
             cancellationToken);
 
         var result = new PageResponse<MessageReadDto>(messages.Adapt<IList<MessageReadDto>>(), request.PageData.PageNumber, request.PageData.PageSize);

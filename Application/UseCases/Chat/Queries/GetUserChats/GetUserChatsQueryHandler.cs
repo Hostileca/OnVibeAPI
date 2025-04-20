@@ -40,7 +40,8 @@ public class GetUserChatsQueryHandler(
                 new PageInfo(1, 1), 
                 new MessageIncludes
                 {
-                    IncludeReactions = true
+                    IncludeReactions = true,
+                    IncludeSender = true
                 }, cancellationToken)).FirstOrDefault();
 
             if (message is not null)

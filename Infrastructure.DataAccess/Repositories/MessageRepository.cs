@@ -15,6 +15,7 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
         return await context.Messages
             .Where(x => x.ChatId == chatId)
             .IncludeReactions(includes.IncludeReactions)
+            .IncludeSender(includes.IncludeSender)
             .Paged(pageInfo)
             .ToListAsync(cancellationToken);
     }
@@ -29,6 +30,7 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
     {
         return await context.Messages
             .IncludeReactions(includes.IncludeReactions)
+            .IncludeSender(includes.IncludeSender)
             .TrackChanges(trackChanges)
             .FirstOrDefaultAsync(x => x.Id == messageId && x.Chat.Members.Any(cm => cm.UserId == userId), cancellationToken);
     }

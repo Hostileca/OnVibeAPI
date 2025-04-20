@@ -9,7 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="Add validators" />
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="funny big fix">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dtos/Message/MessageReadDtoBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Message/MessageReadDtoBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Models/Include/MessageIncludes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Models/Include/MessageIncludes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -331,7 +339,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745150190316</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="funny big fix">
+      <option name="closed" value="true" />
+      <created>1745150997889</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1745150997889</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +371,8 @@
     <MESSAGE value="chat create fix" />
     <MESSAGE value="refactor" />
     <MESSAGE value="Add validators" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add validators" />
+    <MESSAGE value="funny big fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="funny big fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

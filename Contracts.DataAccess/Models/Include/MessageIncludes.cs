@@ -3,4 +3,5 @@
 public class MessageIncludes
 {
     public bool IncludeReactions { get; set; }
+    public bool IncludeSender { get; set; }
 }
