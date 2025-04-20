@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 using System.Text;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Hangfire;
 using Mapster;
 using MapsterMapper;
@@ -15,6 +17,7 @@ public static class Registration
     public static void AddPresentation(this IServiceCollection services,
         IConfiguration configuration)
     {
+        services.ValidationConfigure();
         services.CorsConfigure();
         services.AddEndpointsApiExplorer();
         services.SwaggerConfigure();
@@ -108,6 +111,14 @@ public static class Registration
         });
 
         services.AddControllers();
+    }
+    
+    private static IServiceCollection ValidationConfigure(this IServiceCollection services)
+    {
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        services.AddFluentValidationAutoValidation();
+        
+        return services;
     }
     
     public static void StartApplication(this WebApplication webApplication)
