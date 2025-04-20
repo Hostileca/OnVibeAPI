@@ -14,6 +14,7 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
     {
         return await context.Messages
             .Where(x => x.ChatId == chatId)
+            .OrderByDescending(x => x.Date)
             .IncludeReactions(includes.IncludeReactions)
             .IncludeSender(includes.IncludeSender)
             .Paged(pageInfo)

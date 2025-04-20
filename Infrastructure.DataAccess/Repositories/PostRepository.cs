@@ -25,6 +25,7 @@ internal class PostRepository(BaseDbContext context) : IPostRepository
     {
         return await context.Posts
             .Where(x => x.UserId == id)
+            .OrderByDescending(x => x.Date)
             .IncludeUser(includes.IncludeUser)
             .Paged(pageInfo)
             .ToListAsync(cancellationToken);
