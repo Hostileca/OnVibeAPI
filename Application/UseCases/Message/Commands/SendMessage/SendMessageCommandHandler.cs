@@ -19,7 +19,7 @@ public class SendMessageCommandHandler(
     public async Task<MessageReadDtoBase> Handle(SendMessageCommand request, CancellationToken cancellationToken)
     {
         var chat = await chatRepository.GetChatByIdAsync(
-            request.InitiatorId, 
+            request.ChatId, 
             new ChatIncludes{ IncludeChatMembers = true },
             cancellationToken);
 
