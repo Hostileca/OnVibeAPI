@@ -29,6 +29,12 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
             .Property(x => x.BIO);
         
         builder
+            .Property(x => x.DateOfBirth);
+        
+        builder
+            .Property(x => x.City);
+        
+        builder
             .Property(x => x.Avatar);
         
         builder

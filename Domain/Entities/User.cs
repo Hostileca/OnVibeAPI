@@ -11,6 +11,8 @@ public class User
     public string Email { get; set; }
     public string? BIO { get; set; }
     public string? Avatar { get; set; }
+    public DateTime? DateOfBirth { get; set; }
+    public string? City { get; set; }
     public DateTime CreatedAt { get; set; }
     public Roles Role { get; set; } = Roles.User;
     public IList<Message> Messages { get; set; }

@@ -9,4 +9,6 @@ public class UpdateUserProfileCommand : IRequest<UserReadDto>
     public Guid Id { get; set; }
     public string? BIO { get; set; }
     public IFormFile? Avatar { get; set; }
+    public DateTime? DateOfBirth { get; set; }
+    public string? City { get; set; }
 }
