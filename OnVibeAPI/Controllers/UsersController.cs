@@ -1,6 +1,7 @@
 ﻿using Application.UseCases.User.Commands.Login;
 using Application.UseCases.User.Commands.Register;
 using Application.UseCases.User.Commands.UpdateUserProfile;
+using Application.UseCases.User.Queries.GetUserAvatar;
 using Application.UseCases.User.Queries.GetUserById;
 using Mapster;
 using MediatR;
@@ -33,20 +34,32 @@ public class UsersController(IMediator mediator) : ControllerBase
     [HttpGet("me")]
     public async Task<IActionResult> GetMe(CancellationToken cancellationToken)
     {
-        return Ok(await mediator.Send(new GetUserByIdCommand(UserId), cancellationToken));
+        return Ok(await mediator.Send(new GetUserByIdQuery(UserId), cancellationToken));
     }
     
     [HttpGet("{id:guid}")] 
     public async Task<IActionResult> GetUser([FromRoute] Guid id, CancellationToken cancellationToken)
     {
-        return Ok(await mediator.Send(new GetUserByIdCommand(id), cancellationToken));
+        return Ok(await mediator.Send(new GetUserByIdQuery(id), cancellationToken));
+    }
+    
+    [HttpGet("{id:guid}/avatar")] 
+    public async Task<IActionResult> GetUserAvatar([FromRoute] Guid id, CancellationToken cancellationToken)
+    {
+        var result = await mediator.Send(new GetUserAvatarQuery(id), cancellationToken);
+        
+        return File(result, "image/jpeg");
     }
     
     [HttpPut]
-    public async Task<IActionResult> UpdateProfile([FromForm] UpdateUserProfileRequest updateUserProfileRequest, CancellationToken cancellationToken)
+    public async Task<IActionResult> UpdateProfile([FromForm] UpdateUserProfileRequest request, CancellationToken cancellationToken)
     {
-        var command = updateUserProfileRequest.Adapt<UpdateUserProfileCommand>();
-        command.Id = UserId;
+        var command = new UpdateUserProfileCommand(
+            UserId, 
+            request.BIO, 
+            request.Avatar, 
+            request.DateOfBirth, 
+            request.City);
         
         return Ok(await mediator.Send(command, cancellationToken));
     }

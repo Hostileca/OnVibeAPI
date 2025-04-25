@@ -28,6 +28,11 @@ public class GetChatImageQueryHandler(
             throw new ForbiddenException("You don't have access to this chat");
         }
         
+        if (chat.Image is null)
+        {
+            throw new NotFoundException("Image is null");
+        }
+        
         return chat.Image is null ? [] : Base64Converter.ConvertToByteArray(chat.Image);
     }
 }

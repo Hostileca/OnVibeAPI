@@ -4,11 +4,4 @@ using Microsoft.AspNetCore.Http;
 
 namespace Application.UseCases.User.Commands.UpdateUserProfile;
 
-public class UpdateUserProfileCommand : IRequest<UserReadDto>
-{
-    public Guid Id { get; set; }
-    public string? BIO { get; set; }
-    public IFormFile? Avatar { get; set; }
-    public DateTime? DateOfBirth { get; set; }
-    public string? City { get; set; }
-}
+public sealed record UpdateUserProfileCommand(Guid Id, string? BIO, IFormFile Avatar, DateTime? DateOfBirth, string? City) : IRequest<UserReadDto>;

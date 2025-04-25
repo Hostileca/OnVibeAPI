@@ -11,7 +11,7 @@ public class UpdateUserProfileCommandHandler(IUserRepository userRepository) : I
     {
         var user = await userRepository.GetUserByIdAsync(request.Id, cancellationToken, true);
 
-        user.Adapt(request);
+        request.Adapt(user);
 
         await userRepository.SaveChangesAsync(cancellationToken);
         

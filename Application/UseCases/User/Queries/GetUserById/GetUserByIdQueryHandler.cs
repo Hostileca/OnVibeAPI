@@ -6,9 +6,9 @@ using MediatR;
 
 namespace Application.UseCases.User.Queries.GetUserById;
 
-public class GetUserByIdCommandHandler(IUserRepository userRepository) : IRequestHandler<GetUserByIdCommand, UserReadDto>
+public class GetUserByIdQueryHandler(IUserRepository userRepository) : IRequestHandler<GetUserByIdQuery, UserReadDto>
 {
-    public async Task<UserReadDto> Handle(GetUserByIdCommand request, CancellationToken cancellationToken)
+    public async Task<UserReadDto> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
     {
         var user = await userRepository.GetUserByIdAsync(request.Id, cancellationToken);
 

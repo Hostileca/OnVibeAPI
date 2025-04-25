@@ -9,10 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="include sender to message">
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="Update user entity">
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserAvatar/GetUserAvatarQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserAvatar/GetUserAvatarQueryHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/MessageConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/MessageConfigs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dtos/User/UserReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/User/UserReadDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/UserConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/UserConfigs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetChatImage/GetChatImageQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetChatImage/GetChatImageQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserById/GetUserByIdCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserById/GetUserByIdQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserById/GetUserByIdCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserById/GetUserByIdQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Exceptions/NotFoundException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Exceptions/NotFoundException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/UsersController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +47,14 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQueryHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/UseCases/Chat/Queries/GetChatImage/GetChatImageQueryHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/MessageNotification.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/NotificationBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Post.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Domain/Entities/User.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Infrastructure.DataAccess/Configurations/UserConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/OnVibeAPI/Requests/User/UpdateUserProfileRequest.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -63,7 +74,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.OnVibeAPI: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Debug",
+    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Run",
     ".NET Launch Settings Profile.OnVibeAPI: https.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -351,7 +362,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745156085182</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Update user entity">
+      <option name="closed" value="true" />
+      <created>1745604981926</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1745604981926</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,6 +378,17 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="git" />
@@ -377,28 +407,16 @@
     <MESSAGE value="Add validators" />
     <MESSAGE value="funny big fix" />
     <MESSAGE value="include sender to message" />
-    <option name="LAST_COMMIT_MESSAGE" value="include sender to message" />
+    <MESSAGE value="Update user entity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update user entity" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/UseCases/Chat/Commands/UpdateChat/UpdateChatCommandHandler.cs</url>
-          <line>43</line>
-          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Application\UseCases\Chat\Commands\UpdateChat\UpdateChatCommandHandler.cs" containingFunctionPresentation="Method 'Handle'" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs</url>
           <line>52</line>
-          <properties documentPath="C:\Users\kiril\OneDrive\Рабочий стол\OnVibeAPI\Application\UseCases\Message\Queries\GetChatMessages\GetChatMessagesQueryHandler.cs" containingFunctionPresentation="Method 'Handle'">
-            <startOffsets>
-              <option value="1847" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1861" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\kiril\OneDrive\Рабочий стол\OnVibeAPI\Application\UseCases\Message\Queries\GetChatMessages\GetChatMessagesQueryHandler.cs" containingFunctionPresentation="Method 'Handle'" />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
