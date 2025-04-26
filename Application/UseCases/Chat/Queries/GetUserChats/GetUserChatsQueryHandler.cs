@@ -12,9 +12,9 @@ namespace Application.UseCases.Chat.Queries.GetUserChats;
 public class GetUserChatsQueryHandler(
     IChatRepository chatRepository,
     IMessageRepository messageRepository)
-    : IRequestHandler<GetUserChatsQuery, PageResponse<ChatReadDto>>
+    : IRequestHandler<GetUserChatsQuery, PagedResponse<ChatReadDto>>
 {
-    public async Task<PageResponse<ChatReadDto>> Handle(GetUserChatsQuery request, CancellationToken cancellationToken)
+    public async Task<PagedResponse<ChatReadDto>> Handle(GetUserChatsQuery request, CancellationToken cancellationToken)
     {
         var chats = await chatRepository.GetUserChatsAsync(
             request.UserId, 
@@ -26,7 +26,7 @@ public class GetUserChatsQueryHandler(
 
         await LoadChatsPreview(chatsReadDto, cancellationToken);
         
-        var response = new PageResponse<ChatReadDto>(chatsReadDto, request.PageData.PageNumber, request.PageData.PageSize);
+        var response = new PagedResponse<ChatReadDto>(chatsReadDto, request.PageData.PageNumber, request.PageData.PageSize);
         
         return response;
     }

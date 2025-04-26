@@ -13,6 +13,7 @@ public class User
     public string? Avatar { get; set; }
     public DateTime? DateOfBirth { get; set; }
     public string? City { get; set; }
+    public string? Country { get; set; }
     public DateTime CreatedAt { get; set; }
     public Roles Role { get; set; } = Roles.User;
     public IList<Message> Messages { get; set; }

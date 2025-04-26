@@ -4,4 +4,4 @@ using MediatR;
 
 namespace Application.UseCases.Post.Queries.GetUserPosts;
 
-public sealed record GetUserPostsQuery(Guid UserId, PageData Page) : IRequest<PageResponse<PostReadDto>>;
+public sealed record GetUserPostsQuery(Guid UserId, PageData Page) : IRequest<PagedResponse<PostReadDto>>;

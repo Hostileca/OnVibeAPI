@@ -4,4 +4,4 @@ using MediatR;
 
 namespace Application.UseCases.Comment.Queries.GetPostComments;
 
-public record GetPostCommentsQuery(Guid PostId, PageData PageData) : IRequest<PageResponse<CommentReadDto>>;
+public record GetPostCommentsQuery(Guid PostId, PageData PageData) : IRequest<PagedResponse<CommentReadDto>>;

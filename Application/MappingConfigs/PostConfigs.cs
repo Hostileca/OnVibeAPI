@@ -14,7 +14,7 @@ public class PostConfigs : IRegister
             .Map(dest => dest.Date, _ => DateTime.UtcNow);
 
         config.NewConfig<Post, PostReadDto>()
-            .Map(dest => dest.UserShortReadDto, src => src.User)
+            .Map(dest => dest.Owner, src => src.User)
             .Map(dest => dest.AttachmentsIds, src => src.Attachments.Select(a => a.Id), 
                 src => src.Attachments != null);
     }

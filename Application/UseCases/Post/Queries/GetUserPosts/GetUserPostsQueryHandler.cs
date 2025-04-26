@@ -13,9 +13,9 @@ public class GetUserPostsQueryHandler(
     IUserRepository userRepository,
     IPostRepository postRepository,
     IAttachmentRepository attachmentRepository) 
-    : IRequestHandler<GetUserPostsQuery, PageResponse<PostReadDto>>
+    : IRequestHandler<GetUserPostsQuery, PagedResponse<PostReadDto>>
 {
-    public async Task<PageResponse<PostReadDto>> Handle(GetUserPostsQuery request, CancellationToken cancellationToken)
+    public async Task<PagedResponse<PostReadDto>> Handle(GetUserPostsQuery request, CancellationToken cancellationToken)
     {
         var user = await userRepository.GetUserByIdAsync(request.UserId, cancellationToken);
 
@@ -33,7 +33,7 @@ public class GetUserPostsQueryHandler(
             request.Page.Adapt<PageInfo>(), 
             cancellationToken);
 
-        var response = new PageResponse<PostReadDto>(
+        var response = new PagedResponse<PostReadDto>(
             posts.Adapt<IList<PostReadDto>>(), 
             request.Page.PageNumber,
             request.Page.PageSize);
@@ -43,7 +43,7 @@ public class GetUserPostsQueryHandler(
         return response;
     }
 
-    private async Task LoadExtraInfoAsync(PageResponse<PostReadDto> response, CancellationToken cancellationToken)
+    private async Task LoadExtraInfoAsync(PagedResponse<PostReadDto> response, CancellationToken cancellationToken)
     {
         foreach (var postReadDto in response.Items)
         {

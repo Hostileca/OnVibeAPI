@@ -1,12 +1,15 @@
-﻿using Application.UseCases.User.Commands.Login;
+﻿using Application.Dtos.Page;
+using Application.UseCases.User.Commands.Login;
 using Application.UseCases.User.Commands.Register;
 using Application.UseCases.User.Commands.UpdateUserProfile;
 using Application.UseCases.User.Queries.GetUserAvatar;
 using Application.UseCases.User.Queries.GetUserById;
+using Application.UseCases.User.Queries.GetUsersBySearchCriteria;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OnVibeAPI.Requests.General;
 using OnVibeAPI.Requests.User;
 
 namespace OnVibeAPI.Controllers;
@@ -62,5 +65,17 @@ public class UsersController(IMediator mediator) : ControllerBase
             request.City);
         
         return Ok(await mediator.Send(command, cancellationToken));
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> SearchUsers(
+        [FromQuery] SearchUsersByCriteriaRequest searchRequest,
+        [FromQuery] PageRequest pageRequest,
+        CancellationToken cancellationToken)
+    {
+        var query = searchRequest.Adapt<GetUsersBySearchCriteriaQuery>();
+        query.PageData = pageRequest.Adapt<PageData>();
+
+        return Ok(await mediator.Send(query, cancellationToken));
     }
 }

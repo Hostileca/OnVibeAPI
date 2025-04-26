@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.UseCases.Message.Queries.GetChatMessages;
 
-public class GetChatMessagesQuery : IRequest<PageResponse<MessageReadDto>>
+public class GetChatMessagesQuery : IRequest<PagedResponse<MessageReadDto>>
 {
     public Guid ChatId { get; set; }
     public Guid InitiatorId { get; set; }

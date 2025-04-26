@@ -12,9 +12,9 @@ namespace Application.UseCases.Comment.Queries.GetPostComments;
 public class GetPostCommentsQueryHandler(
     IPostRepository postRepository,
     ICommentRepository commentRepository)
-    : IRequestHandler<GetPostCommentsQuery, PageResponse<CommentReadDto>>
+    : IRequestHandler<GetPostCommentsQuery, PagedResponse<CommentReadDto>>
 {
-    public async Task<PageResponse<CommentReadDto>> Handle(GetPostCommentsQuery request, CancellationToken cancellationToken)
+    public async Task<PagedResponse<CommentReadDto>> Handle(GetPostCommentsQuery request, CancellationToken cancellationToken)
     {
         var post = await postRepository.GetPostByIdAsync(request.PostId, cancellationToken);
 
@@ -31,7 +31,7 @@ public class GetPostCommentsQueryHandler(
         
         var commentsDto = comments.Adapt<List<CommentReadDto>>();
         
-        return new PageResponse<CommentReadDto>(
+        return new PagedResponse<CommentReadDto>(
             commentsDto, 
             request.PageData.PageNumber, 
             request.PageData.PageSize);

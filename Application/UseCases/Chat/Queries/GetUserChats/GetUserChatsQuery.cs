@@ -4,4 +4,4 @@ using MediatR;
 
 namespace Application.UseCases.Chat.Queries.GetUserChats;
 
-public sealed record GetUserChatsQuery(Guid UserId, PageData PageData) : IRequest<PageResponse<ChatReadDto>>;
+public sealed record GetUserChatsQuery(Guid UserId, PageData PageData) : IRequest<PagedResponse<ChatReadDto>>;

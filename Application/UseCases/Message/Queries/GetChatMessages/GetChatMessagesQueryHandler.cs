@@ -14,9 +14,9 @@ public class GetChatMessagesQueryHandler(
     IChatRepository chatRepository,
     IMessageRepository messageRepository,
     IAttachmentRepository attachmentRepository)
-    : IRequestHandler<GetChatMessagesQuery, PageResponse<MessageReadDto>>
+    : IRequestHandler<GetChatMessagesQuery, PagedResponse<MessageReadDto>>
 {
-    public async Task<PageResponse<MessageReadDto>> Handle(GetChatMessagesQuery request, CancellationToken cancellationToken)
+    public async Task<PagedResponse<MessageReadDto>> Handle(GetChatMessagesQuery request, CancellationToken cancellationToken)
     {
         var chat = await chatRepository.GetChatByIdAsync(
             request.ChatId,
@@ -46,14 +46,14 @@ public class GetChatMessagesQueryHandler(
             },
             cancellationToken);
 
-        var result = new PageResponse<MessageReadDto>(messages.Adapt<IList<MessageReadDto>>(), request.PageData.PageNumber, request.PageData.PageSize);
+        var result = new PagedResponse<MessageReadDto>(messages.Adapt<IList<MessageReadDto>>(), request.PageData.PageNumber, request.PageData.PageSize);
         
         await LoadExtraInfoAsync(result, cancellationToken);
         
         return result;
     }
     
-    private async Task LoadExtraInfoAsync(PageResponse<MessageReadDto> response, CancellationToken cancellationToken)
+    private async Task LoadExtraInfoAsync(PagedResponse<MessageReadDto> response, CancellationToken cancellationToken)
     {
         foreach (var messageReadDto in response.Items)
         {

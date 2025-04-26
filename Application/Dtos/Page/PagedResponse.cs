@@ -1,6 +1,6 @@
 ﻿namespace Application.Dtos.Page;
 
-public class PageResponse<T>(IList<T> items, int currentPage, int pageSize)
+public class PagedResponse<T>(IList<T> items, int currentPage, int pageSize)
 {
     public IList<T> Items { get; init; } = items;
     public int CurrentPage { get; init; } = currentPage;

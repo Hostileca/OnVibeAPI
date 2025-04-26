@@ -7,7 +7,7 @@ public class PostReadDto
     public Guid Id { get; set; }
     public string? Content { get; set; }
     public DateTime Date { get; set; }
-    public UserShortReadDto UserShortReadDto { get; set; }
+    public UserShortReadDto Owner { get; set; }
     public int LikesCount { get; set; }
     public int CommentsCount { get; set; }
     public IList<Guid>? AttachmentsIds { get; set; }

@@ -35,6 +35,9 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
             .Property(x => x.City);
         
         builder
+            .Property(x => x.Country);
+        
+        builder
             .Property(x => x.Avatar);
         
         builder
