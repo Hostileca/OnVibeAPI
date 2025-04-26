@@ -9,4 +9,5 @@ public interface ILikeRepository
     Task<Like?> GetLikeAsync(Guid postId, Guid userId, CancellationToken cancellationToken, bool trackChanges = false);
     Task AddLikeAsync(Like like, CancellationToken cancellationToken);
     void RemoveLikeAsync(Like like);
+    Task<int> GetPostLikesCountAsync(Guid postId, CancellationToken cancellationToken); 
 }

@@ -1,4 +1,5 @@
-﻿using Application.Dtos.Page;
+﻿using Application.Dtos.ExtraLoaders;
+using Application.Dtos.Page;
 using Application.Dtos.Post;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models;
@@ -12,7 +13,7 @@ namespace Application.UseCases.Post.Queries.GetUserPosts;
 public class GetUserPostsQueryHandler(
     IUserRepository userRepository,
     IPostRepository postRepository,
-    IAttachmentRepository attachmentRepository) 
+    IExtraLoader<PostReadDto> postsExtraLoader) 
     : IRequestHandler<GetUserPostsQuery, PagedResponse<PostReadDto>>
 {
     public async Task<PagedResponse<PostReadDto>> Handle(GetUserPostsQuery request, CancellationToken cancellationToken)
@@ -33,23 +34,14 @@ public class GetUserPostsQueryHandler(
             request.Page.Adapt<PageInfo>(), 
             cancellationToken);
 
+        var postsReadDtos = posts.Adapt<IList<PostReadDto>>();
+        await postsExtraLoader.LoadExtraInformationAsync(postsReadDtos, cancellationToken);
+
         var response = new PagedResponse<PostReadDto>(
-            posts.Adapt<IList<PostReadDto>>(), 
+            postsReadDtos, 
             request.Page.PageNumber,
             request.Page.PageSize);
 
-        await LoadExtraInfoAsync(response, cancellationToken); 
-        
         return response;
-    }
-
-    private async Task LoadExtraInfoAsync(PagedResponse<PostReadDto> response, CancellationToken cancellationToken)
-    {
-        foreach (var postReadDto in response.Items)
-        {
-            postReadDto.LikesCount = await postRepository.GetPostLikesCountAsync(postReadDto.Id, cancellationToken);
-            postReadDto.CommentsCount = await postRepository.GetPostCommentsCountAsync(postReadDto.Id, cancellationToken);
-            postReadDto.AttachmentsIds = await attachmentRepository.GetAttachmentsIdsByPostIdAsync(postReadDto.Id, cancellationToken);
-        }
     }
 }

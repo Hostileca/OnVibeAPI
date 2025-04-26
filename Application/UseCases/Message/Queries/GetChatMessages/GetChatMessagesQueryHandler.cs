@@ -1,4 +1,5 @@
-﻿using Application.Dtos.Message;
+﻿using Application.Dtos.ExtraLoaders;
+using Application.Dtos.Message;
 using Application.Dtos.Page;
 using Application.Helpers.PermissionsHelpers;
 using Contracts.DataAccess.Interfaces;
@@ -13,7 +14,7 @@ namespace Application.UseCases.Message.Queries.GetChatMessages;
 public class GetChatMessagesQueryHandler(
     IChatRepository chatRepository,
     IMessageRepository messageRepository,
-    IAttachmentRepository attachmentRepository)
+    IExtraLoader<MessageReadDto> messageExtraLoader)
     : IRequestHandler<GetChatMessagesQuery, PagedResponse<MessageReadDto>>
 {
     public async Task<PagedResponse<MessageReadDto>> Handle(GetChatMessagesQuery request, CancellationToken cancellationToken)
@@ -46,18 +47,11 @@ public class GetChatMessagesQueryHandler(
             },
             cancellationToken);
 
-        var result = new PagedResponse<MessageReadDto>(messages.Adapt<IList<MessageReadDto>>(), request.PageData.PageNumber, request.PageData.PageSize);
-        
-        await LoadExtraInfoAsync(result, cancellationToken);
+        var messagesReadDtos = messages.Adapt<IList<MessageReadDto>>();
+        await messageExtraLoader.LoadExtraInformationAsync(messagesReadDtos, cancellationToken);
+
+        var result = new PagedResponse<MessageReadDto>(messagesReadDtos, request.PageData.PageNumber, request.PageData.PageSize);
         
         return result;
-    }
-    
-    private async Task LoadExtraInfoAsync(PagedResponse<MessageReadDto> response, CancellationToken cancellationToken)
-    {
-        foreach (var messageReadDto in response.Items)
-        {
-            messageReadDto.AttachmentsIds = await attachmentRepository.GetAttachmentsIdsByMessageIdAsync(messageReadDto.Id, cancellationToken);
-        }
     }
 }

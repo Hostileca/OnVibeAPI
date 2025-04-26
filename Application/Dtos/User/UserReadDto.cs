@@ -12,4 +12,7 @@ public class UserReadDto
     public string? City { get; set; }
     public string? Country { get; set; }
     public Roles Role { get; set; }
+    public int PostsCount { get; set; }
+    public int SubscriptionsCount { get; set; }
+    public int SubscribersCount { get; set; }
 }

@@ -33,4 +33,18 @@ internal class SubscriptionRepository(BaseDbContext context) : ISubscriptionRepo
     {
         await context.SaveChangesAsync(cancellationToken);
     }
+
+    public async Task<int> GetUserSubscribersCountAsync(Guid userId, CancellationToken cancellationToken)
+    {
+        return await context.Subscriptions
+            .Where(post => post.SubscribedToId == userId)
+            .CountAsync(cancellationToken);
+    }
+
+    public async Task<int> GetUserSubscriptionsCountAsync(Guid userId, CancellationToken cancellationToken)
+    {
+        return await context.Subscriptions
+            .Where(post => post.SubscribedById == userId)
+            .CountAsync(cancellationToken);
+    }
 }

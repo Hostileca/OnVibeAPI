@@ -1,4 +1,9 @@
 ﻿using System.Reflection;
+using Application.Dtos.Chat;
+using Application.Dtos.ExtraLoaders;
+using Application.Dtos.Message;
+using Application.Dtos.Post;
+using Application.Dtos.User;
 using Application.Services.Implementations;
 using Application.Services.Implementations.Notification;
 using Application.Services.Interfaces;
@@ -14,6 +19,7 @@ public static class Registration
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         services.ServicesConfigure();
+        services.AddExtraLoaders();
         services.MediatorConfigure();
         services.AddMapster();
 
@@ -41,11 +47,11 @@ public static class Registration
         services.AddSingleton<IMapper>(mapperConfig);
     }
 
-    // private static IServiceCollection ValidationConfigure(this IServiceCollection services)
-    // {
-    //     services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-    //     services.AddFluentValidationAutoValidation();
-    //     
-    //     return services;
-    // }
+    private static void AddExtraLoaders(this IServiceCollection services)
+    {
+        services.AddScoped<IExtraLoader<UserReadDto>, UserReadDtoExtraLoader>();
+        services.AddScoped<IExtraLoader<MessageReadDto>, MessageReadDtoExtraLoader>();
+        services.AddScoped<IExtraLoader<PostReadDto>, PostReadDtoExtraLoader>();
+        services.AddScoped<IExtraLoader<ChatReadDto>, ChatReadDtoExtraLoader>();
+    }
 }

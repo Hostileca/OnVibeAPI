@@ -31,20 +31,18 @@ internal class PostRepository(BaseDbContext context) : IPostRepository
             .ToListAsync(cancellationToken);
     }
 
-    public Task<int> GetPostLikesCountAsync(Guid postId, CancellationToken cancellationToken)
-    {
-        return context.Likes.CountAsync(x => x.PostId == postId, cancellationToken);
-    }
-
-    public Task<int> GetPostCommentsCountAsync(Guid postId, CancellationToken cancellationToken)
-    {
-        return context.Comments.CountAsync(x => x.PostId == postId, cancellationToken);
-    }
 
     public async Task<Post?> GetPostByIdAsync(Guid id, CancellationToken cancellationToken, bool trackChanges = false)
     {
         return await context.Posts
             .TrackChanges(trackChanges)
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+    }
+
+    public async Task<int> GetUserPostsCountAsync(Guid userId, CancellationToken cancellationToken)
+    {
+        return await context.Posts
+            .Where(post => post.UserId == userId)
+            .CountAsync(cancellationToken);
     }
 }

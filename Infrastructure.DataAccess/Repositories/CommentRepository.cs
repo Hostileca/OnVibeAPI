@@ -29,4 +29,9 @@ internal class CommentRepository(BaseDbContext context) : ICommentRepository
             .Paged(pageInfo)
             .ToListAsync(cancellationToken);
     }
+    
+    public Task<int> GetPostCommentsCountAsync(Guid postId, CancellationToken cancellationToken)
+    {
+        return context.Comments.CountAsync(x => x.PostId == postId, cancellationToken);
+    }
 }

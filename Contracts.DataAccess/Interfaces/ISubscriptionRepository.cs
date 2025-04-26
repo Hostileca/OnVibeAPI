@@ -9,4 +9,6 @@ public interface ISubscriptionRepository
     Task<Subscription?> GetSubscriptionAsync(Guid subscribedToId, Guid subscribedById, CancellationToken cancellationToken);
     void RemoveSubscriptionAsync(Subscription subscription, CancellationToken cancellationToken);
     Task SaveChangesAsync(CancellationToken cancellationToken);
+    Task<int> GetUserSubscribersCountAsync(Guid userId, CancellationToken cancellationToken);
+    Task<int> GetUserSubscriptionsCountAsync(Guid userId, CancellationToken cancellationToken);
 }

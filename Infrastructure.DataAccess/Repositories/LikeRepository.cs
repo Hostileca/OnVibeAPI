@@ -34,4 +34,9 @@ internal class LikeRepository(BaseDbContext context) : ILikeRepository
     {
        context.Likes.Remove(like);
     }
+    
+    public Task<int> GetPostLikesCountAsync(Guid postId, CancellationToken cancellationToken)
+    {
+        return context.Likes.CountAsync(x => x.PostId == postId, cancellationToken);
+    }
 }
