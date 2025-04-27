@@ -9,30 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="users search">
-      <change afterPath="$PROJECT_DIR$/Application/Dtos/ExtraLoaders/ChatReadDtoExtraLoader.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Dtos/ExtraLoaders/ExtraLoaderBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Dtos/ExtraLoaders/IExtraLoader.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Dtos/ExtraLoaders/MessageReadDtoExtraLoader.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Dtos/ExtraLoaders/PostReadDtoExtraLoader.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Dtos/ExtraLoaders/UserReadDtoExtraLoader.cs" afterDir="false" />
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="Add extra loaders">
+      <change afterPath="$PROJECT_DIR$/Application/MappingConfigs/AttachmentConfigs.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Validators/CreatePostRequestValidator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DI/Registration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dtos/User/UserReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/User/UserReadDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Post/Queries/GetUserPosts/GetUserPostsQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Post/Queries/GetUserPosts/GetUserPostsQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserById/GetUserByIdQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserById/GetUserByIdQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUsersBySearchCriteria/GetUsersBySearchCriteriaQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUsersBySearchCriteria/GetUsersBySearchCriteriaQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ICommentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ICommentRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ILikeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ILikeRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IPostRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IPostRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ISubscriptionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ISubscriptionRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/CommentRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/CommentRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/LikeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/LikeRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/PostRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/PostRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/SubscriptionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/SubscriptionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dtos/Attachment/AttachmentReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Attachment/AttachmentReadDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dtos/ExtraLoaders/ExtraLoaderBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/ExtraLoaders/ExtraLoaderBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/PostConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/PostConfigs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Attachment/Queries/GetAttachmentByIdQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Attachment/Queries/GetAttachmentByIdQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/AttachmentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/AttachmentsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/PostsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/PostsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/DI/Registration.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +206,7 @@
       <workItem from="1744743565522" duration="2419000" />
       <workItem from="1744827408911" duration="4750000" />
       <workItem from="1744907312681" duration="4134000" />
-      <workItem from="1745669327235" duration="8794000" />
+      <workItem from="1745669327235" duration="24541000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -395,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745685239748</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Add extra loaders">
+      <option name="closed" value="true" />
+      <created>1745688041993</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1745688041993</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,6 +432,26 @@
     <MESSAGE value="Update user entity" />
     <MESSAGE value="(((" />
     <MESSAGE value="users search" />
-    <option name="LAST_COMMIT_MESSAGE" value="users search" />
+    <MESSAGE value="Add extra loaders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add extra loaders" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/OnVibeAPI/Controllers/PostsController.cs</url>
+          <line>18</line>
+          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\OnVibeAPI\Controllers\PostsController.cs" containingFunctionPresentation="Method 'CreatePost'">
+            <startOffsets>
+              <option value="614" />
+            </startOffsets>
+            <endOffsets>
+              <option value="675" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

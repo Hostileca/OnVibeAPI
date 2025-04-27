@@ -61,11 +61,7 @@ public static class Registration
             //     }
             // };
         });
-        services.AddAuthorization(option =>
-        {
-            // option.AddPolicy(Policies.RequireStaff, 
-            //     policy => policy.RequireRole("Admin"));
-        });
+        services.AddAuthorization();
     }
 
     private static void SwaggerConfigure(this IServiceCollection services)
@@ -107,7 +103,8 @@ public static class Registration
                 builder => builder
                     .WithOrigins("http://localhost:4200")
                     .AllowAnyHeader()
-                    .AllowAnyMethod());
+                    .AllowAnyMethod()
+                    .WithExposedHeaders("Content-Disposition"));
         });
 
         services.AddControllers();

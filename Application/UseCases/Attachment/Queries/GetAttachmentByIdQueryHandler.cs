@@ -18,13 +18,13 @@ public class GetAttachmentByIdQueryHandler(
 
         if (attachment is null)
         {
-            throw new NotFoundException(typeof(Domain.Entities.AttachmentBase), request.AttachmentId.ToString());
+            throw new NotFoundException(typeof(AttachmentBase), request.AttachmentId.ToString());
         }
 
         return attachment.Adapt<AttachmentReadDto>();
     }
 
-    private async Task<Domain.Entities.AttachmentBase?> GetAttachment(GetAttachmentByIdQuery request,
+    private async Task<AttachmentBase?> GetAttachment(GetAttachmentByIdQuery request,
         CancellationToken cancellationToken)
     {
         switch (request.Type)

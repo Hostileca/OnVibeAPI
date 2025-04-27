@@ -13,6 +13,6 @@ public class AttachmentsController(IMediator mediator) : ControllerBase
         var query = new GetAttachmentByIdQuery(id, UserId, type);
         var attachment = await mediator.Send(query, cancellationToken);
         
-        return File(attachment.File, attachment.ContentType, attachment.FileName); 
+        return File(attachment.Data, attachment.ContentType, attachment.FileName); 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.Post;
+using Application.Helpers;
 using Application.UseCases.Post.Commands.Create;
 using Domain.Entities;
 using Mapster;
@@ -11,7 +12,23 @@ public class PostConfigs : IRegister
     {
         config.NewConfig<CreatePostCommand, Post>()
             .Ignore(dest => dest.Attachments)
-            .Map(dest => dest.Date, _ => DateTime.UtcNow);
+            .Map(dest => dest.Date, _ => DateTime.UtcNow)
+            .AfterMapping((src, dest) => 
+            {
+                if (src.Attachments is null)
+                {
+                    return;
+                }
+                
+                dest.Attachments = src.Attachments
+                    .Select(file => new PostAttachment
+                    {
+                        FileName = file.FileName,
+                        Data = Base64Converter.ConvertToBase64(file),
+                        ContentType = MimeTypes.GetMimeType(file.FileName)
+                    })
+                    .ToList();
+            });
 
         config.NewConfig<Post, PostReadDto>()
             .Map(dest => dest.Owner, src => src.User)

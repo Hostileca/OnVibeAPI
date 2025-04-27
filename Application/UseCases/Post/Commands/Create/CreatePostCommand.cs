@@ -4,9 +4,4 @@ using Microsoft.AspNetCore.Http;
 
 namespace Application.UseCases.Post.Commands.Create;
 
-public sealed record CreatePostCommand : IRequest<PostReadDto>
-{
-    public string? Content { get; set; }
-    public Guid UserId { get; set; }
-    public IList<IFormFile>? Attachments { get; set; }
-}
+public sealed record CreatePostCommand(Guid UserId, string? Content, IList<IFormFile>? Attachments) : IRequest<PostReadDto>;

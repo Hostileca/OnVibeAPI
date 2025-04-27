@@ -24,7 +24,6 @@ public class CreatePostCommandHandler(
         }
 
         var post = request.Adapt<Domain.Entities.Post>();
-        post.Attachments = CreatePostAttachmentsEntities(request.Attachments.ToList());
 
         await postRepository.AddPostAsync(post, cancellationToken);
         await postRepository.SaveChangesAsync(cancellationToken);
@@ -32,15 +31,5 @@ public class CreatePostCommandHandler(
         post.User = user;
         
         return post.Adapt<PostReadDto>();
-    }
-
-    private List<PostAttachment> CreatePostAttachmentsEntities(List<IFormFile> attachments)
-    {
-        return attachments.Select(file => new PostAttachment
-        {
-            FileName = file.FileName,
-            Data = Base64Converter.ConvertToBase64(file),
-            ContentType = MimeTypes.GetMimeType(file.FileName)
-        }).ToList();
     }
 }
