@@ -20,7 +20,7 @@ public class UpdateUserProfileCommandHandler(
 
         var userReadDto = user.Adapt<UserReadDto>();
 
-        await userExtraLoader.LoadExtraInformationAsync(userReadDto, cancellationToken);
+        await userExtraLoader.LoadExtraInformationAsync(userReadDto, request.InitiatorId, cancellationToken);
         
         return userReadDto;
     }

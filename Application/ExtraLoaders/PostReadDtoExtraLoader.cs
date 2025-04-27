@@ -9,7 +9,7 @@ public class PostReadDtoExtraLoader(
     IAttachmentRepository attachmentRepository) 
     : ExtraLoaderBase<PostReadDto>
 {
-    public override async Task LoadExtraInformationAsync(PostReadDto dto, CancellationToken cancellationToken)
+    public override async Task LoadExtraInformationAsync(PostReadDto dto, Guid initiatorId, CancellationToken cancellationToken)
     {
         dto.LikesCount = await likeRepository.GetPostLikesCountAsync(dto.Id, cancellationToken);
         dto.CommentsCount = await commentRepository.GetPostCommentsCountAsync(dto.Id, cancellationToken);

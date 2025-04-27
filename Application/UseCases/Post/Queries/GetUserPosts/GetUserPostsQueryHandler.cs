@@ -35,7 +35,7 @@ public class GetUserPostsQueryHandler(
             cancellationToken);
 
         var postsReadDtos = posts.Adapt<IList<PostReadDto>>();
-        await postsExtraLoader.LoadExtraInformationAsync(postsReadDtos, cancellationToken);
+        await postsExtraLoader.LoadExtraInformationAsync(postsReadDtos, request.InitiatorId, cancellationToken);
 
         var response = new PagedResponse<PostReadDto>(
             postsReadDtos, 

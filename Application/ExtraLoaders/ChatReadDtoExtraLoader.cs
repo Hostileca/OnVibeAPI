@@ -9,7 +9,7 @@ namespace Application.ExtraLoaders;
 
 public class ChatReadDtoExtraLoader(IMessageRepository messageRepository) : ExtraLoaderBase<ChatReadDto>
 {
-    public override async Task LoadExtraInformationAsync(ChatReadDto dto, CancellationToken cancellationToken)
+    public override async Task LoadExtraInformationAsync(ChatReadDto dto, Guid _, CancellationToken cancellationToken)
     {
         var message = (await messageRepository.GetMessagesByChatIdAsync(
             dto.Id, 

@@ -22,7 +22,7 @@ public class GetUsersBySearchCriteriaQueryHandler(
 
         var usersReadDtos = users.Adapt<IList<UserReadDto>>();
 
-        await userExtraLoader.LoadExtraInformationAsync(usersReadDtos, cancellationToken);
+        await userExtraLoader.LoadExtraInformationAsync(usersReadDtos, request.InitiatorId, cancellationToken);
 
         return new PagedResponse<UserReadDto>(usersReadDtos, pageInfo.PageNumber, pageInfo.PageSize);
     }
