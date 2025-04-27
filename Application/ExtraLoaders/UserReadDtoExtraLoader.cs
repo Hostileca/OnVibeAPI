@@ -8,7 +8,7 @@ public class UserReadDtoExtraLoader(
     ISubscriptionRepository subscriptionRepository) 
     : ExtraLoaderBase<UserReadDto>
 {
-    public override async Task LoadExtraInformationAsync(UserReadDto dto, Guid _, CancellationToken cancellationToken)
+    public override async Task LoadExtraInformationAsync(UserReadDto dto, CancellationToken cancellationToken, Guid? initiatorId)
     {
         dto.PostsCount = await postRepository.GetUserPostsCountAsync(dto.Id, cancellationToken);
         dto.SubscribersCount = await subscriptionRepository.GetUserSubscribersCountAsync(dto.Id, cancellationToken);

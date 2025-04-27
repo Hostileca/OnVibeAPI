@@ -13,14 +13,14 @@ public class UpdateUserProfileCommandHandler(
 {
     public async Task<UserReadDto> Handle(UpdateUserProfileCommand request, CancellationToken cancellationToken)
     {
-        var user = await userRepository.GetUserByIdAsync(request.Id, cancellationToken, true);
+        var user = await userRepository.GetUserByIdAsync(request.InitiatorId, cancellationToken, true);
 
         request.Adapt(user);
         await userRepository.SaveChangesAsync(cancellationToken);
 
         var userReadDto = user.Adapt<UserReadDto>();
 
-        await userExtraLoader.LoadExtraInformationAsync(userReadDto, request.InitiatorId, cancellationToken);
+        await userExtraLoader.LoadExtraInformationAsync(userReadDto, cancellationToken, request.InitiatorId);
         
         return userReadDto;
     }

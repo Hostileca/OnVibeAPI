@@ -37,19 +37,19 @@ public class UsersController(IMediator mediator) : ControllerBase
     [HttpGet("me")]
     public async Task<IActionResult> GetMe(CancellationToken cancellationToken)
     {
-        return Ok(await mediator.Send(new GetUserByIdQuery{ InitiatorId = UserId, Id = UserId }, cancellationToken));
+        return Ok(await mediator.Send(new GetUserByIdQuery{ Id = UserId }, cancellationToken));
     }
     
     [HttpGet("{id:guid}")] 
     public async Task<IActionResult> GetUser([FromRoute] Guid id, CancellationToken cancellationToken)
     {
-        return Ok(await mediator.Send(new GetUserByIdQuery{ InitiatorId = UserId, Id = id }, cancellationToken));
+        return Ok(await mediator.Send(new GetUserByIdQuery{ Id = id }, cancellationToken));
     }
     
     [HttpGet("{id:guid}/avatar")] 
     public async Task<IActionResult> GetUserAvatar([FromRoute] Guid id, CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(new GetUserAvatarQuery{ InitiatorId = UserId, UserId = id }, cancellationToken);
+        var result = await mediator.Send(new GetUserAvatarQuery{ UserId = id }, cancellationToken);
         
         return File(result, "image/jpeg");
     }
@@ -80,7 +80,6 @@ public class UsersController(IMediator mediator) : ControllerBase
             Username = searchRequest.Username,
             Country = searchRequest.Country,
             City = searchRequest.City,
-            InitiatorId = UserId,
             PageData = pageRequest.Adapt<PageData>()
         };
 

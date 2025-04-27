@@ -1,10 +1,10 @@
 ﻿using Application.Dtos.Subscription;
-using Application.UseCases.Base;
 using MediatR;
 
 namespace Application.UseCases.Subscription.SubscribeToUser;
 
-public sealed class SubscribeToUserCommand : RequestBase<SubscriptionReadDto>
+public sealed class SubscribeToUserCommand : IRequest<SubscriptionReadDto>
 {
+    public Guid InitiatorId { get; init; }
     public Guid UserId { get; init; }
 }

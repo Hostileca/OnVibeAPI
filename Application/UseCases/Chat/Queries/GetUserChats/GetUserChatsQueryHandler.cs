@@ -24,7 +24,7 @@ public class GetUserChatsQueryHandler(
 
         var chatsReadDto = chats.Adapt<IList<ChatReadDto>>();
 
-        await chatExtraLoader.LoadExtraInformationAsync(chatsReadDto, request.InitiatorId, cancellationToken);
+        await chatExtraLoader.LoadExtraInformationAsync(chatsReadDto, cancellationToken, request.InitiatorId);
         
         var response = new PagedResponse<ChatReadDto>(chatsReadDto, request.PageData.PageNumber, request.PageData.PageSize);
         

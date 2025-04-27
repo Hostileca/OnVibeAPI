@@ -1,9 +1,9 @@
-﻿using Application.UseCases.Base;
-using MediatR;
+﻿using MediatR;
 
 namespace Application.UseCases.Chat.Queries.GetChatImage;
 
-public class GetChatImageQuery : RequestBase<byte[]>
+public class GetChatImageQuery : IRequest<byte[]>
 {
-    public Guid ChatId { get; set; }
+    public Guid ChatId { get; init; }
+    public Guid InitiatorId { get; init; }
 }

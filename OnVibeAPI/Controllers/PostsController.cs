@@ -27,7 +27,7 @@ public class PostsController(IMediator mediator) : ControllerBase
         [FromQuery] PageRequest pageRequest, 
         CancellationToken cancellationToken)
     {
-        var query = new GetUserPostsQuery{ InitiatorId = userId, PageData = pageRequest.Adapt<PageData>()};
+        var query = new GetUserPostsQuery{ PageData = pageRequest.Adapt<PageData>()};
         
         var result = await mediator.Send(query, cancellationToken);
         

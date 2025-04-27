@@ -5,7 +5,7 @@ namespace Application.ExtraLoaders;
 
 public class LikeReadDtoExtraLoader(ILikeRepository likeRepository) : ExtraLoaderBase<LikeReadDto>
 {
-    public override async Task LoadExtraInformationAsync(LikeReadDto dto, Guid _, CancellationToken cancellationToken)
+    public override async Task LoadExtraInformationAsync(LikeReadDto dto, CancellationToken cancellationToken, Guid? initiatorId)
     {
         dto.LikesCount = await likeRepository.GetPostLikesCountAsync(dto.PostId, cancellationToken);
     }
