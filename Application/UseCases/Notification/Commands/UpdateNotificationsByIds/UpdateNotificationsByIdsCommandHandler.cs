@@ -6,12 +6,12 @@ namespace Application.UseCases.Notification.Commands.UpdateNotificationsByIds;
 
 public sealed class UpdateNotificationsByIdsCommandHandler(
     INotificationRepository notificationRepository)
-    : IRequestHandler<UpdateNotificationsByIdsCommand>
+    : IRequestHandler<UpdateNotificationsByIdsCommand, Unit>
 {
-    public async Task Handle(UpdateNotificationsByIdsCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(UpdateNotificationsByIdsCommand request, CancellationToken cancellationToken)
     {
         var notifications = await notificationRepository.GetUserNotificationsByIdsAsync(
-            request.UserId, request.Ids, cancellationToken, true);
+            request.InitiatorId, request.Ids, cancellationToken, true);
 
         if (notifications.Count != request.Ids.Count)
         {
@@ -24,5 +24,7 @@ public sealed class UpdateNotificationsByIdsCommandHandler(
         }
         
         await notificationRepository.SaveChangesAsync(cancellationToken);
+
+        return Unit.Value;
     }
 }

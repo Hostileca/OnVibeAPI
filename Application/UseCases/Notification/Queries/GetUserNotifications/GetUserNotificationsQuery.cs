@@ -1,6 +1,10 @@
 ﻿using Application.Dtos.Notification;
+using Application.UseCases.Base;
 using MediatR;
 
 namespace Application.UseCases.Notification.Queries.GetUserNotifications;
 
-public record GetUserNotificationsQuery(Guid UserId, bool IsRead) : IRequest<IList<NotificationBaseReadDto>>;
+public class GetUserNotificationsQuery : RequestBase<IList<NotificationBaseReadDto>>
+{
+    public bool IsRead { get; init; }
+}

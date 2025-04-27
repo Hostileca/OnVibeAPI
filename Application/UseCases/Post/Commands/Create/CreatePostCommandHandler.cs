@@ -16,11 +16,11 @@ public class CreatePostCommandHandler(
 {
     public async Task<PostReadDto> Handle(CreatePostCommand request, CancellationToken cancellationToken)
     {
-        var user = await userRepository.GetUserByIdAsync(request.UserId, cancellationToken);
+        var user = await userRepository.GetUserByIdAsync(request.InitiatorId, cancellationToken);
 
         if (user is null)
         {
-            throw new NotFoundException(typeof(Domain.Entities.User), request.UserId.ToString());
+            throw new NotFoundException(typeof(Domain.Entities.User), request.InitiatorId.ToString());
         }
 
         var post = request.Adapt<Domain.Entities.Post>();

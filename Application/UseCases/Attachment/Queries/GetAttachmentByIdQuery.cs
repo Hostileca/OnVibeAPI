@@ -1,7 +1,12 @@
 ﻿using Application.Dtos.Attachment;
 using Application.Enums;
+using Application.UseCases.Base;
 using MediatR;
 
 namespace Application.UseCases.Attachment.Queries;
 
-public sealed record GetAttachmentByIdQuery(Guid AttachmentId, Guid UserId, AttachmentType Type) : IRequest<AttachmentReadDto>;
+public sealed class GetAttachmentByIdQuery : RequestBase<AttachmentReadDto>
+{
+    public Guid AttachmentId { get; init; }
+    public AttachmentType Type { get; init; }
+}

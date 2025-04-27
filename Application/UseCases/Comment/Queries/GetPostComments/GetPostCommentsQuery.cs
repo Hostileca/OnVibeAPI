@@ -1,7 +1,12 @@
 ﻿using Application.Dtos.Comment;
 using Application.Dtos.Page;
+using Application.UseCases.Base;
 using MediatR;
 
 namespace Application.UseCases.Comment.Queries.GetPostComments;
 
-public record GetPostCommentsQuery(Guid PostId, PageData PageData) : IRequest<PagedResponse<CommentReadDto>>;
+public class GetPostCommentsQuery : RequestBase<PagedResponse<CommentReadDto>>
+{
+    public Guid PostId { get; init; }
+    public PageData PageData { get; init; }
+}

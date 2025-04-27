@@ -14,7 +14,7 @@ public class PostsController(IMediator mediator) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreatePost([FromForm] CreatePostRequest request, CancellationToken cancellationToken)
     {
-        var command = new CreatePostCommand(UserId, request.Content, request.Attachments);
+        var command = new CreatePostCommand{InitiatorId = UserId, Content = request.Content, Attachments = request.Attachments};
         
         var result = await mediator.Send(command, cancellationToken);
         
@@ -27,7 +27,7 @@ public class PostsController(IMediator mediator) : ControllerBase
         [FromQuery] PageRequest pageRequest, 
         CancellationToken cancellationToken)
     {
-        var query = new GetUserPostsQuery(userId, pageRequest.Adapt<PageData>());
+        var query = new GetUserPostsQuery{ InitiatorId = userId, PageData = pageRequest.Adapt<PageData>()};
         
         var result = await mediator.Send(query, cancellationToken);
         

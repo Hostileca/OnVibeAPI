@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.Like;
+using Application.ExtraLoaders;
 using Contracts.DataAccess.Interfaces;
 using Domain.Exceptions;
 using Mapster;
@@ -8,7 +9,8 @@ namespace Application.UseCases.Like.Commands.RemoveLikeFromPost;
 
 public class RemoveLikeFromPostCommandHandler(
     IPostRepository postRepository,
-    ILikeRepository likeRepository) 
+    ILikeRepository likeRepository,
+    IExtraLoader<LikeReadDto> likeExtraLoader) 
     : IRequestHandler<RemoveLikeFromPostCommand, LikeReadDto>
 {
     public async Task<LikeReadDto> Handle(RemoveLikeFromPostCommand request, CancellationToken cancellationToken)
@@ -20,7 +22,7 @@ public class RemoveLikeFromPostCommandHandler(
             throw new NotFoundException(typeof(Domain.Entities.Post), request.PostId.ToString());
         }
         
-        var like = await likeRepository.GetLikeAsync(request.PostId, request.UserId, cancellationToken);
+        var like = await likeRepository.GetLikeAsync(request.PostId, request.InitiatorId, cancellationToken);
         
         if (like is null)
         {
@@ -31,6 +33,8 @@ public class RemoveLikeFromPostCommandHandler(
         
         await likeRepository.SaveChangesAsync(cancellationToken);
         
-        return like.Adapt<LikeReadDto>();
+        var likeReadDto = like.Adapt<LikeReadDto>();
+        await likeExtraLoader.LoadExtraInformationAsync(likeReadDto, cancellationToken);
+        return likeReadDto;
     }
 }

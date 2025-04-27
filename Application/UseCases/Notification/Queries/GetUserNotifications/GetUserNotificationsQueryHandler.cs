@@ -12,7 +12,7 @@ public class GetUserNotificationsQueryHandler(
     public async Task<IList<NotificationBaseReadDto>> Handle(GetUserNotificationsQuery request, CancellationToken cancellationToken)
     {
         var notifications = await notificationRepository.GetUserNotificationsAsync(
-            request.UserId, request.IsRead, cancellationToken);
+            request.InitiatorId, request.IsRead, cancellationToken);
         
         return notifications.Adapt<IList<NotificationBaseReadDto>>();
     }

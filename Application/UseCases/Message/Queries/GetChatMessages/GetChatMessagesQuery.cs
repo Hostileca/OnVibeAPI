@@ -1,12 +1,12 @@
 ﻿using Application.Dtos.Message;
 using Application.Dtos.Page;
+using Application.UseCases.Base;
 using MediatR;
 
 namespace Application.UseCases.Message.Queries.GetChatMessages;
 
-public class GetChatMessagesQuery : IRequest<PagedResponse<MessageReadDto>>
+public class GetChatMessagesQuery : RequestBase<PagedResponse<MessageReadDto>>
 {
-    public Guid ChatId { get; set; }
-    public Guid InitiatorId { get; set; }
-    public PageData PageData { get; set; }
+    public Guid ChatId { get; init; }
+    public PageData PageData { get; init; }
 }

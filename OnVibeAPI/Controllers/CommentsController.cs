@@ -14,8 +14,7 @@ public class CommentsController(IMediator mediator) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> SendComment([FromForm] SendCommentRequest createCommentRequest, CancellationToken cancellationToken)
     {
-        var command = createCommentRequest.Adapt<SendCommentToPostCommand>();
-        command.InitiatorId = UserId;
+        var command = new SendCommentToPostCommand{ InitiatorId = UserId, Content = createCommentRequest.Content, PostId = createCommentRequest.PostId };
         
         return Ok(await mediator.Send(command, cancellationToken));
     }
@@ -25,7 +24,7 @@ public class CommentsController(IMediator mediator) : ControllerBase
         [FromQuery] PageRequest pageRequest, 
         CancellationToken cancellationToken)
     {
-        var query = new GetPostCommentsQuery(postId, pageRequest.Adapt<PageData>());
+        var query = new GetPostCommentsQuery{ PostId = postId, PageData = pageRequest.Adapt<PageData>(), InitiatorId = UserId };
         
         return Ok(await mediator.Send(query, cancellationToken));
     }

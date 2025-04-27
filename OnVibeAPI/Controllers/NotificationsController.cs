@@ -11,7 +11,7 @@ public class NotificationsController(IMediator mediator) : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetNotifications([FromQuery] bool isRead, CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(new GetUserNotificationsQuery(UserId, isRead), cancellationToken);
+        var result = await mediator.Send(new GetUserNotificationsQuery{ InitiatorId = UserId, IsRead = isRead}, cancellationToken);
             
         return Ok(result);
     }
@@ -19,10 +19,11 @@ public class NotificationsController(IMediator mediator) : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdateNotifications(UpdateNotificationsRequest updateNotificationsRequest, CancellationToken cancellationToken)
     {
-        var command = new UpdateNotificationsByIdsCommand(
-            updateNotificationsRequest.NotificationIds, 
-            UserId, 
-            updateNotificationsRequest.IsRead);
+        var command = new UpdateNotificationsByIdsCommand{
+            Ids = updateNotificationsRequest.NotificationIds, 
+            InitiatorId = UserId, 
+            IsRead = updateNotificationsRequest.IsRead
+        };
         
         await mediator.Send(command, cancellationToken);
             

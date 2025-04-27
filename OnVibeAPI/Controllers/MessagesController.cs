@@ -15,12 +15,14 @@ public class MessagesController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> SendMessage([FromForm] SendMessageRequest sendMessageRequest,
         CancellationToken cancellationToken)
     {
-        var command = new SendMessageCommand(
-            sendMessageRequest.ChatId,
-            sendMessageRequest.Text,
-            UserId,
-            sendMessageRequest.Attachments,
-            sendMessageRequest.Delay);
+        var command = new SendMessageCommand
+        {
+            ChatId = sendMessageRequest.ChatId,
+            Text = sendMessageRequest.Text,
+            InitiatorId = UserId,
+            Attachments = sendMessageRequest.Attachments,
+            Delay = sendMessageRequest.Delay
+        };
         
         var result = await mediator.Send(command, cancellationToken);
         

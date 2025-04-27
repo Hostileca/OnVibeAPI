@@ -40,7 +40,7 @@ public class GetAttachmentByIdQueryHandler(
 
     private async Task<MessageAttachment?> GetMessageAttachment(GetAttachmentByIdQuery request, CancellationToken cancellationToken)
     {
-        var isUserHasAccess = await attachmentRepository.IsUserHasAccessToMessageAttachment(request.AttachmentId, request.UserId, cancellationToken);
+        var isUserHasAccess = await attachmentRepository.IsUserHasAccessToMessageAttachment(request.AttachmentId, request.InitiatorId, cancellationToken);
 
         if (!isUserHasAccess)
         {

@@ -8,9 +8,9 @@ namespace Application.UseCases.Reaction.UpsertReaction;
 
 public class UpsertReactionCommandHandler(
     IMessageRepository messageRepository) 
-    : IRequestHandler<UpsertReactionCommand>
+    : IRequestHandler<UpsertReactionCommand, Unit>
 {
-    public async Task Handle(UpsertReactionCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(UpsertReactionCommand request, CancellationToken cancellationToken)
     {
         var message = await messageRepository.GetAvailableToUserMessageAsync(
             request.MessageId,
@@ -32,5 +32,7 @@ public class UpsertReactionCommandHandler(
         
         message.Reactions.Add(request.Adapt<Domain.Entities.Reaction>()); 
         await messageRepository.SaveChangesAsync(cancellationToken);
+
+        return Unit.Value;
     }
 }

@@ -17,7 +17,7 @@ public class GetUserChatsQueryHandler(
     public async Task<PagedResponse<ChatReadDto>> Handle(GetUserChatsQuery request, CancellationToken cancellationToken)
     {
         var chats = await chatRepository.GetUserChatsAsync(
-            request.UserId, 
+            request.InitiatorId, 
             new ChatIncludes { IncludeChatMembers = true },
             request.PageData.Adapt<PageInfo>(), 
             cancellationToken);

@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.Like;
+using Application.ExtraLoaders;
 using Contracts.DataAccess.Interfaces;
 using Domain.Exceptions;
 using Mapster;
@@ -8,7 +9,8 @@ namespace Application.UseCases.Like.Commands.AddLikeToPost;
 
 public class AddLikeToPostCommandHandler(
     IPostRepository postRepository,
-    ILikeRepository likeRepository) 
+    ILikeRepository likeRepository,
+    IExtraLoader<LikeReadDto> likeExtraLoader) 
     : IRequestHandler<AddLikeToPostCommand, LikeReadDto>
 {
     public async Task<LikeReadDto> Handle(AddLikeToPostCommand request, CancellationToken cancellationToken)
@@ -20,7 +22,7 @@ public class AddLikeToPostCommandHandler(
             throw new NotFoundException(typeof(Domain.Entities.Post), request.PostId.ToString());
         }
 
-        if (await likeRepository.IsLikeExistAsync(request.PostId, request.UserId, cancellationToken))
+        if (await likeRepository.IsLikeExistAsync(request.PostId, request.InitiatorId, cancellationToken))
         {
             throw new ConflictException(typeof(Domain.Entities.Like), request.PostId.ToString());
         }
@@ -28,11 +30,13 @@ public class AddLikeToPostCommandHandler(
         var like = new Domain.Entities.Like
         {
             PostId = request.PostId,
-            UserId = request.UserId
+            UserId = request.InitiatorId
         };
         await likeRepository.AddLikeAsync(like, cancellationToken);
         await likeRepository.SaveChangesAsync(cancellationToken);
 
-        return like.Adapt<LikeReadDto>();
+        var likeReadDto = like.Adapt<LikeReadDto>();
+        await likeExtraLoader.LoadExtraInformationAsync(likeReadDto, cancellationToken);
+        return likeReadDto;
     }
 }

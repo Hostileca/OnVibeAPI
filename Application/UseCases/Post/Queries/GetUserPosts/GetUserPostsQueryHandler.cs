@@ -31,7 +31,7 @@ public class GetUserPostsQueryHandler(
             {
                 IncludeUser = true
             },
-            request.Page.Adapt<PageInfo>(), 
+            request.PageData.Adapt<PageInfo>(), 
             cancellationToken);
 
         var postsReadDtos = posts.Adapt<IList<PostReadDto>>();
@@ -39,8 +39,8 @@ public class GetUserPostsQueryHandler(
 
         var response = new PagedResponse<PostReadDto>(
             postsReadDtos, 
-            request.Page.PageNumber,
-            request.Page.PageSize);
+            request.PageData.PageNumber,
+            request.PageData.PageSize);
 
         return response;
     }

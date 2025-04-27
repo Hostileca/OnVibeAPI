@@ -37,19 +37,19 @@ public class UsersController(IMediator mediator) : ControllerBase
     [HttpGet("me")]
     public async Task<IActionResult> GetMe(CancellationToken cancellationToken)
     {
-        return Ok(await mediator.Send(new GetUserByIdQuery(UserId), cancellationToken));
+        return Ok(await mediator.Send(new GetUserByIdQuery{ InitiatorId = UserId, Id = UserId }, cancellationToken));
     }
     
     [HttpGet("{id:guid}")] 
     public async Task<IActionResult> GetUser([FromRoute] Guid id, CancellationToken cancellationToken)
     {
-        return Ok(await mediator.Send(new GetUserByIdQuery(id), cancellationToken));
+        return Ok(await mediator.Send(new GetUserByIdQuery{ InitiatorId = UserId, Id = id }, cancellationToken));
     }
     
     [HttpGet("{id:guid}/avatar")] 
     public async Task<IActionResult> GetUserAvatar([FromRoute] Guid id, CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(new GetUserAvatarQuery(id), cancellationToken);
+        var result = await mediator.Send(new GetUserAvatarQuery{ InitiatorId = UserId, UserId = id }, cancellationToken);
         
         return File(result, "image/jpeg");
     }
@@ -57,12 +57,14 @@ public class UsersController(IMediator mediator) : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdateProfile([FromForm] UpdateUserProfileRequest request, CancellationToken cancellationToken)
     {
-        var command = new UpdateUserProfileCommand(
-            UserId, 
-            request.BIO, 
-            request.Avatar, 
-            request.DateOfBirth, 
-            request.City);
+        var command = new UpdateUserProfileCommand
+        {
+            InitiatorId = UserId,
+            BIO = request.BIO,
+            Avatar = request.Avatar,
+            DateOfBirth = request.DateOfBirth,
+            City = request.City
+        };
         
         return Ok(await mediator.Send(command, cancellationToken));
     }
@@ -73,8 +75,14 @@ public class UsersController(IMediator mediator) : ControllerBase
         [FromQuery] PageRequest pageRequest,
         CancellationToken cancellationToken)
     {
-        var query = searchRequest.Adapt<GetUsersBySearchCriteriaQuery>();
-        query.PageData = pageRequest.Adapt<PageData>();
+        var query = new GetUsersBySearchCriteriaQuery
+        {
+            Username = searchRequest.Username,
+            Country = searchRequest.Country,
+            City = searchRequest.City,
+            InitiatorId = UserId,
+            PageData = pageRequest.Adapt<PageData>()
+        };
 
         return Ok(await mediator.Send(query, cancellationToken));
     }

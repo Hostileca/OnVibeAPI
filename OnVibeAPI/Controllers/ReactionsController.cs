@@ -11,8 +11,12 @@ public class ReactionsController(IMediator mediator) : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpsertReaction([FromForm] UpsertReactionRequest upsertReactionRequest, CancellationToken cancellationToken)
     {
-        var command = upsertReactionRequest.Adapt<UpsertReactionCommand>();
-        command.InitiatorId = UserId;
+        var command = new UpsertReactionCommand
+        {
+            InitiatorId = UserId,
+            MessageId = upsertReactionRequest.MessageId,
+            Emoji = upsertReactionRequest.Emoji
+        };
         
         await mediator.Send(command, cancellationToken);
         

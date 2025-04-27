@@ -1,11 +1,11 @@
 ﻿using Application.Dtos.Comment;
+using Application.UseCases.Base;
 using MediatR;
 
 namespace Application.UseCases.Comment.Commands.SendCommentToPost;
 
-public class SendCommentToPostCommand : IRequest<CommentReadDto>
+public class SendCommentToPostCommand : RequestBase<CommentReadDto>
 {
-    public Guid PostId { get; set; }
-    public Guid InitiatorId { get; set; }
-    public string Content { get; set; }
+    public Guid PostId { get; init; }
+    public string Content { get; init; }
 }
