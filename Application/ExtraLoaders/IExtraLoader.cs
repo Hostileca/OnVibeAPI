@@ -1,4 +1,4 @@
-﻿namespace Application.Dtos.ExtraLoaders;
+﻿namespace Application.ExtraLoaders;
 
 public interface IExtraLoader<TDto>
 {

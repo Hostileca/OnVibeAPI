@@ -1,6 +1,6 @@
-﻿using Application.Dtos.ExtraLoaders;
-using Application.Dtos.Page;
+﻿using Application.Dtos.Page;
 using Application.Dtos.User;
+using Application.ExtraLoaders;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models;
 using Mapster;

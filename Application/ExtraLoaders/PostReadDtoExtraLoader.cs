@@ -1,7 +1,7 @@
 ﻿using Application.Dtos.Post;
 using Contracts.DataAccess.Interfaces;
 
-namespace Application.Dtos.ExtraLoaders;
+namespace Application.ExtraLoaders;
 
 public class PostReadDtoExtraLoader(
     ILikeRepository likeRepository, 

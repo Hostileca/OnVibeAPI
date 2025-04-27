@@ -9,20 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="Add extra loaders">
-      <change afterPath="$PROJECT_DIR$/Application/MappingConfigs/AttachmentConfigs.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Validators/CreatePostRequestValidator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dtos/Attachment/AttachmentReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Attachment/AttachmentReadDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dtos/ExtraLoaders/ExtraLoaderBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/ExtraLoaders/ExtraLoaderBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/PostConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/PostConfigs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Attachment/Queries/GetAttachmentByIdQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Attachment/Queries/GetAttachmentByIdQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/AttachmentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/AttachmentsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/PostsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/PostsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/DI/Registration.cs" afterDir="false" />
-    </list>
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="fixes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -206,7 +193,7 @@
       <workItem from="1744743565522" duration="2419000" />
       <workItem from="1744827408911" duration="4750000" />
       <workItem from="1744907312681" duration="4134000" />
-      <workItem from="1745669327235" duration="24541000" />
+      <workItem from="1745669327235" duration="24849000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -392,7 +379,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745688041993</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1745782466352</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1745782466352</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,7 +428,8 @@
     <MESSAGE value="(((" />
     <MESSAGE value="users search" />
     <MESSAGE value="Add extra loaders" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add extra loaders" />
+    <MESSAGE value="fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
