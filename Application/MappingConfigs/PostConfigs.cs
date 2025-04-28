@@ -13,6 +13,7 @@ public class PostConfigs : IRegister
         config.NewConfig<CreatePostCommand, Post>()
             .Ignore(dest => dest.Attachments)
             .Map(dest => dest.Date, _ => DateTime.UtcNow)
+            .Map(dest => dest.UserId, src => src.InitiatorId)
             .AfterMapping((src, dest) => 
             {
                 if (src.Attachments is null)

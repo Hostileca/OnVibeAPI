@@ -9,10 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="Add IsLiked to LikeReadDto.cs">
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="Add LikeConfigs.cs">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DI/Registration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Hangfire/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.Hangfire/DI/Registration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/PostConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/PostConfigs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommandHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +44,7 @@
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/MessageNotification.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/NotificationBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Post.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Infrastructure.Hangfire/DI/Registration.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -60,29 +61,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.OnVibeAPI: IIS Express.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.OnVibeAPI: http.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.OnVibeAPI: https.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.OnVibeAPI: IIS Express.executor": "Run",
+    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Run",
+    ".NET Launch Settings Profile.OnVibeAPI: https.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;yaml&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "yaml"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.OnVibeAPI: http">
     <configuration name="OnVibeAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" />
@@ -199,7 +200,7 @@
       <workItem from="1744827408911" duration="4750000" />
       <workItem from="1744907312681" duration="4134000" />
       <workItem from="1745669327235" duration="29222000" />
-      <workItem from="1745860745299" duration="5932000" />
+      <workItem from="1745860745299" duration="9288000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -465,7 +466,31 @@
       <option name="project" value="LOCAL" />
       <updated>1745866387022</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Add HttpContextAccessor">
+      <option name="closed" value="true" />
+      <created>1745866720182</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1745866720182</updated>
+    </task>
+    <task id="LOCAL-00035" summary="fix">
+      <option name="closed" value="true" />
+      <created>1745866806935</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1745866806935</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Add LikeConfigs.cs">
+      <option name="closed" value="true" />
+      <created>1745866957012</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1745866957012</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,14 +511,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="iu" />
-    <MESSAGE value="add hangfire" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="update" />
     <MESSAGE value="Fix" />
     <MESSAGE value="keep it simple" />
     <MESSAGE value="Add middleware and message preview for chat" />
-    <MESSAGE value="fix" />
     <MESSAGE value="chat create fix" />
     <MESSAGE value="Add validators" />
     <MESSAGE value="funny big fix" />
@@ -511,6 +533,41 @@
     <MESSAGE value="Add IsLiked to PostReadDto.cs" />
     <MESSAGE value="replace add and remove like with upsert" />
     <MESSAGE value="Add IsLiked to LikeReadDto.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add IsLiked to LikeReadDto.cs" />
+    <MESSAGE value="Add HttpContextAccessor" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="Add LikeConfigs.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add LikeConfigs.cs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommandHandler.cs</url>
+          <line>28</line>
+          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Application\UseCases\Post\Commands\Create\CreatePostCommandHandler.cs" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="925" />
+            </startOffsets>
+            <endOffsets>
+              <option value="982" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/OnVibeAPI/Middlewares/ExceptionHandlingMiddleware.cs</url>
+          <line>36</line>
+          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\OnVibeAPI\Middlewares\ExceptionHandlingMiddleware.cs" containingFunctionPresentation="Method 'InvokeAsync'">
+            <startOffsets>
+              <option value="1236" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1347" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -27,7 +27,7 @@ public class CreatePostCommandHandler(
 
         await postRepository.AddPostAsync(post, cancellationToken);
         await postRepository.SaveChangesAsync(cancellationToken);
-        
+
         post.User = user;
         
         return post.Adapt<PostReadDto>();
