@@ -1,6 +1,5 @@
 ﻿using Hangfire;
 using Hangfire.PostgreSql;
-using Hangfire.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 

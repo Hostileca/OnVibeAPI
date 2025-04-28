@@ -29,6 +29,7 @@ public static class Registration
 
     private static void ServicesConfigure(this IServiceCollection services)
     {
+        services.AddHttpContextAccessor();
         services.AddScoped<IHashingService, HashingService>();
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IUserContext, UserContext>();
