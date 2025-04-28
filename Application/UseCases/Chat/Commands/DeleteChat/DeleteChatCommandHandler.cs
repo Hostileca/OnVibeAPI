@@ -1,5 +1,5 @@
 ﻿using Application.Dtos.Chat;
-using Application.ExtraLoaders;
+using Application.Services.Interfaces;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models.Include;
 using Domain.Entities;

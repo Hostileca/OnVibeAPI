@@ -1,7 +1,7 @@
 ﻿using Application.Dtos.User;
 using Contracts.DataAccess.Interfaces;
 
-namespace Application.ExtraLoaders;
+namespace Application.Services.Implementations.ExtraLoaders;
 
 public class UserReadDtoExtraLoader(
     IPostRepository postRepository,

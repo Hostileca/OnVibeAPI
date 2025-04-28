@@ -1,7 +1,7 @@
 ﻿using Application.Dtos.Message;
 using Contracts.DataAccess.Interfaces;
 
-namespace Application.ExtraLoaders;
+namespace Application.Services.Implementations.ExtraLoaders;
 
 public class MessageReadDtoExtraLoader(IAttachmentRepository attachmentRepository) : ExtraLoaderBase<MessageReadDto>
 {

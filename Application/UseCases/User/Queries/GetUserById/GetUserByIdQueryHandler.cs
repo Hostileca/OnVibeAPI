@@ -1,5 +1,5 @@
 ﻿using Application.Dtos.User;
-using Application.ExtraLoaders;
+using Application.Services.Interfaces;
 using Contracts.DataAccess.Interfaces;
 using Domain.Exceptions;
 using Mapster;

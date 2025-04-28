@@ -5,7 +5,7 @@ using Contracts.DataAccess.Models;
 using Contracts.DataAccess.Models.Include;
 using Mapster;
 
-namespace Application.ExtraLoaders;
+namespace Application.Services.Implementations.ExtraLoaders;
 
 public class ChatReadDtoExtraLoader(IMessageRepository messageRepository) : ExtraLoaderBase<ChatReadDto>
 {

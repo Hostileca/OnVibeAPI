@@ -1,6 +1,6 @@
 ﻿using Application.Dtos.Chat;
 using Application.Dtos.Page;
-using Application.ExtraLoaders;
+using Application.Services.Interfaces;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models;
 using Contracts.DataAccess.Models.Include;
