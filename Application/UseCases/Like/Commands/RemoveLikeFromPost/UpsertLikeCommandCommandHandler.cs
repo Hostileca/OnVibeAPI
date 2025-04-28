@@ -5,15 +5,15 @@ using Domain.Exceptions;
 using Mapster;
 using MediatR;
 
-namespace Application.UseCases.Like.Commands.AddLikeToPost;
+namespace Application.UseCases.Like.Commands.RemoveLikeFromPost;
 
-public class AddLikeToPostCommandHandler(
+public class UpsertLikeCommandCommandHandler(
     IPostRepository postRepository,
     ILikeRepository likeRepository,
-    IExtraLoader<LikeReadDto> likeExtraLoader) 
-    : IRequestHandler<AddLikeToPostCommand, LikeReadDto>
+    IExtraLoader<LikeReadDto> likeExtraLoader)
+    : IRequestHandler<UpsertLikeCommand, LikeReadDto>
 {
-    public async Task<LikeReadDto> Handle(AddLikeToPostCommand request, CancellationToken cancellationToken)
+    public async Task<LikeReadDto> Handle(UpsertLikeCommand request, CancellationToken cancellationToken)
     {
         var post = await postRepository.GetPostByIdAsync(request.PostId, cancellationToken);
 
@@ -21,20 +21,21 @@ public class AddLikeToPostCommandHandler(
         {
             throw new NotFoundException(typeof(Domain.Entities.Post), request.PostId.ToString());
         }
-
-        if (await likeRepository.IsLikeExistAsync(request.PostId, request.InitiatorId, cancellationToken))
+        
+        var like = await likeRepository.GetLikeAsync(request.PostId, request.InitiatorId, cancellationToken);
+        
+        if (like is null)
         {
-            throw new ConflictException(typeof(Domain.Entities.Like), request.PostId.ToString());
+            like = request.Adapt<Domain.Entities.Like>();
+            await likeRepository.AddLikeAsync(like, cancellationToken);
         }
-
-        var like = new Domain.Entities.Like
+        else
         {
-            PostId = request.PostId,
-            UserId = request.InitiatorId
-        };
-        await likeRepository.AddLikeAsync(like, cancellationToken);
+            likeRepository.RemoveLikeAsync(like);
+        }
+        
         await likeRepository.SaveChangesAsync(cancellationToken);
-
+        
         var likeReadDto = like.Adapt<LikeReadDto>();
         await likeExtraLoader.LoadExtraInformationAsync(likeReadDto, cancellationToken);
         

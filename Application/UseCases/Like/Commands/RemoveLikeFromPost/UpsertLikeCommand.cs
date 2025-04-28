@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.UseCases.Like.Commands.RemoveLikeFromPost;
 
-public sealed class RemoveLikeFromPostCommand : IRequest<LikeReadDto>
+public sealed class UpsertLikeCommand : IRequest<LikeReadDto>
 {
     public Guid PostId { get; init; }
     public Guid InitiatorId { get; init; }
