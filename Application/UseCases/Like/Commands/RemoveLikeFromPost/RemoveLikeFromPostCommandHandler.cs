@@ -10,7 +10,7 @@ namespace Application.UseCases.Like.Commands.RemoveLikeFromPost;
 public class RemoveLikeFromPostCommandHandler(
     IPostRepository postRepository,
     ILikeRepository likeRepository,
-    IExtraLoader<LikeReadDto> likeExtraLoader) 
+    IExtraLoader<LikeReadDto> likeExtraLoader)
     : IRequestHandler<RemoveLikeFromPostCommand, LikeReadDto>
 {
     public async Task<LikeReadDto> Handle(RemoveLikeFromPostCommand request, CancellationToken cancellationToken)
@@ -34,7 +34,8 @@ public class RemoveLikeFromPostCommandHandler(
         await likeRepository.SaveChangesAsync(cancellationToken);
         
         var likeReadDto = like.Adapt<LikeReadDto>();
-        await likeExtraLoader.LoadExtraInformationAsync(likeReadDto, cancellationToken, request.InitiatorId);
+        await likeExtraLoader.LoadExtraInformationAsync(likeReadDto, cancellationToken);
+        
         return likeReadDto;
     }
 }

@@ -1,5 +1,4 @@
-﻿using Application.Dtos.Chat;
-using Application.Helpers;
+﻿using Application.Helpers;
 using Application.UseCases.Chat.Commands.CreateChat;
 using Application.UseCases.Chat.Commands.UpdateChat;
 using Domain.Entities;

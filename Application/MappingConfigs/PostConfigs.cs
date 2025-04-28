@@ -32,7 +32,7 @@ public class PostConfigs : IRegister
 
         config.NewConfig<Post, PostReadDto>()
             .Map(dest => dest.Owner, src => src.User)
-            .Map(dest => dest.AttachmentsIds, src => src.Attachments.Select(a => a.Id), 
+            .Map(dest => dest.AttachmentsIds, src => src.Attachments.Select(a => a.Id),
                 src => src.Attachments != null);
     }
 }

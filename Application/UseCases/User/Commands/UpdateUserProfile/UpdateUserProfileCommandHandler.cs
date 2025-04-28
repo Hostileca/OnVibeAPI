@@ -19,8 +19,7 @@ public class UpdateUserProfileCommandHandler(
         await userRepository.SaveChangesAsync(cancellationToken);
 
         var userReadDto = user.Adapt<UserReadDto>();
-
-        await userExtraLoader.LoadExtraInformationAsync(userReadDto, cancellationToken, request.InitiatorId);
+        await userExtraLoader.LoadExtraInformationAsync(userReadDto, cancellationToken);
         
         return userReadDto;
     }

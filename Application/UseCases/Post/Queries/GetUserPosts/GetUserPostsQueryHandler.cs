@@ -13,7 +13,7 @@ namespace Application.UseCases.Post.Queries.GetUserPosts;
 public class GetUserPostsQueryHandler(
     IUserRepository userRepository,
     IPostRepository postRepository,
-    IExtraLoader<PostReadDto> postsExtraLoader) 
+    IExtraLoader<PostReadDto> postExtraLoader) 
     : IRequestHandler<GetUserPostsQuery, PagedResponse<PostReadDto>>
 {
     public async Task<PagedResponse<PostReadDto>> Handle(GetUserPostsQuery request, CancellationToken cancellationToken)
@@ -35,8 +35,7 @@ public class GetUserPostsQueryHandler(
             cancellationToken);
 
         var postsReadDtos = posts.Adapt<IList<PostReadDto>>();
-        await postsExtraLoader.LoadExtraInformationAsync(postsReadDtos, cancellationToken, null);
-
+        await postExtraLoader.LoadExtraInformationAsync(postsReadDtos, cancellationToken);
         var response = new PagedResponse<PostReadDto>(
             postsReadDtos, 
             request.PageData.PageNumber,

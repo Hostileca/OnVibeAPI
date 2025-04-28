@@ -11,7 +11,7 @@ namespace Application.UseCases.Chat.Queries.GetUserChats;
 
 public class GetUserChatsQueryHandler(
     IChatRepository chatRepository,
-    IExtraLoader<ChatReadDto> chatExtraLoader)
+    IExtraLoader<ChatReadDto> chatExtraLoader) 
     : IRequestHandler<GetUserChatsQuery, PagedResponse<ChatReadDto>>
 {
     public async Task<PagedResponse<ChatReadDto>> Handle(GetUserChatsQuery request, CancellationToken cancellationToken)
@@ -23,9 +23,7 @@ public class GetUserChatsQueryHandler(
             cancellationToken);
 
         var chatsReadDto = chats.Adapt<IList<ChatReadDto>>();
-
-        await chatExtraLoader.LoadExtraInformationAsync(chatsReadDto, cancellationToken, request.InitiatorId);
-        
+        await chatExtraLoader.LoadExtraInformationAsync(chatsReadDto, cancellationToken);
         var response = new PagedResponse<ChatReadDto>(chatsReadDto, request.PageData.PageNumber, request.PageData.PageSize);
         
         return response;

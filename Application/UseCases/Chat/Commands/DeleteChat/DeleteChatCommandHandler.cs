@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.Chat;
+using Application.ExtraLoaders;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models.Include;
 using Domain.Entities;
@@ -9,7 +10,8 @@ using MediatR;
 namespace Application.UseCases.Chat.Commands.DeleteChat;
 
 public class DeleteChatCommandHandler(
-    IChatRepository chatRepository)
+    IChatRepository chatRepository,
+    IExtraLoader<ChatReadDto> chatExtraLoader)
     : IRequestHandler<DeleteChatCommand, ChatReadDto>
 {
     public async Task<ChatReadDto> Handle(DeleteChatCommand request, CancellationToken cancellationToken)
@@ -36,10 +38,13 @@ public class DeleteChatCommandHandler(
         {
             throw new ForbiddenException("You don't have permissions to delete this chat");
         }
+
+        var chatReadDto = chat.Adapt<ChatReadDto>();
+        await chatExtraLoader.LoadExtraInformationAsync(chatReadDto, cancellationToken);
         
         chatRepository.RemoveChat(chat);
         await chatRepository.SaveChangesAsync(cancellationToken);
         
-        return chat.Adapt<ChatReadDto>();
+        return chatReadDto;
     }
 }

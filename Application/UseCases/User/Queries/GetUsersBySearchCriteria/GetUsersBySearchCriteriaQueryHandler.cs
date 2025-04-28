@@ -9,7 +9,7 @@ using MediatR;
 namespace Application.UseCases.User.Queries.GetUsersBySearchCriteria;
 
 public class GetUsersBySearchCriteriaQueryHandler(
-    IUserRepository userRepository, 
+    IUserRepository userRepository,
     IExtraLoader<UserReadDto> userExtraLoader) 
     : IRequestHandler<GetUsersBySearchCriteriaQuery, PagedResponse<UserReadDto>>
 {
@@ -21,9 +21,8 @@ public class GetUsersBySearchCriteriaQueryHandler(
         var users = await userRepository.SearchUsersAsync(searchCriteria, pageInfo, cancellationToken);
 
         var usersReadDtos = users.Adapt<IList<UserReadDto>>();
-
-        await userExtraLoader.LoadExtraInformationAsync(usersReadDtos, cancellationToken, null);
-
+        await userExtraLoader.LoadExtraInformationAsync(usersReadDtos, cancellationToken);
+        
         return new PagedResponse<UserReadDto>(usersReadDtos, pageInfo.PageNumber, pageInfo.PageSize);
     }
 }

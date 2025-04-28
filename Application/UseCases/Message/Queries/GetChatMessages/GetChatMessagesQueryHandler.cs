@@ -48,8 +48,7 @@ public class GetChatMessagesQueryHandler(
             cancellationToken);
 
         var messagesReadDtos = messages.Adapt<IList<MessageReadDto>>();
-        await messageExtraLoader.LoadExtraInformationAsync(messagesReadDtos, cancellationToken, request.InitiatorId);
-
+        await messageExtraLoader.LoadExtraInformationAsync(messagesReadDtos, cancellationToken);
         var result = new PagedResponse<MessageReadDto>(messagesReadDtos, request.PageData.PageNumber, request.PageData.PageSize);
         
         return result;

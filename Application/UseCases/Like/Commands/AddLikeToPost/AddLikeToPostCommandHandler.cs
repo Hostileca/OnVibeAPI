@@ -36,7 +36,8 @@ public class AddLikeToPostCommandHandler(
         await likeRepository.SaveChangesAsync(cancellationToken);
 
         var likeReadDto = like.Adapt<LikeReadDto>();
-        await likeExtraLoader.LoadExtraInformationAsync(likeReadDto, cancellationToken, request.InitiatorId);
+        await likeExtraLoader.LoadExtraInformationAsync(likeReadDto, cancellationToken);
+        
         return likeReadDto;
     }
 }

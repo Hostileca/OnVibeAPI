@@ -22,8 +22,7 @@ public class GetUserByIdQueryHandler(
         }
         
         var userReadDto = user.Adapt<UserReadDto>();
-
-        await userExtraLoader.LoadExtraInformationAsync(userReadDto, cancellationToken, null);
+        await userExtraLoader.LoadExtraInformationAsync(userReadDto, cancellationToken);
         
         return userReadDto;
     }

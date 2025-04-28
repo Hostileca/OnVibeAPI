@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.Chat;
+using Application.ExtraLoaders;
 using Application.Helpers.PermissionsHelpers;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models.Include;
@@ -9,7 +10,8 @@ using MediatR;
 namespace Application.UseCases.Chat.Queries.GetChatById;
 
 public class GetChatByIdQueryHandler(
-    IChatRepository chatRepository)
+    IChatRepository chatRepository,
+    IExtraLoader<ChatReadDto> chatExtraLoader)
     : IRequestHandler<GetChatByIdQuery, ChatReadDto>
 {
     public async Task<ChatReadDto> Handle(GetChatByIdQuery request, CancellationToken cancellationToken)
@@ -29,6 +31,9 @@ public class GetChatByIdQueryHandler(
             throw new ForbiddenException("You don't have access to this chat");
         }
         
-        return chat.Adapt<ChatReadDto>();
+        var chatReadDto = chat.Adapt<ChatReadDto>();
+        await chatExtraLoader.LoadExtraInformationAsync(chatReadDto, cancellationToken);
+        
+        return chatReadDto;
     }
 }

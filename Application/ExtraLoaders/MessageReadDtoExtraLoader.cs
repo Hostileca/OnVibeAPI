@@ -5,7 +5,7 @@ namespace Application.ExtraLoaders;
 
 public class MessageReadDtoExtraLoader(IAttachmentRepository attachmentRepository) : ExtraLoaderBase<MessageReadDto>
 {
-    public override async Task LoadExtraInformationAsync(MessageReadDto dto, CancellationToken cancellationToken, Guid? initiatorId)
+    public override async Task LoadExtraInformationAsync(MessageReadDto dto, CancellationToken cancellationToken = default)
     {
         dto.AttachmentsIds = await attachmentRepository.GetAttachmentsIdsByMessageIdAsync(dto.Id, cancellationToken);
     }

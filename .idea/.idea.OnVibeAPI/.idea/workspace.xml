@@ -9,7 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="fix loaders">
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Infrastructure.Mapster/CustomAdapter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/ExtraLoaders/ChatReadDtoExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ExtraLoaders/ChatReadDtoExtraLoader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/ExtraLoaders/ExtraLoaderBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ExtraLoaders/ExtraLoaderBase.cs" afterDir="false" />
@@ -18,45 +19,20 @@
       <change beforePath="$PROJECT_DIR$/Application/ExtraLoaders/MessageReadDtoExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ExtraLoaders/MessageReadDtoExtraLoader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/ExtraLoaders/PostReadDtoExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ExtraLoaders/PostReadDtoExtraLoader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/ExtraLoaders/UserReadDtoExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ExtraLoaders/UserReadDtoExtraLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Attachment/Queries/GetAttachmentByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Attachment/Queries/GetAttachmentByIdQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Base/RequestBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/CreateChat/CreateChatCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/CreateChat/CreateChatCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/DeleteChat/DeleteChatCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/DeleteChat/DeleteChatCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/UpdateChat/UpdateChatCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/UpdateChat/UpdateChatCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetChatById/GetChatByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetChatById/GetChatByIdQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetChatImage/GetChatImageQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetChatImage/GetChatImageQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/ChatConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/ChatConfigs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/MessageConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/MessageConfigs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/PostConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/PostConfigs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/DeleteChat/DeleteChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/DeleteChat/DeleteChatCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/UpdateChat/UpdateChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/UpdateChat/UpdateChatCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetChatById/GetChatByIdQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetChatById/GetChatByIdQueryHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Queries/GetUserChats/GetUserChatsQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/AddMemberToChat/AddMemberToChatCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/AddMemberToChat/AddMemberToChatCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/RemoveMemberFromChat/RemoveMemberFromChatCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/RemoveMemberFromChat/RemoveMemberFromChatCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/SetRoleToMember/SetRoleToMemberCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/SetRoleToMember/SetRoleToMemberCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Comment/Commands/SendCommentToPost/SendCommentToPostCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Comment/Commands/SendCommentToPost/SendCommentToPostCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Comment/Queries/GetPostComments/GetPostCommentsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Comment/Queries/GetPostComments/GetPostCommentsQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Like/Commands/AddLikeToPost/AddLikeToPostCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Like/Commands/AddLikeToPost/AddLikeToPostCommand.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UseCases/Like/Commands/AddLikeToPost/AddLikeToPostCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Like/Commands/AddLikeToPost/AddLikeToPostCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Like/Commands/RemoveLikeFromPost/RemoveLikeFromPostCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Like/Commands/RemoveLikeFromPost/RemoveLikeFromPostCommand.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UseCases/Like/Commands/RemoveLikeFromPost/RemoveLikeFromPostCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Like/Commands/RemoveLikeFromPost/RemoveLikeFromPostCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQuery.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Notification/Commands/UpdateNotificationsByIds/UpdateNotificationsByIdsCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Notification/Commands/UpdateNotificationsByIds/UpdateNotificationsByIdsCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Notification/Queries/GetUserNotifications/GetUserNotificationsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Notification/Queries/GetUserNotifications/GetUserNotificationsQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Post/Commands/Create/CreatePostCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Post/Queries/GetUserPosts/GetUserPostsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Post/Queries/GetUserPosts/GetUserPostsQuery.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UseCases/Post/Queries/GetUserPosts/GetUserPostsQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Post/Queries/GetUserPosts/GetUserPostsQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Reaction/UpsertReaction/UpsertReactionCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Reaction/UpsertReaction/UpsertReactionCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Subscription/SubscribeToUser/SubscribeToUserCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/SubscribeToUser/SubscribeToUserCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Subscription/UnsubscribeFromUser/UnsubscribeFromUserCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/UnsubscribeFromUser/UnsubscribeFromUserCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommand.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserAvatar/GetUserAvatarQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserAvatar/GetUserAvatarQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserById/GetUserByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserById/GetUserByIdQuery.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserById/GetUserByIdQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserById/GetUserByIdQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUsersBySearchCriteria/GetUsersBySearchCriteriaQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUsersBySearchCriteria/GetUsersBySearchCriteriaQuery.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUsersBySearchCriteria/GetUsersBySearchCriteriaQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Queries/GetUsersBySearchCriteria/GetUsersBySearchCriteriaQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/CommentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/CommentsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/PostsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/PostsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/UsersController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,29 +79,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.OnVibeAPI: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Run",
-    ".NET Launch Settings Profile.OnVibeAPI: https.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.OnVibeAPI: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.OnVibeAPI: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.OnVibeAPI: https.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "yaml"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;yaml&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.OnVibeAPI: http">
     <configuration name="OnVibeAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" />
@@ -241,7 +217,8 @@
       <workItem from="1744743565522" duration="2419000" />
       <workItem from="1744827408911" duration="4750000" />
       <workItem from="1744907312681" duration="4134000" />
-      <workItem from="1745669327235" duration="29056000" />
+      <workItem from="1745669327235" duration="29222000" />
+      <workItem from="1745860745299" duration="3880000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -459,7 +436,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745785819203</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="refactor">
+      <option name="closed" value="true" />
+      <created>1745787002859</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1745787002860</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,8 +486,8 @@
     <MESSAGE value="Add extra loaders" />
     <MESSAGE value="fixes" />
     <MESSAGE value="Move loaders" />
-    <MESSAGE value="refactor" />
     <MESSAGE value="fix loaders" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix loaders" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
 </project>

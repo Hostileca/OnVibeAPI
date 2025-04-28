@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.Chat;
+using Application.ExtraLoaders;
 using Application.Helpers.PermissionsHelpers;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models.Include;
@@ -10,7 +11,8 @@ using MediatR;
 namespace Application.UseCases.Chat.Commands.UpdateChat;
 
 public class UpdateChatCommandHandler(
-    IChatRepository chatRepository) 
+    IChatRepository chatRepository,
+    IExtraLoader<ChatReadDto> chatExtraLoader) 
     : IRequestHandler<UpdateChatCommand, ChatReadDto>
 {
     public async Task<ChatReadDto> Handle(UpdateChatCommand request, CancellationToken cancellationToken)
@@ -39,8 +41,11 @@ public class UpdateChatCommandHandler(
 
         request.Adapt(chat);
         
+        var chatReadDto = chat.Adapt<ChatReadDto>();
+        await chatExtraLoader.LoadExtraInformationAsync(chatReadDto, cancellationToken);
+        
         await chatRepository.SaveChangesAsync(cancellationToken);
         
-        return chat.Adapt<ChatReadDto>();
+        return chatReadDto;
     }
 }
