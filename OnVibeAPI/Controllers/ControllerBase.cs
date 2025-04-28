@@ -11,5 +11,5 @@ namespace OnVibeAPI.Controllers;
 public abstract class ControllerBase : Microsoft.AspNetCore.Mvc.ControllerBase
 {
     protected const string RoutePrefix = "api/";
-    protected Guid UserId => new(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+    protected Guid InitiatorId => new(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 }

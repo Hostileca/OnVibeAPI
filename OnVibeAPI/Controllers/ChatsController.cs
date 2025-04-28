@@ -20,7 +20,7 @@ public class ChatsController(IMediator mediator) : ControllerBase
         CancellationToken cancellationToken)
     {
         var command = new CreateChatCommand{
-            InitiatorId = UserId, 
+            InitiatorId = InitiatorId, 
             Name = createChatRequest.Name, 
             Image = createChatRequest.Image, 
             UserIds = createChatRequest.UserIds 
@@ -37,7 +37,7 @@ public class ChatsController(IMediator mediator) : ControllerBase
     {
         var command = new UpdateChatCommand{
             ChatId = chatId,
-            InitiatorId = UserId, 
+            InitiatorId = InitiatorId, 
             Name = updateChatRequest.Name, 
             Image = updateChatRequest.Image 
         };
@@ -50,7 +50,7 @@ public class ChatsController(IMediator mediator) : ControllerBase
     [HttpDelete("{chatId:guid}")]
     public async Task<IActionResult> DeleteChat(Guid chatId, CancellationToken cancellationToken)
     {
-        var command = new DeleteChatCommand{ InitiatorId = UserId, ChatId = chatId };
+        var command = new DeleteChatCommand{ InitiatorId = InitiatorId, ChatId = chatId };
 
         var result = await mediator.Send(command, cancellationToken);
         
@@ -60,7 +60,7 @@ public class ChatsController(IMediator mediator) : ControllerBase
     [HttpGet("my")]
     public async Task<IActionResult> GetMyChats([FromQuery]PageRequest pageRequest, CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(new GetUserChatsQuery{ InitiatorId = UserId, PageData = pageRequest.Adapt<PageData>() }, cancellationToken);
+        var result = await mediator.Send(new GetUserChatsQuery{ InitiatorId = InitiatorId, PageData = pageRequest.Adapt<PageData>() }, cancellationToken);
         
         return Ok(result);
     }
@@ -68,7 +68,7 @@ public class ChatsController(IMediator mediator) : ControllerBase
     [HttpGet("{chatId:guid}")]
     public async Task<IActionResult> GetChat(Guid chatId, CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(new GetChatByIdQuery{ ChatId = chatId, InitiatorId = UserId }, cancellationToken);
+        var result = await mediator.Send(new GetChatByIdQuery{ ChatId = chatId, InitiatorId = InitiatorId }, cancellationToken);
         
         return Ok(result);
     }
@@ -76,7 +76,7 @@ public class ChatsController(IMediator mediator) : ControllerBase
     [HttpGet("{chatId:guid}/image")]
     public async Task<IActionResult> GetChatImage(Guid chatId, CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(new GetChatImageQuery{ ChatId = chatId, InitiatorId = UserId }, cancellationToken);
+        var result = await mediator.Send(new GetChatImageQuery{ ChatId = chatId, InitiatorId = InitiatorId }, cancellationToken);
         
         return File(result, "image/jpeg");
     }

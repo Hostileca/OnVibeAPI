@@ -10,5 +10,6 @@ public class PostReadDto
     public UserShortReadDto Owner { get; set; }
     public int LikesCount { get; set; }
     public int CommentsCount { get; set; }
+    public bool IsLiked { get; set; }
     public IList<Guid>? AttachmentsIds { get; set; }
 }

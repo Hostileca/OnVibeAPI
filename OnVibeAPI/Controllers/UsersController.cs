@@ -37,7 +37,7 @@ public class UsersController(IMediator mediator) : ControllerBase
     [HttpGet("me")]
     public async Task<IActionResult> GetMe(CancellationToken cancellationToken)
     {
-        return Ok(await mediator.Send(new GetUserByIdQuery{ Id = UserId }, cancellationToken));
+        return Ok(await mediator.Send(new GetUserByIdQuery{ Id = InitiatorId }, cancellationToken));
     }
     
     [HttpGet("{id:guid}")] 
@@ -59,7 +59,7 @@ public class UsersController(IMediator mediator) : ControllerBase
     {
         var command = new UpdateUserProfileCommand
         {
-            InitiatorId = UserId,
+            InitiatorId = InitiatorId,
             BIO = request.BIO,
             Avatar = request.Avatar,
             DateOfBirth = request.DateOfBirth,

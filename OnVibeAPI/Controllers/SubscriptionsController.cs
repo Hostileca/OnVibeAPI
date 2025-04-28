@@ -10,7 +10,7 @@ public class SubscriptionsController(IMediator mediator) : ControllerBase
     [HttpPost("{userId:guid}")]
     public async Task<IActionResult> SubscribeToUser(Guid userId, CancellationToken cancellationToken)
     {
-        var command = new SubscribeToUserCommand{ InitiatorId = UserId, UserId = userId };
+        var command = new SubscribeToUserCommand{ InitiatorId = InitiatorId, UserId = userId };
         
         var result = await mediator.Send(command, cancellationToken);
         
@@ -20,7 +20,7 @@ public class SubscriptionsController(IMediator mediator) : ControllerBase
     [HttpDelete("{userId:guid}")]
     public async Task<IActionResult> UnsubscribeFromUser(Guid userId, CancellationToken cancellationToken)
     {
-        var command = new UnsubscribeFromUserCommand{ InitiatorId = UserId, UserId = userId };
+        var command = new UnsubscribeFromUserCommand{ InitiatorId = InitiatorId, UserId = userId };
         
         var result = await mediator.Send(command, cancellationToken);
         

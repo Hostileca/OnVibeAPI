@@ -11,7 +11,7 @@ public class LikesController(IMediator mediator) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> AddLikeToPost([FromBody] AddLikeRequest addLikeRequest, CancellationToken cancellationToken)
     {
-        var command = new AddLikeToPostCommand{ PostId = addLikeRequest.PostId, InitiatorId = UserId };
+        var command = new AddLikeToPostCommand{ PostId = addLikeRequest.PostId, InitiatorId = InitiatorId };
         var result = await mediator.Send(command, cancellationToken);
 
         return Ok(result);
@@ -20,7 +20,7 @@ public class LikesController(IMediator mediator) : ControllerBase
     [HttpDelete]
     public async Task<IActionResult> DeleteLikeFromPost([FromBody] DeleteLikeRequest deleteLikeRequest, CancellationToken cancellationToken)
     {
-        var command = new RemoveLikeFromPostCommand{ PostId = deleteLikeRequest.PostId, InitiatorId = UserId };
+        var command = new RemoveLikeFromPostCommand{ PostId = deleteLikeRequest.PostId, InitiatorId = InitiatorId };
         var result = await mediator.Send(command, cancellationToken);
 
         return Ok(result);

@@ -31,6 +31,7 @@ public static class Registration
     {
         services.AddScoped<IHashingService, HashingService>();
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IUserContext, UserContext>();
         
         services.AddScoped<IMessageNotificationService, MessageNotificationService>();
     }

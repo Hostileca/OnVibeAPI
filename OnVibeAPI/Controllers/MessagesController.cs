@@ -19,7 +19,7 @@ public class MessagesController(IMediator mediator) : ControllerBase
         {
             ChatId = sendMessageRequest.ChatId,
             Text = sendMessageRequest.Text,
-            InitiatorId = UserId,
+            InitiatorId = InitiatorId,
             Attachments = sendMessageRequest.Attachments,
             Delay = sendMessageRequest.Delay
         };
@@ -38,7 +38,7 @@ public class MessagesController(IMediator mediator) : ControllerBase
         var query = new GetChatMessagesQuery
         {
             ChatId = chatId,
-            InitiatorId = UserId,
+            InitiatorId = InitiatorId,
             PageData = pageRequest.Adapt<PageData>()
         };
         

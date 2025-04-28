@@ -13,7 +13,7 @@ public class ReactionsController(IMediator mediator) : ControllerBase
     {
         var command = new UpsertReactionCommand
         {
-            InitiatorId = UserId,
+            InitiatorId = InitiatorId,
             MessageId = upsertReactionRequest.MessageId,
             Emoji = upsertReactionRequest.Emoji
         };

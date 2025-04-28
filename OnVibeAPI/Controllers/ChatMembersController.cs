@@ -15,7 +15,7 @@ public class ChatMembersController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> AddMemberToChat(Guid chatId, [FromBody] AddMemberToChatRequest addMemberToChatRequest,
         CancellationToken cancellationToken)
     {
-        var command = new AddMemberToChatCommand{ ChatId = chatId, UserId = addMemberToChatRequest.UserId, InitiatorId = UserId };
+        var command = new AddMemberToChatCommand{ ChatId = chatId, UserId = addMemberToChatRequest.UserId, InitiatorId = InitiatorId };
         
         var result = await mediator.Send(command, cancellationToken);
 
@@ -26,7 +26,7 @@ public class ChatMembersController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> RemoveMemberFromChat(Guid chatId, Guid userId,
         CancellationToken cancellationToken)
     {
-        var command = new RemoveMemberFromChatCommand{ ChatId = chatId, InitiatorId = userId, UserId = UserId };
+        var command = new RemoveMemberFromChatCommand{ ChatId = chatId, InitiatorId = userId, UserId = InitiatorId };
         
         var result = await mediator.Send(command, cancellationToken);
 
