@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.UseCases.Like.Commands.RemoveLikeFromPost;
 
-public class UpsertLikeCommandCommandHandler(
+public class UpsertLikeCommandHandler(
     IPostRepository postRepository,
     ILikeRepository likeRepository,
     IExtraLoader<LikeReadDto> likeExtraLoader)
