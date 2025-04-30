@@ -1,4 +1,4 @@
-﻿using Application.UseCases.Like.Commands.RemoveLikeFromPost;
+﻿using Application.UseCases.Like.Commands.UpsertLike;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OnVibeAPI.Requests.Like;

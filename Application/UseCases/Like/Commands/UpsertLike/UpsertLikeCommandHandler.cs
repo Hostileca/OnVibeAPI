@@ -5,7 +5,7 @@ using Domain.Exceptions;
 using Mapster;
 using MediatR;
 
-namespace Application.UseCases.Like.Commands.RemoveLikeFromPost;
+namespace Application.UseCases.Like.Commands.UpsertLike;
 
 public class UpsertLikeCommandHandler(
     IPostRepository postRepository,

@@ -1,7 +1,7 @@
 ﻿using Application.Dtos.Like;
 using MediatR;
 
-namespace Application.UseCases.Like.Commands.RemoveLikeFromPost;
+namespace Application.UseCases.Like.Commands.UpsertLike;
 
 public sealed class UpsertLikeCommand : IRequest<LikeReadDto>
 {

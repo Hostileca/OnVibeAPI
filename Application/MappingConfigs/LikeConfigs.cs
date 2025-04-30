@@ -1,4 +1,4 @@
-﻿using Application.UseCases.Like.Commands.RemoveLikeFromPost;
+﻿using Application.UseCases.Like.Commands.UpsertLike;
 using Domain.Entities;
 using Mapster;
 

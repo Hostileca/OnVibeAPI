@@ -4,4 +4,5 @@ public class SubscriptionReadDto
 {
     public Guid SubscribedToId { get; set; }
     public Guid SubscribedById { get; set; }
+    public bool IsSubscribed { get; set; }
 }

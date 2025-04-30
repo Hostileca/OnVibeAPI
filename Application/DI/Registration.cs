@@ -3,6 +3,7 @@ using Application.Dtos.Chat;
 using Application.Dtos.Like;
 using Application.Dtos.Message;
 using Application.Dtos.Post;
+using Application.Dtos.Subscription;
 using Application.Dtos.User;
 using Application.Services.Implementations;
 using Application.Services.Implementations.ExtraLoaders;
@@ -57,5 +58,6 @@ public static class Registration
         services.AddScoped<IExtraLoader<PostReadDto>, PostReadDtoExtraLoader>();
         services.AddScoped<IExtraLoader<ChatReadDto>, ChatReadDtoExtraLoader>();
         services.AddScoped<IExtraLoader<LikeReadDto>, LikeReadDtoExtraLoader>();
+        services.AddScoped<IExtraLoader<SubscriptionReadDto>, SubscriptionReadDtoExtraLoader>();
     }
 }

@@ -1,4 +1,4 @@
-﻿using Application.UseCases.Subscription.SubscribeToUser;
+﻿using Application.UseCases.Subscription.UpsertSubscription;
 using Domain.Entities;
 using Mapster;
 
@@ -8,7 +8,7 @@ public class SubscriptionConfigs : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {
-        config.NewConfig<SubscribeToUserCommand, Subscription>()
+        config.NewConfig<UpsertSubscriptionCommand, Subscription>()
             .Map(dest => dest.SubscribedById, src => src.InitiatorId)
             .Map(dest => dest.SubscribedToId, src => src.UserId);
     }
