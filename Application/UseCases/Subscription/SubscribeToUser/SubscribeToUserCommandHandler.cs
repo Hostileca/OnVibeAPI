@@ -13,13 +13,18 @@ public class SubscribeToUserCommandHandler(
 {
     public async Task<SubscriptionReadDto> Handle(SubscribeToUserCommand request, CancellationToken cancellationToken)
     {
+        if (request.UserId == request.InitiatorId)
+        {
+            throw new BadRequestException("You can't subscribe to yourself");
+        }
+        
         var user = await userRepository.GetUserByIdAsync(request.UserId, cancellationToken);
-
+        
         if (user is null)
         {
             throw new NotFoundException(typeof(Domain.Entities.User), request.UserId.ToString());
         }
-
+        
         if (await subscriptionRepository.IsSubscriptionExistAsync(request.UserId, request.InitiatorId,
                 cancellationToken))
         {

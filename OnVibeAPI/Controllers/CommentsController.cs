@@ -12,9 +12,9 @@ namespace OnVibeAPI.Controllers;
 public class CommentsController(IMediator mediator) : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> SendComment([FromForm] SendCommentRequest createCommentRequest, CancellationToken cancellationToken)
+    public async Task<IActionResult> SendComment([FromBody] SendCommentRequest createCommentRequest, CancellationToken cancellationToken)
     {
-        var command = new SendCommentToPostCommand{ Content = createCommentRequest.Content, PostId = createCommentRequest.PostId };
+        var command = new SendCommentToPostCommand{ Content = createCommentRequest.Content, PostId = createCommentRequest.PostId, InitiatorId = InitiatorId };
         
         return Ok(await mediator.Send(command, cancellationToken));
     }

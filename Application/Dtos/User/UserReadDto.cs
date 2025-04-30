@@ -15,4 +15,5 @@ public class UserReadDto
     public int PostsCount { get; set; }
     public int SubscriptionsCount { get; set; }
     public int SubscribersCount { get; set; }
+    public bool IsSubscribed { get; set; }
 }
