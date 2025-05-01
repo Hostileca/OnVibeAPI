@@ -1,8 +1,8 @@
-﻿namespace Application.Dtos.Subscription;
+﻿using Application.Dtos.User;
 
-public class SubscriptionReadDto
+namespace Application.Dtos.Subscription;
+
+public class SubscriptionReadDto : SubReadDtoBase
 {
-    public Guid SubscribedToId { get; set; }
-    public Guid SubscribedById { get; set; }
-    public bool IsSubscribed { get; set; }
+    public UserReadDto SubscribedTo { get; set; }
 }

@@ -58,6 +58,6 @@ public static class Registration
         services.AddScoped<IExtraLoader<PostReadDto>, PostReadDtoExtraLoader>();
         services.AddScoped<IExtraLoader<ChatReadDto>, ChatReadDtoExtraLoader>();
         services.AddScoped<IExtraLoader<LikeReadDto>, LikeReadDtoExtraLoader>();
-        services.AddScoped<IExtraLoader<SubscriptionReadDto>, SubscriptionReadDtoExtraLoader>();
+        services.AddScoped<IExtraLoader<SubReadDtoBase>, SubReadDtoBaseExtraLoader>();
     }
 }

@@ -19,6 +19,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="UseCases\Reaction\Commands\" />
+      <Folder Include="UseCases\Subscription\Commands\" />
       <Folder Include="UseCases\User\Commands\" />
     </ItemGroup>
 

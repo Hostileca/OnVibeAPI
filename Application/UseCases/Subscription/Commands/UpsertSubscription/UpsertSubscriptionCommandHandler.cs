@@ -1,16 +1,17 @@
 ﻿using Application.Dtos.Subscription;
 using Application.Services.Interfaces;
 using Contracts.DataAccess.Interfaces;
+using Contracts.DataAccess.Models.Include;
 using Domain.Exceptions;
 using Mapster;
 using MediatR;
 
-namespace Application.UseCases.Subscription.UpsertSubscription;
+namespace Application.UseCases.Subscription.Commands.UpsertSubscription;
 
 public class UpsertSubscriptionCommandHandler(
     IUserRepository userRepository,
     ISubscriptionRepository subscriptionRepository,
-    IExtraLoader<SubscriptionReadDto> subscriptionExtraLoader) 
+    IExtraLoader<SubReadDtoBase> subscriptionExtraLoader) 
     : IRequestHandler<UpsertSubscriptionCommand, SubscriptionReadDto>
 {
     public async Task<SubscriptionReadDto> Handle(UpsertSubscriptionCommand request, CancellationToken cancellationToken)
@@ -27,7 +28,14 @@ public class UpsertSubscriptionCommandHandler(
             throw new NotFoundException(typeof(Domain.Entities.User), request.UserId.ToString());
         }
 
-        var subscription = await subscriptionRepository.GetSubscriptionAsync(request.UserId, request.InitiatorId, cancellationToken);
+        var subscription = await subscriptionRepository.GetSubscriptionAsync(
+            request.UserId, 
+            request.InitiatorId, 
+            new SubscriptionIncludes
+            {
+                IncludeSubscribedTo = true
+            }, 
+            cancellationToken);
 
         if (subscription is null)
         {

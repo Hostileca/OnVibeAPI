@@ -4,7 +4,7 @@ using Domain.Exceptions;
 using Mapster;
 using MediatR;
 
-namespace Application.UseCases.Reaction.UpsertReaction;
+namespace Application.UseCases.Reaction.Commands.UpsertReaction;
 
 public class UpsertReactionCommandHandler(
     IMessageRepository messageRepository) 

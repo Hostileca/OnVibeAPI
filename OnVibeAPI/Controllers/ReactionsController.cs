@@ -1,4 +1,4 @@
-﻿using Application.UseCases.Reaction.UpsertReaction;
+﻿using Application.UseCases.Reaction.Commands.UpsertReaction;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

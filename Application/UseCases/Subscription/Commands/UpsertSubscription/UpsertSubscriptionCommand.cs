@@ -1,7 +1,7 @@
 ﻿using Application.Dtos.Subscription;
 using MediatR;
 
-namespace Application.UseCases.Subscription.UpsertSubscription;
+namespace Application.UseCases.Subscription.Commands.UpsertSubscription;
 
 public sealed class UpsertSubscriptionCommand : IRequest<SubscriptionReadDto>
 {

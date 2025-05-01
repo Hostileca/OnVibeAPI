@@ -1,4 +1,4 @@
-﻿using Application.UseCases.Reaction.UpsertReaction;
+﻿using Application.UseCases.Reaction.Commands.UpsertReaction;
 using Domain.Entities;
 using Mapster;
 

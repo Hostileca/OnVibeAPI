@@ -9,20 +9,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="add IsSubscribed">
-      <change afterPath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/SubscriptionReadDtoExtraLoader.cs" afterDir="false" />
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Application/Dtos/Subscription/SubReadDtoBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Dtos/Subscription/SubscriberReadDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Enums/SubscriptionType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Queries/GetUserSubscribers/GetUserSubscribersQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Queries/GetUserSubscribers/GetUserSubscribersQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Queries/GetUserSubscriptions/GetUserSubscriptionsQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Queries/GetUserSubscriptions/GetUserSubscriptionsQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts.DataAccess/Models/Include/SubscriptionIncludes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/SubscriptionQueryableExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DI/Registration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Dtos/Subscription/SubscriptionReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Subscription/SubscriptionReadDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/LikeConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/LikeConfigs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dtos/User/UserReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/User/UserReadDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/ReactionConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/ReactionConfigs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/SubscriptionConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/SubscriptionConfigs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Like/Commands/RemoveLikeFromPost/UpsertLikeCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Like/Commands/UpsertLike/UpsertLikeCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Like/Commands/RemoveLikeFromPost/UpsertLikeCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Like/Commands/UpsertLike/UpsertLikeCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Subscription/SubscribeToUser/SubscribeToUserCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/UpsertSubscription/UpsertSubscriptionCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Subscription/SubscribeToUser/SubscribeToUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/UpsertSubscription/UpsertSubscriptionCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Subscription/UnsubscribeFromUser/UnsubscribeFromUserCommand.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Subscription/UnsubscribeFromUser/UnsubscribeFromUserCommandHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/LikesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/LikesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/ExtraLoaderBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/ExtraLoaderBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/SubscriptionReadDtoExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/SubReadDtoBaseExtraLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/Interfaces/IExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Interfaces/IExtraLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Reaction/UpsertReaction/UpsertReactionCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Reaction/UpsertReaction/UpsertReactionCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Subscription/UpsertSubscription/UpsertSubscriptionCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Commands/UpsertSubscription/UpsertSubscriptionCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Subscription/UpsertSubscription/UpsertSubscriptionCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Commands/UpsertSubscription/UpsertSubscriptionCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ISubscriptionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ISubscriptionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/SubscriptionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/SubscriptionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/ReactionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/ReactionsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/SubscriptionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/SubscriptionsController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,29 +87,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.OnVibeAPI: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Run",
-    ".NET Launch Settings Profile.OnVibeAPI: https.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.OnVibeAPI: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.OnVibeAPI: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.OnVibeAPI: https.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "yaml"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;yaml&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.OnVibeAPI: http">
     <configuration name="OnVibeAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" />
@@ -215,7 +228,8 @@
       <workItem from="1745669327235" duration="29222000" />
       <workItem from="1745860745299" duration="10420000" />
       <workItem from="1745949178260" duration="2088000" />
-      <workItem from="1746028753701" duration="8385000" />
+      <workItem from="1746028753701" duration="8424000" />
+      <workItem from="1746082387737" duration="5537000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -521,7 +535,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746032181907</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="upsert subscription">
+      <option name="closed" value="true" />
+      <created>1746041623623</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1746041623623</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -542,7 +564,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="update" />
     <MESSAGE value="Fix" />
     <MESSAGE value="keep it simple" />
     <MESSAGE value="Add middleware and message preview for chat" />
@@ -567,7 +588,8 @@
     <MESSAGE value="Add LikeConfigs.cs" />
     <MESSAGE value="fix" />
     <MESSAGE value="add IsSubscribed" />
-    <option name="LAST_COMMIT_MESSAGE" value="add IsSubscribed" />
+    <MESSAGE value="upsert subscription" />
+    <option name="LAST_COMMIT_MESSAGE" value="upsert subscription" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

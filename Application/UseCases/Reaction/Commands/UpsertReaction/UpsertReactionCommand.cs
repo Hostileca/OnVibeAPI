@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.UseCases.Reaction.UpsertReaction;
+namespace Application.UseCases.Reaction.Commands.UpsertReaction;
 
 public class UpsertReactionCommand : IRequest<Unit>
 {

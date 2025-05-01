@@ -2,10 +2,8 @@
 
 namespace Application.Dtos.User;
 
-public class UserReadDto
+public class UserReadDto : UserShortReadDto
 {
-    public Guid Id { get; set; }
-    public string? Username { get; set; }
     public string? BIO { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime? DateOfBirth { get; set; }

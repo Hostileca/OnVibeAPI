@@ -1,4 +1,4 @@
-﻿using Application.UseCases.Subscription.UpsertSubscription;
+﻿using Application.UseCases.Subscription.Commands.UpsertSubscription;
 using Domain.Entities;
 using Mapster;
 
