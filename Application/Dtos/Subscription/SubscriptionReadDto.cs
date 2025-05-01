@@ -2,7 +2,10 @@
 
 namespace Application.Dtos.Subscription;
 
-public class SubscriptionReadDto : SubReadDtoBase
+public class SubscriptionReadDto
 {
-    public UserReadDto SubscribedTo { get; set; }
+    public UserReadDto User { get; set; }
+    public bool IsSubscribed { get; set; }
+    public Guid SubscribedToId { get; set; }
+    public Guid SubscribedById { get; set; }
 }

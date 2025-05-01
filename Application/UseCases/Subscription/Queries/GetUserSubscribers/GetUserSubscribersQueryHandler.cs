@@ -13,10 +13,10 @@ namespace Application.UseCases.Subscription.Queries.GetUserSubscribers;
 public class GetUserSubscribersQueryHandler(
     IUserRepository userRepository,
     ISubscriptionRepository subscriptionRepository,
-    IExtraLoader<SubReadDtoBase> subReadDtoExtraLoader) 
-    : IRequestHandler<GetUserSubscribersQuery, PagedResponse<SubscriberReadDto>>
+    IExtraLoader<SubscriptionReadDto> subReadDtoExtraLoader) 
+    : IRequestHandler<GetUserSubscribersQuery, PagedResponse<SubscriptionReadDto>>
 {
-    public async Task<PagedResponse<SubscriberReadDto>> Handle(GetUserSubscribersQuery request, CancellationToken cancellationToken)
+    public async Task<PagedResponse<SubscriptionReadDto>> Handle(GetUserSubscribersQuery request, CancellationToken cancellationToken)
     {
         var user = await userRepository.GetUserByIdAsync(request.UserId, cancellationToken);
 
@@ -34,9 +34,9 @@ public class GetUserSubscribersQueryHandler(
             },
             cancellationToken);
         
-        var subscribersReadDtos = subscribers.Adapt<IList<SubscriberReadDto>>();
+        var subscribersReadDtos = subscribers.Adapt<IList<SubscriptionReadDto>>();
         await subReadDtoExtraLoader.LoadExtraInformationAsync(subscribersReadDtos, cancellationToken);
 
-        return new PagedResponse<SubscriberReadDto>(subscribersReadDtos, request.PageData.PageNumber, request.PageData.PageSize);
+        return new PagedResponse<SubscriptionReadDto>(subscribersReadDtos, request.PageData.PageNumber, request.PageData.PageSize);
     }
 }

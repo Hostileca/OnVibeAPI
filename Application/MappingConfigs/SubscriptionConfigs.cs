@@ -1,4 +1,5 @@
-﻿using Application.UseCases.Subscription.Commands.UpsertSubscription;
+﻿using Application.Dtos.Subscription;
+using Application.UseCases.Subscription.Commands.UpsertSubscription;
 using Domain.Entities;
 using Mapster;
 
@@ -11,5 +12,9 @@ public class SubscriptionConfigs : IRegister
         config.NewConfig<UpsertSubscriptionCommand, Subscription>()
             .Map(dest => dest.SubscribedById, src => src.InitiatorId)
             .Map(dest => dest.SubscribedToId, src => src.UserId);
+
+        config.NewConfig<Subscription, SubscriptionReadDto>()
+            .Map(dest => dest.User, src => src.SubscribedTo, src => src.SubscribedTo != null)
+            .Map(dest => dest.User, src => src.SubscribedBy, src => src.SubscribedBy != null);
     }
 }

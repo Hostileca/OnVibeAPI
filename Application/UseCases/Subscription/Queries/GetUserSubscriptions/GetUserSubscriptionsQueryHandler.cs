@@ -14,7 +14,7 @@ namespace Application.UseCases.Subscription.Queries.GetUserSubscriptions;
 public class GetUserSubscriptionsQueryHandler(
     IUserRepository userRepository,
     ISubscriptionRepository subscriptionRepository,
-    IExtraLoader<SubReadDtoBase> subReadDtoExtraLoader) 
+    IExtraLoader<SubscriptionReadDto> subReadDtoExtraLoader) 
     : IRequestHandler<GetUserSubscriptionsQuery, PagedResponse<SubscriptionReadDto>>
 {
     public async Task<PagedResponse<SubscriptionReadDto>> Handle(GetUserSubscriptionsQuery request, CancellationToken cancellationToken)

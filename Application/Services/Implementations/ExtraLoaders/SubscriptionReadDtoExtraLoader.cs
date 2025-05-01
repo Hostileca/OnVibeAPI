@@ -3,11 +3,11 @@ using Contracts.DataAccess.Interfaces;
 
 namespace Application.Services.Implementations.ExtraLoaders;
 
-public class SubReadDtoBaseExtraLoader(
+public class SubscriptionReadDtoExtraLoader(
     ISubscriptionRepository subscriptionRepository) 
-    : ExtraLoaderBase<SubReadDtoBase>
+    : ExtraLoaderBase<SubscriptionReadDto>
 {
-    public override async Task LoadExtraInformationAsync(SubReadDtoBase dto, CancellationToken cancellationToken = default)
+    public override async Task LoadExtraInformationAsync(SubscriptionReadDto dto, CancellationToken cancellationToken = default)
     {
         dto.IsSubscribed = await subscriptionRepository.IsSubscriptionExistAsync(dto.SubscribedToId, dto.SubscribedById, cancellationToken);
     }

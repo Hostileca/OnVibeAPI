@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.Subscription;
+using Application.Dtos.User;
 using Application.Services.Interfaces;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models.Include;
@@ -11,7 +12,8 @@ namespace Application.UseCases.Subscription.Commands.UpsertSubscription;
 public class UpsertSubscriptionCommandHandler(
     IUserRepository userRepository,
     ISubscriptionRepository subscriptionRepository,
-    IExtraLoader<SubReadDtoBase> subscriptionExtraLoader) 
+    IExtraLoader<SubscriptionReadDto> subscriptionExtraLoader,
+    IExtraLoader<UserReadDto> userExtraLoader) 
     : IRequestHandler<UpsertSubscriptionCommand, SubscriptionReadDto>
 {
     public async Task<SubscriptionReadDto> Handle(UpsertSubscriptionCommand request, CancellationToken cancellationToken)
@@ -50,6 +52,8 @@ public class UpsertSubscriptionCommandHandler(
         await subscriptionRepository.SaveChangesAsync(cancellationToken);
 
         var subscriptionReadDto = subscription.Adapt<SubscriptionReadDto>();
+        subscriptionReadDto.User = user.Adapt<UserReadDto>();
+        await userExtraLoader.LoadExtraInformationAsync(subscriptionReadDto.User, cancellationToken);
         await subscriptionExtraLoader.LoadExtraInformationAsync(subscriptionReadDto, cancellationToken);
         
         return subscriptionReadDto;
