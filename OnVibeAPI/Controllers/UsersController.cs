@@ -54,15 +54,17 @@ public class UsersController(IMediator mediator) : ControllerBase
         return File(result, "image/jpeg");
     }
     
-    [HttpPut]
-    public async Task<IActionResult> UpdateProfile([FromForm] UpdateUserProfileRequest request, CancellationToken cancellationToken)
+    [HttpPut("{userId:guid}")]
+    public async Task<IActionResult> UpdateProfile(Guid userId, [FromForm] UpdateUserProfileRequest request, CancellationToken cancellationToken)
     {
         var command = new UpdateUserProfileCommand
         {
+            UserId = userId,
             InitiatorId = InitiatorId,
             BIO = request.BIO,
             Avatar = request.Avatar,
             DateOfBirth = request.DateOfBirth,
+            Country = request.Country,
             City = request.City
         };
         

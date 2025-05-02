@@ -10,33 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Dtos/Subscription/SubReadDtoBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Dtos/Subscription/SubscriberReadDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Enums/SubscriptionType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Queries/GetUserSubscribers/GetUserSubscribersQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Queries/GetUserSubscribers/GetUserSubscribersQueryHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Queries/GetUserSubscriptions/GetUserSubscriptionsQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Queries/GetUserSubscriptions/GetUserSubscriptionsQueryHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts.DataAccess/Models/Include/SubscriptionIncludes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/SubscriptionQueryableExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DI/Registration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dtos/Subscription/SubscriptionReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Subscription/SubscriptionReadDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dtos/User/UserReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/User/UserReadDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/ReactionConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/ReactionConfigs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/SubscriptionConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/SubscriptionConfigs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/ExtraLoaderBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/ExtraLoaderBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/SubscriptionReadDtoExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/SubReadDtoBaseExtraLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Interfaces/IExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Interfaces/IExtraLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Reaction/UpsertReaction/UpsertReactionCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Reaction/UpsertReaction/UpsertReactionCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Subscription/UpsertSubscription/UpsertSubscriptionCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Commands/UpsertSubscription/UpsertSubscriptionCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Subscription/UpsertSubscription/UpsertSubscriptionCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Commands/UpsertSubscription/UpsertSubscriptionCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ISubscriptionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ISubscriptionRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/SubscriptionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/SubscriptionRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/ReactionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/ReactionsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/SubscriptionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/SubscriptionsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/UsersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Requests/User/UpdateUserProfileRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Requests/User/UpdateUserProfileRequest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,15 +40,11 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/Dtos/Post/PostReadDto.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/MappingConfigs/PostConfigs.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/UseCases/Like/Commands/AddLikeToPost/AddLikeToPostCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/UseCases/Post/Commands/Create/CreatePostCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/UseCases/Subscription/Queries/GetUserSubscribers/GetUserSubscribersQuery.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserAvatar/GetUserAvatarQuery.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/MessageNotification.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/NotificationBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Post.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Infrastructure.Hangfire/DI/Registration.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -229,7 +203,8 @@
       <workItem from="1745860745299" duration="10420000" />
       <workItem from="1745949178260" duration="2088000" />
       <workItem from="1746028753701" duration="8424000" />
-      <workItem from="1746082387737" duration="5537000" />
+      <workItem from="1746082387737" duration="14209000" />
+      <workItem from="1746205628586" duration="804000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -543,7 +518,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746041623623</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Add get subscriptions">
+      <option name="closed" value="true" />
+      <created>1746088723308</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1746088723308</updated>
+    </task>
+    <task id="LOCAL-00041" summary="update SubscriptionReadDto">
+      <option name="closed" value="true" />
+      <created>1746097617161</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1746097617161</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,8 +555,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fix" />
-    <MESSAGE value="keep it simple" />
     <MESSAGE value="Add middleware and message preview for chat" />
     <MESSAGE value="chat create fix" />
     <MESSAGE value="Add validators" />
@@ -589,7 +578,9 @@
     <MESSAGE value="fix" />
     <MESSAGE value="add IsSubscribed" />
     <MESSAGE value="upsert subscription" />
-    <option name="LAST_COMMIT_MESSAGE" value="upsert subscription" />
+    <MESSAGE value="Add get subscriptions" />
+    <MESSAGE value="update SubscriptionReadDto" />
+    <option name="LAST_COMMIT_MESSAGE" value="update SubscriptionReadDto" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -606,19 +597,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/OnVibeAPI/Middlewares/ExceptionHandlingMiddleware.cs</url>
-          <line>36</line>
-          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\OnVibeAPI\Middlewares\ExceptionHandlingMiddleware.cs" containingFunctionPresentation="Method 'InvokeAsync'">
-            <startOffsets>
-              <option value="1236" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1347" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Application/UseCases/Comment/Commands/SendCommentToPost/SendCommentToPostCommandHandler.cs</url>
