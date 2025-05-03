@@ -49,7 +49,7 @@ internal class SubscriptionRepository(BaseDbContext context) : ISubscriptionRepo
             .FirstOrDefaultAsync(s => s.SubscribedById == subscribedById && s.SubscribedToId == subscribedToId, cancellationToken);
     }
 
-    public void RemoveSubscriptionAsync(Subscription subscription, CancellationToken cancellationToken)
+    public void RemoveSubscription(Subscription subscription)
     {
         context.Subscriptions.Remove(subscription);
     }

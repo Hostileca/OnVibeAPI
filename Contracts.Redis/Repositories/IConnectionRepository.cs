@@ -2,8 +2,8 @@
 
 public interface IConnectionRepository
 {
-    Task AddConnectionAsync(string userId, string connectionId);
-    Task RemoveConnectionAsync(string userId, string connectionId);
-    Task<IEnumerable<string>> GetConnectionsAsync(string userId);
-    Task RemoveAllConnectionsAsync(string userId);
+    Task AddConnectionAsync(Guid userId, string connectionId);
+    Task RemoveConnectionAsync(Guid userId, string connectionId);
+    Task<IEnumerable<string>> GetConnectionsAsync(Guid userId);
+    Task RemoveAllConnectionsAsync(Guid userId);
 }

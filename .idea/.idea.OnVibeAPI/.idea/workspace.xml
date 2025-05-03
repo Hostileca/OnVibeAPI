@@ -9,19 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="Update profile by userId">
-      <change afterPath="$PROJECT_DIR$/Contracts.Redis/Contracts.Redis.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts.Redis/Repositories/ICacheRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts.Redis/Repositories/IConnectionRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure.Redis/DI/Registration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure.Redis/Infrastructure.Redis.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure.Redis/Repositories/ConnectionRepository.cs" afterDir="false" />
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="add redis and connection repository">
+      <change afterPath="$PROJECT_DIR$/Contracts.DataAccess/Models/Include/ChatMemberIncludes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatMemberQueryableExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI.sln" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DI/Registration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/Notification/MessageNotificationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/Interfaces/Notification/IMessageNotificationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Interfaces/Notification/IChatNotificationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/RemoveMemberFromChat/RemoveMemberFromChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/RemoveMemberFromChat/RemoveMemberFromChatCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Subscription/Commands/UpsertSubscription/UpsertSubscriptionCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Subscription/Commands/UpsertSubscription/UpsertSubscriptionCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IChatMembersRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IChatMembersRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ISubscriptionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/ISubscriptionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.Redis/Repositories/IConnectionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.Redis/Repositories/IConnectionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatMembersRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatMembersRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/SubscriptionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/SubscriptionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.Redis/Repositories/ConnectionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.Redis/Repositories/ConnectionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.SignalR/Hubs/ChatHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.SignalR/Hubs/ChatHub.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +51,8 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/UseCases/Subscription/Queries/GetUserSubscribers/GetUserSubscribersQuery.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Application/Services/Interfaces/Notification/IChatNotificationService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserAvatar/GetUserAvatarQuery.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/MessageNotification.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/NotificationBase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -212,7 +217,7 @@
       <workItem from="1746028753701" duration="8424000" />
       <workItem from="1746082387737" duration="14209000" />
       <workItem from="1746205628586" duration="3698000" />
-      <workItem from="1746266954190" duration="2829000" />
+      <workItem from="1746266954190" duration="6067000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -550,7 +555,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746206722606</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="add redis and connection repository">
+      <option name="closed" value="true" />
+      <created>1746270999751</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1746270999751</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,7 +584,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="chat create fix" />
     <MESSAGE value="Add validators" />
     <MESSAGE value="funny big fix" />
     <MESSAGE value="include sender to message" />
@@ -596,7 +608,8 @@
     <MESSAGE value="Add get subscriptions" />
     <MESSAGE value="update SubscriptionReadDto" />
     <MESSAGE value="Update profile by userId" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update profile by userId" />
+    <MESSAGE value="add redis and connection repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="add redis and connection repository" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

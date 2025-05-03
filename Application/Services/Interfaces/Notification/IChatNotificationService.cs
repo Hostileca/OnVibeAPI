@@ -2,7 +2,8 @@
 
 namespace Application.Services.Interfaces.Notification;
 
-public interface IMessageNotificationService
+public interface IChatNotificationService
 {
     Task SendMessageAsync(Message message, CancellationToken cancellationToken);
+    Task RemoveMemberAsync(ChatMember member, CancellationToken cancellationToken);
 }

@@ -13,7 +13,7 @@ namespace Application.UseCases.Message.Commands.SendMessage;
 public class SendMessageCommandHandler(
     IChatRepository chatRepository,
     IMessageRepository messageRepository,
-    IMessageNotificationService messageNotificationService)
+    IChatNotificationService chatNotificationService)
     : IRequestHandler<SendMessageCommand, MessageReadDtoBase>
 {
     public async Task<MessageReadDtoBase> Handle(SendMessageCommand request, CancellationToken cancellationToken)
@@ -56,6 +56,6 @@ public class SendMessageCommandHandler(
         await messageRepository.AddAsync(message, cancellationToken);
         await messageRepository.SaveChangesAsync(cancellationToken);
 
-        await messageNotificationService.SendMessageAsync(message, cancellationToken);
+        await chatNotificationService.SendMessageAsync(message, cancellationToken);
     }
 }

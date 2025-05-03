@@ -8,7 +8,7 @@ namespace Infrastructure.SignalR.Hubs;
 [Authorize]
 public class ChatHub(IConnectionRepository connectionRepository) : Hub
 {
-    private string UserId => Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    private Guid UserId => new(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 
     public override async Task OnConnectedAsync()
     {

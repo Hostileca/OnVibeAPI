@@ -35,7 +35,7 @@ public static class Registration
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IUserContext, UserContext>();
         
-        services.AddScoped<IMessageNotificationService, MessageNotificationService>();
+        services.AddScoped<IChatNotificationService, ChatNotificationService>();
     }
     
     private static void MediatorConfigure(this IServiceCollection services)

@@ -1,6 +1,7 @@
 ﻿using Application.Dtos.Message;
 using Application.Services.Interfaces.Notification;
 using Contracts.DataAccess.Interfaces;
+using Contracts.Redis.Repositories;
 using Domain.Entities;
 using Domain.Entities.Notifications;
 using Infrastructure.SignalR.Hubs;
@@ -9,13 +10,15 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Application.Services.Implementations.Notification;
 
-public class MessageNotificationService(
+public class ChatNotificationService(
     IHubContext<ChatHub> chatHub,
     INotificationRepository notificationRepository,
-    IChatMembersRepository chatMembersRepository) 
-    : IMessageNotificationService
+    IChatMembersRepository chatMembersRepository,
+    IConnectionRepository connectionRepository) 
+    : IChatNotificationService
 {
     private const string ChatPrefix = "chat_";
+    private string GetGroupName(Guid chatId) => $"{ChatPrefix}{chatId}";
     
     public async Task SendMessageAsync(Message message, CancellationToken cancellationToken)
     {
@@ -34,7 +37,14 @@ public class MessageNotificationService(
             await notificationRepository.AddAsync(notification, cancellationToken);
         }
         
-        await chatHub.Clients.Group($"{ChatPrefix}{message.ChatId}").SendAsync(
+        await chatHub.Clients.Group(GetGroupName(message.ChatId)).SendAsync(
             ChatHubEvents.MessageSent, message.Adapt<MessageReadDto>(), cancellationToken);
+    }
+
+    public async Task RemoveMemberAsync(ChatMember member, CancellationToken cancellationToken)
+    {
+        var connectionsIds = await connectionRepository.GetConnectionsAsync(member.UserId);
+        var removeTasks = connectionsIds.Select(connectionId => chatHub.Groups.RemoveFromGroupAsync(connectionId, GetGroupName(member.ChatId), cancellationToken));
+        await Task.WhenAll(removeTasks);
     }
 }

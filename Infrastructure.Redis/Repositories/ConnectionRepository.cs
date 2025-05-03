@@ -8,25 +8,25 @@ public class ConnectionRepository(IConnectionMultiplexer redis) : IConnectionRep
     private readonly IDatabase redisDatabase = redis.GetDatabase();
     private static readonly string _prefix = "userConnection";
     
-    private static string Key(string userId) => $"{_prefix}_{userId}";
+    private static string Key(Guid userId) => $"{_prefix}_{userId}";
     
-    public async Task AddConnectionAsync(string userId, string connectionId)
+    public async Task AddConnectionAsync(Guid userId, string connectionId)
     {
         await redisDatabase.SetAddAsync(Key(userId), connectionId);
     }
 
-    public async Task RemoveConnectionAsync(string userId, string connectionId)
+    public async Task RemoveConnectionAsync(Guid userId, string connectionId)
     {
         await redisDatabase.SetRemoveAsync(Key(userId), connectionId);
     }
 
-    public async Task<IEnumerable<string>> GetConnectionsAsync(string userId)
+    public async Task<IEnumerable<string>> GetConnectionsAsync(Guid userId)
     {
         var members = await redisDatabase.SetMembersAsync(Key(userId));
         return members.Select(m => (string)m);
     }
 
-    public async Task RemoveAllConnectionsAsync(string userId)
+    public async Task RemoveAllConnectionsAsync(Guid userId)
     {
         await redisDatabase.KeyDeleteAsync(Key(userId));
     }

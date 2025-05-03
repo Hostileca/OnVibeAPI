@@ -46,7 +46,7 @@ public class UpsertSubscriptionCommandHandler(
         }
         else
         {
-            subscriptionRepository.RemoveSubscriptionAsync(subscription, cancellationToken);
+            subscriptionRepository.RemoveSubscription(subscription);
         }
 
         await subscriptionRepository.SaveChangesAsync(cancellationToken);
