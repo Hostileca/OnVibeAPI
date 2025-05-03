@@ -16,4 +16,16 @@ public static class ChatMemberQueryableExtensions
 
         return chatMembers.Include(chat => chat.User);
     }
+    
+    public static IQueryable<ChatMember> ExcludeRemoved(
+        this IQueryable<ChatMember> chatMember,
+        bool excludeRemoved)
+    {
+        if (!excludeRemoved)
+        {
+            return chatMember;
+        }
+
+        return chatMember.Where(message => !message.RemoveDate.HasValue);
+    }
 }

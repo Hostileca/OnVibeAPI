@@ -9,4 +9,5 @@ public class ChatMember
     public DateTime JoinDate { get; set; }
     public DateTime? RemoveDate { get; set; }
     public ChatRole Role { get; set; } = ChatRole.Member;
+    public bool IsRemoved => RemoveDate.HasValue;
 }

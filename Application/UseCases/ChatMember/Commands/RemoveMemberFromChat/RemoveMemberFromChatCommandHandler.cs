@@ -45,7 +45,8 @@ public class RemoveMemberFromChatCommandHandler(
         {
             throw new ForbiddenException("You are not a member of this chat");
         }
-
+        
+        var currentDate = DateTime.UtcNow;
         if (request.InitiatorId == request.UserId)
         {
             if (initiatorMember.Role == ChatRole.Admin)
@@ -55,12 +56,12 @@ public class RemoveMemberFromChatCommandHandler(
 
             var leaveMessage = new Domain.Entities.Message
             {
-                Date = DateTime.UtcNow,
+                Date = currentDate,
                 ChatId = chat.Id,
                 Text = GetLeaveMessage(initiatorMember.User)
             };
 
-            chatMembersRepository.Remove(initiatorMember);
+            initiatorMember.RemoveDate = currentDate;
             await messageRepository.AddAsync(leaveMessage, cancellationToken);
             await chatRepository.SaveChangesAsync(cancellationToken);
 
@@ -89,12 +90,12 @@ public class RemoveMemberFromChatCommandHandler(
 
         var removeMessage = new Domain.Entities.Message
         {
-            Date = DateTime.UtcNow,
+            Date = currentDate,
             ChatId = chat.Id,
             Text = GetRemoveMessage(initiatorMember.User, targetMember.User)
         };
 
-        chatMembersRepository.Remove(targetMember);
+        initiatorMember.RemoveDate = currentDate;
         await messageRepository.AddAsync(removeMessage, cancellationToken);
         await chatRepository.SaveChangesAsync(cancellationToken);
         

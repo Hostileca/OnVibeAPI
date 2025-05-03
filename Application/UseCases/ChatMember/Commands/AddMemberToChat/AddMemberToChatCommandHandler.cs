@@ -50,11 +50,33 @@ public class AddMemberToChatCommandHandler(
             throw new ForbiddenException("You don't have permissions to add members to this chat");
         }
 
-        var chatMembers = await chatMembersRepository.GetChatMembersAsync(request.ChatId, new ChatMemberIncludes(), cancellationToken);
-        
-        if(chatMembers.Any(m => m.UserId == request.UserId))
+        var chatMembers = await chatMembersRepository.GetChatMembersAsync(request.ChatId, new ChatMemberIncludes{ IncludeUser = true }, cancellationToken, false);
+
+        var currentDate = DateTime.UtcNow;
+        var existingChatMember = chatMembers.FirstOrDefault(m => m.UserId == request.UserId);
+        if (existingChatMember is not null)
         {
-            throw new ConflictException("User is already a member of this chat");
+            if(!existingChatMember.IsRemoved)
+            {
+                throw new ConflictException("User is already a member of this chat");
+            }
+            else
+            {
+                var backMessage = new Domain.Entities.Message
+                {
+                    Date = currentDate,
+                    ChatId = chat.Id,
+                    Text = GetAddMessage(initiatorMember.User, existingChatMember.User)
+                };
+        
+                await messageRepository.AddAsync(backMessage, cancellationToken);
+                await chatRepository.SaveChangesAsync(cancellationToken);
+                
+                await chatNotificationService.SendMessageToGroupAsync(backMessage.Adapt<MessageReadDto>(), cancellationToken);
+                await chatNotificationService.AddMemberToGroupAsync(existingChatMember, cancellationToken);
+        
+                return chat.Adapt<ChatReadDto>();
+            }
         }
         
         var user = await userRepository.GetUserByIdAsync(request.UserId, cancellationToken, true);
@@ -68,12 +90,12 @@ public class AddMemberToChatCommandHandler(
         {
             Chat = chat,
             User = user,
-            JoinDate = DateTime.UtcNow,
+            JoinDate = currentDate,
             Role = ChatRole.Member
         };
         var addMessage = new Domain.Entities.Message
         {
-            Date = DateTime.UtcNow,
+            Date = currentDate,
             ChatId = chat.Id,
             Text = GetAddMessage(initiatorMember.User, newMember.User)
         };

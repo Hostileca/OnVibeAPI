@@ -31,9 +31,9 @@ public static class MessageQueryableExtensions
 
     public static IQueryable<Message> ExcludeDelayed(
         this IQueryable<Message> messages,
-        bool includeDelayed)
+        bool excludeDelayed)
     {
-        if (!includeDelayed)
+        if (!excludeDelayed)
         {
             return messages;
         }
@@ -46,10 +46,10 @@ public static class MessageQueryableExtensions
         DateTime startDate,
         DateTime? endDate)
     {
-        messages = messages.Where(message => message.Date > startDate);
+        messages = messages.Where(message => message.Date >= startDate);
         if (endDate.HasValue)
         {
-            messages = messages.Where(message => message.Date > endDate.Value);
+            messages = messages.Where(message => message.Date <= endDate.Value);
         }
 
         return messages;
