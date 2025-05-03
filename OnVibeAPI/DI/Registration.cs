@@ -3,6 +3,7 @@ using System.Text;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Hangfire;
+using Infrastructure.SignalR.Hubs;
 using Mapster;
 using MapsterMapper;
 using Microsoft.IdentityModel.Tokens;
@@ -46,20 +47,20 @@ public static class Registration
                 ValidateIssuerSigningKey = true
             };
             
-            // options.Events = new JwtBearerEvents
-            // {
-            //     OnMessageReceived = context =>
-            //     {
-            //         var accessToken = context.Request.Query["access_token"];
-            //
-            //         var path = context.HttpContext.Request.Path;
-            //         if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/chats/hub"))
-            //         {
-            //             context.Token = accessToken;
-            //         }
-            //         return Task.CompletedTask;
-            //     }
-            // };
+            options.Events = new JwtBearerEvents
+            {
+                 OnMessageReceived = context =>
+                 {
+                     var accessToken = context.Request.Query["access_token"];
+            
+                     var path = context.HttpContext.Request.Path;
+                     if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/hubs"))
+                     {
+                         context.Token = accessToken;
+                     }
+                     return Task.CompletedTask;
+                 }
+             };
         });
         services.AddAuthorization();
     }
@@ -122,7 +123,7 @@ public static class Registration
     {
         webApplication.UseSwagger();
         webApplication.UseSwaggerUI();
-        //webApplication.MapHub<ChatHub>("/chats/hub");
+        webApplication.MapHub<ChatHub>("/hubs/chats");
         webApplication.UseRouting();
         webApplication.UseCors("AllowAngularLocalhost");
         webApplication.UseHangfireDashboard();

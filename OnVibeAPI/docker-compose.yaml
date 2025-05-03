@@ -34,7 +34,7 @@ services:
 
   redis:
     image: redis:6.2
-    container_name: redis_container
+    container_name: onVibeRedis
     ports:
       - "6379:6379"
 
