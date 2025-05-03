@@ -1,5 +1,6 @@
 ﻿using Application.Dtos.Chat;
 using Application.Dtos.Message;
+using Application.Services.Interfaces;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models;
 using Contracts.DataAccess.Models.Include;
@@ -7,18 +8,23 @@ using Mapster;
 
 namespace Application.Services.Implementations.ExtraLoaders;
 
-public class ChatReadDtoExtraLoader(IMessageRepository messageRepository) : ExtraLoaderBase<ChatReadDto>
+public class ChatReadDtoExtraLoader(
+    IMessageRepository messageRepository,
+    IUserContext userContext) 
+    : ExtraLoaderBase<ChatReadDto>
 {
     public override async Task LoadExtraInformationAsync(ChatReadDto dto, CancellationToken cancellationToken = default)
     {
-        var message = (await messageRepository.GetMessagesByChatIdAsync(
+        var message = (await messageRepository.GetAvailableToUserMessagesAsync(
             dto.Id, 
-            new PageInfo(1, 1), 
+            userContext.InitiatorId,
             new MessageIncludes
             {
                 IncludeReactions = true,
                 IncludeSender = true
-            }, cancellationToken)).FirstOrDefault();
+            },
+            new PageInfo(1, 1),
+            cancellationToken)).FirstOrDefault();
 
         if (message is not null)
         {

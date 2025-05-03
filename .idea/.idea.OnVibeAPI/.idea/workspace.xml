@@ -9,28 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="add new notifications">
       <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Migrations/20250426151927_Init.Designer.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Migrations/20250426151927_Init.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Migrations/BaseDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dtos/ChatMember/ChatMemberReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/ChatMember/ChatMemberReadDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Helpers/PermissionsHelpers/ChatPermissionsHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Helpers/PermissionsHelpers/ChatPermissionsHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Interfaces/Notification/IChatNotificationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Interfaces/Notification/IChatNotificationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/CreateChat/CreateChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/CreateChat/CreateChatCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/DeleteChat/DeleteChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Chat/Commands/DeleteChat/DeleteChatCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/AddMemberToChat/AddMemberToChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/AddMemberToChat/AddMemberToChatCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/RemoveMemberFromChat/RemoveMemberFromChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/RemoveMemberFromChat/RemoveMemberFromChatCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/SetRoleToMember/SetRoleToMemberCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/SetRoleToMember/SetRoleToMemberCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/SetRoleToMember/SetRoleToMemberCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/SetRoleToMember/SetRoleToMemberCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IChatMembersRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IChatMembersRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.SignalR/Constants/ChatHubEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.SignalR/Constants/ChatHubEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/ChatReadDtoExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/ChatReadDtoExtraLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IMessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IMessageRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Entities/ChatMember.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/ChatMember.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Entities/ChatRoles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/ChatRole.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatMembersRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatMembersRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Requests/ChatMember/SetRoleToMemberRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Requests/ChatMember/SetRoleToMemberRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/ChatMemberConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/ChatMemberConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,14 +220,7 @@
       <workItem from="1746205628586" duration="3698000" />
       <workItem from="1746266954190" duration="15018000" />
       <workItem from="1746296178810" duration="2843000" />
-    </task>
-    <task id="LOCAL-00003" summary="add gitignore">
-      <option name="closed" value="true" />
-      <created>1741970134979</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1741970134979</updated>
+      <workItem from="1746305464968" duration="2055000" />
     </task>
     <task id="LOCAL-00004" summary="git init">
       <option name="closed" value="true" />
@@ -623,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746293368081</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="add new notifications">
+      <option name="closed" value="true" />
+      <created>1746305500245</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1746305500245</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,7 +635,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add extra loaders" />
     <MESSAGE value="fixes" />
     <MESSAGE value="Move loaders" />
     <MESSAGE value="fix loaders" />
@@ -669,7 +659,8 @@
     <MESSAGE value="message read dto to chat hub" />
     <MESSAGE value="Exclude delayed!" />
     <MESSAGE value="fix send message with delay" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix send message with delay" />
+    <MESSAGE value="add new notifications" />
+    <option name="LAST_COMMIT_MESSAGE" value="add new notifications" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

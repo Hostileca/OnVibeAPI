@@ -40,4 +40,18 @@ public static class MessageQueryableExtensions
 
         return messages.Where(message => message.Date < DateTime.UtcNow);
     }
+    
+    public static IQueryable<Message> FilterByDate(
+        this IQueryable<Message> messages,
+        DateTime startDate,
+        DateTime? endDate)
+    {
+        messages = messages.Where(message => message.Date > startDate);
+        if (endDate.HasValue)
+        {
+            messages = messages.Where(message => message.Date > endDate.Value);
+        }
+
+        return messages;
+    }
 }

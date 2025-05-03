@@ -13,9 +13,9 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
     public async Task<IList<Message>> GetMessagesByChatIdAsync(Guid chatId, PageInfo pageInfo, MessageIncludes includes, CancellationToken cancellationToken, bool excludeDelayed = true)
     {
         return await context.Messages
+            .OrderByDescending(x => x.Date)
             .Where(x => x.ChatId == chatId)
             .ExcludeDelayed(excludeDelayed)
-            .OrderByDescending(x => x.Date)
             .IncludeReactions(includes.IncludeReactions)
             .IncludeSender(includes.IncludeSender)
             .Paged(pageInfo)
@@ -27,10 +27,59 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
         await context.AddAsync(message, cancellationToken);
     }
 
+    public async Task<IList<Message>> GetAvailableToUserMessagesAsync(
+        Guid messageId, 
+        Guid userId, 
+        MessageIncludes includes, 
+        PageInfo pageInfo,
+        CancellationToken cancellationToken, 
+        bool trackChanges = false, 
+        bool excludeDelayed = true)
+    {
+        var message = await context.Messages
+            .AsNoTracking()
+            .Where(m => m.Id == messageId)
+            .Select(m => new { m.ChatId })
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (message == null)
+        {
+            return new List<Message>();
+        }
+
+        var chatMember = await context.ChatMembers
+            .AsNoTracking()
+            .FirstOrDefaultAsync(cm => cm.UserId == userId && cm.ChatId == message.ChatId, cancellationToken);
+
+        if (chatMember == null)
+        {
+            return new List<Message>();
+        }
+
+        var query = context.Messages
+            .Where(m => m.ChatId == message.ChatId)
+            .OrderByDescending(m => m.Date)
+            .FilterByDate(chatMember.JoinDate, chatMember.RemoveDate)
+            .ExcludeDelayed(excludeDelayed)
+            .IncludeReactions(includes.IncludeReactions)
+            .IncludeSender(includes.IncludeSender)
+            .TrackChanges(trackChanges)
+            .Paged(pageInfo);
+
+        return await query.ToListAsync(cancellationToken);
+    }
+
     public async Task<Message?> GetAvailableToUserMessageAsync(Guid messageId, Guid userId, MessageIncludes includes,
         CancellationToken cancellationToken, bool trackChanges = false, bool excludeDelayed = true)
     {
+        var chatMember = await context.ChatMembers.AsNoTracking().FirstOrDefaultAsync(chatMember =>
+            chatMember.UserId == userId && chatMember.Chat.Messages.Any(message => message.Id == messageId), cancellationToken);
+        if (chatMember is null)
+        {
+            return null;
+        }
         return await context.Messages
+            .FilterByDate(chatMember.JoinDate, chatMember.RemoveDate)
             .ExcludeDelayed(excludeDelayed)
             .IncludeReactions(includes.IncludeReactions)
             .IncludeSender(includes.IncludeSender)

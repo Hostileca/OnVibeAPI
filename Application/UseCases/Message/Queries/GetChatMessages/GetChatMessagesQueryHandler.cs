@@ -37,14 +37,15 @@ public class GetChatMessagesQueryHandler(
             throw new ForbiddenException("You don't have access to this chat");
         }
         
-        var messages = await messageRepository.GetMessagesByChatIdAsync(
+        var messages = await messageRepository.GetAvailableToUserMessagesAsync(
             request.ChatId,
-            request.PageData.Adapt<PageInfo>(),
+            request.InitiatorId,
             new MessageIncludes
             {
                 IncludeReactions = true,
                 IncludeSender = true
             },
+            request.PageData.Adapt<PageInfo>(),
             cancellationToken);
 
         var messagesReadDtos = messages.Adapt<IList<MessageReadDto>>();
