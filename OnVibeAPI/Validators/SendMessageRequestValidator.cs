@@ -12,9 +12,9 @@ public class SendMessageRequestValidator : AbstractValidator<SendMessageRequest>
             .WithMessage("Either text or attachments must be provided")
             .OverridePropertyName("TextOrAttachments");
 
-        RuleFor(x => x.Delay)
-            .GreaterThan(DateTimeOffset.Now)
-            .When(x => x.Delay.HasValue)
+        RuleFor(x => x.Date)
+            .GreaterThan(DateTime.UtcNow)
+            .When(x => x.Date.HasValue)
             .WithMessage("Delay must be in the future");
 
         RuleFor(x => x.ChatId)

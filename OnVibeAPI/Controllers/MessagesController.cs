@@ -21,7 +21,7 @@ public class MessagesController(IMediator mediator) : ControllerBase
             Text = sendMessageRequest.Text,
             InitiatorId = InitiatorId,
             Attachments = sendMessageRequest.Attachments,
-            Delay = sendMessageRequest.Delay
+            Date = sendMessageRequest.Date
         };
         
         var result = await mediator.Send(command, cancellationToken);

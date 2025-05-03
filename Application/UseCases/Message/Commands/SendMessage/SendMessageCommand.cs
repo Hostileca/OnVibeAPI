@@ -10,5 +10,5 @@ public class SendMessageCommand : IRequest<MessageReadDtoBase>
     public Guid InitiatorId { get; init; }
     public string? Text { get; init; }
     public IList<IFormFile>? Attachments { get; init; }
-    public DateTimeOffset? Delay { get; init; }
+    public DateTime? Date { get; init; }
 }

@@ -9,15 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="message read dto to chat hub">
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="fix send message with delay">
       <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Migrations/20250426151927_Init.Designer.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Migrations/20250426151927_Init.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Migrations/BaseDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/MessageConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/MessageConfigs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/MessagesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/MessagesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Requests/Message/SendMessageRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Requests/Message/SendMessageRequest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +42,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/Services/Implementations/Notification/ChatNotificationService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/Services/Implementations/Notification/ChatNotificationService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/Services/Interfaces/Notification/IChatNotificationService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/UseCases/Message/Commands/SendMessage/SendMessageCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserAvatar/GetUserAvatarQuery.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/MessageNotification.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/NotificationBase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -212,15 +211,7 @@
       <workItem from="1746028753701" duration="8424000" />
       <workItem from="1746082387737" duration="14209000" />
       <workItem from="1746205628586" duration="3698000" />
-      <workItem from="1746266954190" duration="13092000" />
-    </task>
-    <task id="LOCAL-00001" summary="fix">
-      <option name="closed" value="true" />
-      <created>1741969757132</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1741969757132</updated>
+      <workItem from="1746266954190" duration="14804000" />
     </task>
     <task id="LOCAL-00002" summary="git">
       <option name="closed" value="true" />
@@ -598,7 +589,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746287751549</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Exclude delayed!">
+      <option name="closed" value="true" />
+      <created>1746288661183</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1746288661183</updated>
+    </task>
+    <task id="LOCAL-00050" summary="fix send message with delay">
+      <option name="closed" value="true" />
+      <created>1746292083040</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1746292083040</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,8 +626,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="(((" />
-    <MESSAGE value="users search" />
     <MESSAGE value="Add extra loaders" />
     <MESSAGE value="fixes" />
     <MESSAGE value="Move loaders" />
@@ -644,7 +649,9 @@
     <MESSAGE value="fix hub" />
     <MESSAGE value="fix hubs" />
     <MESSAGE value="message read dto to chat hub" />
-    <option name="LAST_COMMIT_MESSAGE" value="message read dto to chat hub" />
+    <MESSAGE value="Exclude delayed!" />
+    <MESSAGE value="fix send message with delay" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix send message with delay" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

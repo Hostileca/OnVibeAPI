@@ -45,6 +45,10 @@ public class SendMessageCommandHandler(
         }
         
         var message = request.Adapt<Domain.Entities.Message>();
+        if (request.Date.HasValue)
+        {
+            message.Date = request.Date.Value;
+        }
         
         await messageRepository.AddAsync(message, cancellationToken);
         await messageRepository.SaveChangesAsync(cancellationToken);
@@ -53,9 +57,9 @@ public class SendMessageCommandHandler(
         messageReadDto.Sender = initiator.Adapt<UserReadDto>();
         await messageExtraLoader.LoadExtraInformationAsync(messageReadDto, cancellationToken);
 
-        if (request.Delay.HasValue)
+        if (request.Date.HasValue)
         {
-            var jobId = BackgroundJob.Schedule(() => NotifyMessageAsync(messageReadDto, cancellationToken), request.Delay.Value);
+            var jobId = BackgroundJob.Schedule(() => NotifyMessageAsync(messageReadDto, cancellationToken), request.Date.Value);
             var scheduledMessageReadDto = message.Adapt<ScheduledMessageReadDto>();
             scheduledMessageReadDto.JobId = jobId;
             

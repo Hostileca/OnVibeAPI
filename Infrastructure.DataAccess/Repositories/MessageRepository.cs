@@ -10,11 +10,11 @@ namespace DataAccess.Repositories;
 
 internal class MessageRepository(BaseDbContext context) : IMessageRepository
 {
-    public async Task<IList<Message>> GetMessagesByChatIdAsync(Guid chatId, PageInfo pageInfo, MessageIncludes includes, CancellationToken cancellationToken)
+    public async Task<IList<Message>> GetMessagesByChatIdAsync(Guid chatId, PageInfo pageInfo, MessageIncludes includes, CancellationToken cancellationToken, bool excludeDelayed = true)
     {
         return await context.Messages
             .Where(x => x.ChatId == chatId)
-            .ExcludeDelayed(includes.ExcludeDelayed)
+            .ExcludeDelayed(excludeDelayed)
             .OrderByDescending(x => x.Date)
             .IncludeReactions(includes.IncludeReactions)
             .IncludeSender(includes.IncludeSender)
@@ -28,10 +28,10 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
     }
 
     public async Task<Message?> GetAvailableToUserMessageAsync(Guid messageId, Guid userId, MessageIncludes includes,
-        CancellationToken cancellationToken, bool trackChanges = false)
+        CancellationToken cancellationToken, bool trackChanges = false, bool excludeDelayed = true)
     {
         return await context.Messages
-            .ExcludeDelayed(includes.ExcludeDelayed)
+            .ExcludeDelayed(excludeDelayed)
             .IncludeReactions(includes.IncludeReactions)
             .IncludeSender(includes.IncludeSender)
             .TrackChanges(trackChanges)
