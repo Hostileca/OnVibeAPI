@@ -14,6 +14,7 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
     {
         return await context.Messages
             .Where(x => x.ChatId == chatId)
+            .ExcludeDelayed(includes.ExcludeDelayed)
             .OrderByDescending(x => x.Date)
             .IncludeReactions(includes.IncludeReactions)
             .IncludeSender(includes.IncludeSender)
@@ -30,6 +31,7 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
         CancellationToken cancellationToken, bool trackChanges = false)
     {
         return await context.Messages
+            .ExcludeDelayed(includes.ExcludeDelayed)
             .IncludeReactions(includes.IncludeReactions)
             .IncludeSender(includes.IncludeSender)
             .TrackChanges(trackChanges)

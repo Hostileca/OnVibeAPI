@@ -1,5 +1,7 @@
 ﻿using Application.Dtos.Message;
+using Application.Dtos.User;
 using Application.Helpers.PermissionsHelpers;
+using Application.Services.Interfaces;
 using Application.Services.Interfaces.Notification;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models.Include;
@@ -13,7 +15,9 @@ namespace Application.UseCases.Message.Commands.SendMessage;
 public class SendMessageCommandHandler(
     IChatRepository chatRepository,
     IMessageRepository messageRepository,
-    IChatNotificationService chatNotificationService)
+    IChatNotificationService chatNotificationService,
+    IUserRepository userRepository,
+    IExtraLoader<MessageReadDto> messageExtraLoader)
     : IRequestHandler<SendMessageCommand, MessageReadDtoBase>
 {
     public async Task<MessageReadDtoBase> Handle(SendMessageCommand request, CancellationToken cancellationToken)
@@ -28,34 +32,44 @@ public class SendMessageCommandHandler(
             throw new NotFoundException(typeof(Domain.Entities.Chat), request.ChatId.ToString());
         }
 
+        var initiator = await userRepository.GetUserByIdAsync(request.InitiatorId, cancellationToken);
+
+        if (initiator is null)
+        {
+            throw new NotFoundException(typeof(Domain.Entities.User), request.InitiatorId.ToString());
+        }
+        
         if (!ChatPermissionsHelper.IsUserHasAccessToChat(chat, request.InitiatorId))
         {
             throw new ForbiddenException("You don't have access to this chat");
         }
         
         var message = request.Adapt<Domain.Entities.Message>();
+        
+        await messageRepository.AddAsync(message, cancellationToken);
+        await messageRepository.SaveChangesAsync(cancellationToken);
+
+        var messageReadDto = message.Adapt<MessageReadDto>();
+        messageReadDto.Sender = initiator.Adapt<UserReadDto>();
+        await messageExtraLoader.LoadExtraInformationAsync(messageReadDto, cancellationToken);
+
         if (request.Delay.HasValue)
         {
-            var jobId = BackgroundJob.Schedule(() => SendMessageAsync(message, cancellationToken), request.Delay.Value);
+            var jobId = BackgroundJob.Schedule(() => NotifyMessageAsync(messageReadDto, cancellationToken), request.Delay.Value);
             var scheduledMessageReadDto = message.Adapt<ScheduledMessageReadDto>();
             scheduledMessageReadDto.JobId = jobId;
             
             return scheduledMessageReadDto;
         }
         
-        await SendMessageAsync(message, cancellationToken);
+        await NotifyMessageAsync(messageReadDto, cancellationToken);
         
-        return message.Adapt<MessageReadDto>();
+        return messageReadDto;
     }
     
     // It must be public for Hangfire
-    public async Task SendMessageAsync(Domain.Entities.Message message, CancellationToken cancellationToken)
+    public async Task NotifyMessageAsync(MessageReadDto messageReadDto, CancellationToken cancellationToken)
     {
-        message.Date = DateTime.UtcNow;
-        
-        await messageRepository.AddAsync(message, cancellationToken);
-        await messageRepository.SaveChangesAsync(cancellationToken);
-
-        await chatNotificationService.SendMessageAsync(message.Adapt<MessageReadDto>(), cancellationToken);
+        await chatNotificationService.SendMessageAsync(messageReadDto, cancellationToken);
     }
 }

@@ -16,8 +16,7 @@ public class ChatNotificationService(
     IHubContext<ChatHub> chatHub,
     INotificationRepository notificationRepository,
     IChatMembersRepository chatMembersRepository,
-    IConnectionRepository connectionRepository,
-    IExtraLoader<MessageReadDto> messageExtraLoader) 
+    IConnectionRepository connectionRepository) 
     : IChatNotificationService
 {
     private string GetGroupName(Guid chatId) => $"{Prefixes.Chat}{chatId}";
@@ -38,8 +37,6 @@ public class ChatNotificationService(
             
             await notificationRepository.AddAsync(notification, cancellationToken);
         }
-        
-        await messageExtraLoader.LoadExtraInformationAsync(messageReadDto, cancellationToken);
         
         await chatHub.Clients.Group(GetGroupName(messageReadDto.ChatId)).SendAsync(
             ChatHubEvents.MessageSent, messageReadDto, cancellationToken);

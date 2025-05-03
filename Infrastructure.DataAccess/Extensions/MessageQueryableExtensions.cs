@@ -28,4 +28,16 @@ public static class MessageQueryableExtensions
 
         return messages.Include(message => message.Sender);
     }
+
+    public static IQueryable<Message> ExcludeDelayed(
+        this IQueryable<Message> messages,
+        bool includeDelayed)
+    {
+        if (!includeDelayed)
+        {
+            return messages;
+        }
+
+        return messages.Where(message => message.Date < DateTime.UtcNow);
+    }
 }
