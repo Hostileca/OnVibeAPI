@@ -32,5 +32,11 @@ services:
         condition: service_healthy
     restart: always
 
+  redis:
+    image: redis:6.2
+    container_name: redis_container
+    ports:
+      - "6379:6379"
+
     
     

@@ -9,12 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="Update profile by userId">
+      <change afterPath="$PROJECT_DIR$/Contracts.Redis/Contracts.Redis.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts.Redis/Repositories/ICacheRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts.Redis/Repositories/IConnectionRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure.Redis/DI/Registration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure.Redis/Infrastructure.Redis.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure.Redis/Repositories/ConnectionRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/User/Commands/UpdateUserProfile/UpdateUserProfileCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/UsersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Requests/User/UpdateUserProfileRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Requests/User/UpdateUserProfileRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI.sln" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/docker-compose.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +211,8 @@
       <workItem from="1745949178260" duration="2088000" />
       <workItem from="1746028753701" duration="8424000" />
       <workItem from="1746082387737" duration="14209000" />
-      <workItem from="1746205628586" duration="804000" />
+      <workItem from="1746205628586" duration="3698000" />
+      <workItem from="1746266954190" duration="2829000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -534,7 +542,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746097617161</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Update profile by userId">
+      <option name="closed" value="true" />
+      <created>1746206722606</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1746206722606</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -555,7 +571,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add middleware and message preview for chat" />
     <MESSAGE value="chat create fix" />
     <MESSAGE value="Add validators" />
     <MESSAGE value="funny big fix" />
@@ -580,7 +595,8 @@
     <MESSAGE value="upsert subscription" />
     <MESSAGE value="Add get subscriptions" />
     <MESSAGE value="update SubscriptionReadDto" />
-    <option name="LAST_COMMIT_MESSAGE" value="update SubscriptionReadDto" />
+    <MESSAGE value="Update profile by userId" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update profile by userId" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

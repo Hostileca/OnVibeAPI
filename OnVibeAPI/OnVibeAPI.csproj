@@ -26,8 +26,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Application\Application.csproj" />
+      <ProjectReference Include="..\Contracts.Redis\Contracts.Redis.csproj" />
       <ProjectReference Include="..\Infrastructure.DataAccess\Infrastructure.DataAccess.csproj" />
       <ProjectReference Include="..\Infrastructure.Hangfire\Infrastructure.Hangfire.csproj" />
+      <ProjectReference Include="..\Infrastructure.Redis\Infrastructure.Redis.csproj" />
       <ProjectReference Include="..\Infrastructure.SignalR\Infrastructure.SignalR.csproj" />
     </ItemGroup>
 
