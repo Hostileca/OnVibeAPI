@@ -4,5 +4,5 @@ namespace OnVibeAPI.Requests.ChatMember;
 
 public class SetRoleToMemberRequest
 {
-    public ChatRoles Role { get; set; }
+    public ChatRole Role { get; set; }
 }

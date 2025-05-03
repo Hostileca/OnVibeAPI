@@ -9,9 +9,17 @@ namespace DataAccess.Repositories;
 
 internal class ChatMembersRepository(BaseDbContext context) : IChatMembersRepository
 {
-    public async Task<IList<ChatMember>> GetChatMembersAsync(Guid chatId, CancellationToken cancellationToken)
+    public async Task AddChatMemberAsync(ChatMember chatMember, CancellationToken cancellationToken)
     {
-        return await context.ChatMembers.Where(x => x.ChatId == chatId).ToListAsync(cancellationToken);
+        await context.ChatMembers.AddAsync(chatMember, cancellationToken);
+    }
+
+    public async Task<IList<ChatMember>> GetChatMembersAsync(Guid chatId, ChatMemberIncludes includes, CancellationToken cancellationToken)
+    {
+        return await context.ChatMembers
+            .IncludeUser(includes.IncludeUser)
+            .Where(x => x.ChatId == chatId)
+            .ToListAsync(cancellationToken);
     }
 
     public async Task<ChatMember?> GetChatMemberAsync(Guid userId, Guid chatId, ChatMemberIncludes includes, CancellationToken cancellationToken, bool trackChanges = false)

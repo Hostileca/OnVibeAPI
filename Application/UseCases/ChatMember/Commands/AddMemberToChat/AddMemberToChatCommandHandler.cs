@@ -1,5 +1,7 @@
 ﻿using Application.Dtos.Chat;
+using Application.Dtos.Message;
 using Application.Helpers.PermissionsHelpers;
+using Application.Services.Interfaces.Notification;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models.Include;
 using Domain.Entities;
@@ -11,25 +13,34 @@ namespace Application.UseCases.ChatMember.Commands.AddMemberToChat;
 
 public class AddMemberToChatCommandHandler(
     IChatRepository chatRepository,
-    IUserRepository userRepository) 
+    IUserRepository userRepository,
+    IMessageRepository messageRepository,
+    IChatMembersRepository chatMembersRepository,
+    IChatNotificationService chatNotificationService) 
     : IRequestHandler<AddMemberToChatCommand, ChatReadDto>
 {
+    private static string GetAddMessage(Domain.Entities.User initiator, Domain.Entities.User user) => $"{user.Username} was added by {initiator.Username}";
+    
     public async Task<ChatReadDto> Handle(AddMemberToChatCommand request, CancellationToken cancellationToken)
     {
         var chat = await chatRepository.GetChatByIdAsync(
             request.ChatId, 
-            new ChatIncludes{ IncludeChatMembers = true }, 
-            cancellationToken, 
-            true);
+            new ChatIncludes(), 
+            cancellationToken);
         
         if (chat is null)
         {
             throw new NotFoundException(typeof(Domain.Entities.Chat), request.ChatId.ToString());
         }
         
-        var initiatorToChat = chat.Members.FirstOrDefault(m => m.UserId == request.InitiatorId);
+        var initiatorMember = await chatMembersRepository.GetChatMemberAsync(
+            request.InitiatorId,
+            request.ChatId,
+            new ChatMemberIncludes { IncludeUser = true },
+            cancellationToken,
+            true);
 
-        if (initiatorToChat is null)
+        if (initiatorMember is null)
         {
             throw new ForbiddenException("You are not a member of this chat");
         }
@@ -38,8 +49,10 @@ public class AddMemberToChatCommandHandler(
         {
             throw new ForbiddenException("You don't have permissions to add members to this chat");
         }
+
+        var chatMembers = await chatMembersRepository.GetChatMembersAsync(request.ChatId, new ChatMemberIncludes(), cancellationToken);
         
-        if(chat.Members.Any(m => m.UserId == request.UserId))
+        if(chatMembers.Any(m => m.UserId == request.UserId))
         {
             throw new ConflictException("User is already a member of this chat");
         }
@@ -50,16 +63,27 @@ public class AddMemberToChatCommandHandler(
         {
             throw new NotFoundException(typeof(Domain.Entities.User), request.UserId.ToString());
         }
+
+        var newMember = new Domain.Entities.ChatMember
+        {
+            Chat = chat,
+            User = user,
+            JoinDate = DateTime.UtcNow,
+            Role = ChatRole.Member
+        };
+        var addMessage = new Domain.Entities.Message
+        {
+            Date = DateTime.UtcNow,
+            ChatId = chat.Id,
+            Text = GetAddMessage(initiatorMember.User, newMember.User)
+        };
         
-        chat.Members.Add(
-            new Domain.Entities.ChatMember
-            {
-                Chat = chat, 
-                User = user,
-                JoinDate = DateTime.UtcNow,
-                Role = ChatRoles.Member
-            });
+        await messageRepository.AddAsync(addMessage, cancellationToken);
+        await chatMembersRepository.AddChatMemberAsync(newMember, cancellationToken);
         await chatRepository.SaveChangesAsync(cancellationToken);
+        
+        await chatNotificationService.SendMessageToGroupAsync(addMessage.Adapt<MessageReadDto>(), cancellationToken);
+        await chatNotificationService.AddMemberToGroupAsync(newMember, cancellationToken);
         
         return chat.Adapt<ChatReadDto>();
     }

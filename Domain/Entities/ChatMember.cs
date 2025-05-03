@@ -7,5 +7,5 @@ public class ChatMember
     public Chat Chat { get; set; }
     public Guid ChatId { get; set; }
     public DateTime JoinDate { get; set; }
-    public ChatRoles Role { get; set; } = ChatRoles.Member;
+    public ChatRole Role { get; set; } = ChatRole.Member;
 }

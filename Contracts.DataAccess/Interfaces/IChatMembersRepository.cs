@@ -5,7 +5,8 @@ namespace Contracts.DataAccess.Interfaces;
 
 public interface IChatMembersRepository
 {
-    Task<IList<ChatMember>> GetChatMembersAsync(Guid chatId, CancellationToken cancellationToken);
+    Task AddChatMemberAsync(ChatMember chatMember, CancellationToken cancellationToken);
+    Task<IList<ChatMember>> GetChatMembersAsync(Guid chatId, ChatMemberIncludes includes, CancellationToken cancellationToken);
 
     Task<ChatMember?> GetChatMemberAsync(Guid userId, Guid chatId, ChatMemberIncludes includes, CancellationToken cancellationToken, bool trackChanges = false);
     void Remove(ChatMember chatMember);

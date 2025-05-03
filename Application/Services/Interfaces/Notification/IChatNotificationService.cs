@@ -5,6 +5,8 @@ namespace Application.Services.Interfaces.Notification;
 
 public interface IChatNotificationService
 {
-    Task SendMessageAsync(MessageReadDto messageReadDto, CancellationToken cancellationToken);
-    Task RemoveMemberAsync(ChatMember member, CancellationToken cancellationToken);
+    Task SendMessageToGroupAsync(MessageReadDto messageReadDto, CancellationToken cancellationToken);
+    Task RemoveMemberFromGroupAsync(ChatMember member, CancellationToken cancellationToken);
+    Task AddMemberToGroupAsync(ChatMember member, CancellationToken cancellationToken);
+    Task AddMembersToGroupAsync(IEnumerable<ChatMember> members, CancellationToken cancellationToken);
 }

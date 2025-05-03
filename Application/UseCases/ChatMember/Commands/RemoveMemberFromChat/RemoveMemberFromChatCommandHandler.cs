@@ -26,10 +26,13 @@ public class RemoveMemberFromChatCommandHandler(
         var chat = await chatRepository.GetChatByIdAsync(
             request.ChatId, 
             new ChatIncludes(), 
-            cancellationToken);
+            cancellationToken,
+            true);
 
         if (chat is null)
+        {
             throw new NotFoundException(typeof(Domain.Entities.Chat), request.ChatId.ToString());
+        }
 
         var initiatorMember = await chatMembersRepository.GetChatMemberAsync(
             request.InitiatorId,
@@ -45,7 +48,7 @@ public class RemoveMemberFromChatCommandHandler(
 
         if (request.InitiatorId == request.UserId)
         {
-            if (initiatorMember.Role == ChatRoles.Admin)
+            if (initiatorMember.Role == ChatRole.Admin)
             {
                 throw new ForbiddenException("You can't leave the chat as an admin");
             }
@@ -61,8 +64,8 @@ public class RemoveMemberFromChatCommandHandler(
             await messageRepository.AddAsync(leaveMessage, cancellationToken);
             await chatRepository.SaveChangesAsync(cancellationToken);
 
-            await chatNotificationService.SendMessageAsync(leaveMessage.Adapt<MessageReadDto>(), cancellationToken);
-            await chatNotificationService.RemoveMemberAsync(initiatorMember, cancellationToken);
+            await chatNotificationService.SendMessageToGroupAsync(leaveMessage.Adapt<MessageReadDto>(), cancellationToken);
+            await chatNotificationService.RemoveMemberFromGroupAsync(initiatorMember, cancellationToken);
 
             return chat.Adapt<ChatReadDto>();
         }
@@ -94,8 +97,9 @@ public class RemoveMemberFromChatCommandHandler(
         chatMembersRepository.Remove(targetMember);
         await messageRepository.AddAsync(removeMessage, cancellationToken);
         await chatRepository.SaveChangesAsync(cancellationToken);
-        await chatNotificationService.SendMessageAsync(removeMessage.Adapt<MessageReadDto>(), cancellationToken);
-        await chatNotificationService.RemoveMemberAsync(targetMember, cancellationToken);
+        
+        await chatNotificationService.SendMessageToGroupAsync(removeMessage.Adapt<MessageReadDto>(), cancellationToken);
+        await chatNotificationService.RemoveMemberFromGroupAsync(targetMember, cancellationToken);
 
         return chat.Adapt<ChatReadDto>();
     }

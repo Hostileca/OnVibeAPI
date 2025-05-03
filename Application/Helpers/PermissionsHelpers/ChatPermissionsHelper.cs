@@ -11,6 +11,6 @@ public static class ChatPermissionsHelper
     
     public static bool IsUserHasAccessToManageChat(Chat chat, Guid userId)
     {
-        return chat.Members.Any(cm => cm.UserId == userId && cm.Role != ChatRoles.Member);
+        return chat.Members.Any(cm => cm.UserId == userId && cm.Role != ChatRole.Member);
     }
 }

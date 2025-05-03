@@ -34,7 +34,7 @@ public class DeleteChatCommandHandler(
             throw new ForbiddenException("You are not a member of this chat");
         }
         
-        if (initiatorToChat.Role != ChatRoles.Admin)
+        if (initiatorToChat.Role != ChatRole.Admin)
         {
             throw new ForbiddenException("You don't have permissions to delete this chat");
         }

@@ -8,6 +8,6 @@ public class SetRoleToMemberCommand : IRequest<ChatMemberReadDto>
 {
     public Guid ChatId { get; init; }
     public Guid UserId { get; init; }
-    public ChatRoles Role { get; init; }
+    public ChatRole Role { get; init; }
     public Guid InitiatorId { get; init; }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities;
 
-public enum ChatRoles
+public enum ChatRole
 {
     Member,
     Moderator,

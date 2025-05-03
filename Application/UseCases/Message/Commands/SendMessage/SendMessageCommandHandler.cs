@@ -74,6 +74,6 @@ public class SendMessageCommandHandler(
     // It must be public for Hangfire
     public async Task NotifyMessageAsync(MessageReadDto messageReadDto, CancellationToken cancellationToken)
     {
-        await chatNotificationService.SendMessageAsync(messageReadDto, cancellationToken);
+        await chatNotificationService.SendMessageToGroupAsync(messageReadDto, cancellationToken);
     }
 }
