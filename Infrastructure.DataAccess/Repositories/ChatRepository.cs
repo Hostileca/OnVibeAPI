@@ -28,6 +28,14 @@ internal class ChatRepository(BaseDbContext context) : IChatRepository
             .ToListAsync(cancellationToken);
     }
 
+    public async Task<IList<Guid>> GetAllUserChatsIds(Guid userId, CancellationToken cancellationToken = default)
+    {
+        return await context.Chats
+            .Where(chat => chat.Members.Any(cm => cm.UserId == userId))
+            .Select(chat => chat.Id)
+            .ToListAsync(cancellationToken);
+    }
+
     public async Task<IList<Guid>> GetChatMembersIdsAsync(Guid chatId, CancellationToken cancellationToken)
     {
         return await context.ChatMembers

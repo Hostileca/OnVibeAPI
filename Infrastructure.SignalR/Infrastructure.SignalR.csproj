@@ -11,7 +11,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Contracts.DataAccess\Contracts.DataAccess.csproj" />
       <ProjectReference Include="..\Contracts.Redis\Contracts.Redis.csproj" />
+      <ProjectReference Include="..\Contracts.SignalR\Contracts.SignalR.csproj" />
     </ItemGroup>
 
 </Project>

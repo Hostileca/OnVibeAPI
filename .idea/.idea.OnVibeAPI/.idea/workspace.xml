@@ -9,10 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="what have I done? idk...">
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="fix hub">
+      <change afterPath="$PROJECT_DIR$/Contracts.SignalR/Constants/Prefixes.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/DI/Registration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IChatRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IChatRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.SignalR/Hubs/ChatHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.SignalR/Hubs/ChatHub.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.SignalR/Hubs/ChatHubEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.SignalR/Constants/ChatHubEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.SignalR/Infrastructure.SignalR.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.SignalR/Infrastructure.SignalR.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI.sln" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +50,7 @@
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/MessageNotification.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/NotificationBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Post.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/OnVibeAPI/DI/Registration.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -204,7 +211,7 @@
       <workItem from="1746028753701" duration="8424000" />
       <workItem from="1746082387737" duration="14209000" />
       <workItem from="1746205628586" duration="3698000" />
-      <workItem from="1746266954190" duration="8736000" />
+      <workItem from="1746266954190" duration="10678000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <option name="closed" value="true" />
@@ -558,7 +565,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746274136018</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="fix hub">
+      <option name="closed" value="true" />
+      <created>1746282669662</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1746282669662</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,7 +594,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="funny big fix" />
     <MESSAGE value="include sender to message" />
     <MESSAGE value="Update user entity" />
     <MESSAGE value="(((" />
@@ -604,7 +618,8 @@
     <MESSAGE value="Update profile by userId" />
     <MESSAGE value="add redis and connection repository" />
     <MESSAGE value="what have I done? idk..." />
-    <option name="LAST_COMMIT_MESSAGE" value="what have I done? idk..." />
+    <MESSAGE value="fix hub" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix hub" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

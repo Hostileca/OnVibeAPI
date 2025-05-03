@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.SignalR.Hubs;
+﻿namespace Contracts.SignalR.Constants;
 
 public static class ChatHubEvents
 {

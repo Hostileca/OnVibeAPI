@@ -2,6 +2,7 @@
 using Application.Services.Interfaces.Notification;
 using Contracts.DataAccess.Interfaces;
 using Contracts.Redis.Repositories;
+using Contracts.SignalR.Constants;
 using Domain.Entities;
 using Domain.Entities.Notifications;
 using Infrastructure.SignalR.Hubs;
@@ -17,8 +18,7 @@ public class ChatNotificationService(
     IConnectionRepository connectionRepository) 
     : IChatNotificationService
 {
-    private const string ChatPrefix = "chat_";
-    private string GetGroupName(Guid chatId) => $"{ChatPrefix}{chatId}";
+    private string GetGroupName(Guid chatId) => $"{Prefixes.Chat}{chatId}";
     
     public async Task SendMessageAsync(Message message, CancellationToken cancellationToken)
     {
