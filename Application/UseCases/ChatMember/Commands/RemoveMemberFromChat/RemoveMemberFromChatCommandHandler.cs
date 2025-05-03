@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.Chat;
+using Application.Dtos.Message;
 using Application.Helpers.PermissionsHelpers;
 using Application.Services.Interfaces.Notification;
 using Contracts.DataAccess.Interfaces;
@@ -60,7 +61,7 @@ public class RemoveMemberFromChatCommandHandler(
             await messageRepository.AddAsync(leaveMessage, cancellationToken);
             await chatRepository.SaveChangesAsync(cancellationToken);
 
-            await chatNotificationService.SendMessageAsync(leaveMessage, cancellationToken);
+            await chatNotificationService.SendMessageAsync(leaveMessage.Adapt<MessageReadDto>(), cancellationToken);
             await chatNotificationService.RemoveMemberAsync(initiatorMember, cancellationToken);
 
             return chat.Adapt<ChatReadDto>();
@@ -93,7 +94,7 @@ public class RemoveMemberFromChatCommandHandler(
         chatMembersRepository.Remove(targetMember);
         await messageRepository.AddAsync(removeMessage, cancellationToken);
         await chatRepository.SaveChangesAsync(cancellationToken);
-        await chatNotificationService.SendMessageAsync(removeMessage, cancellationToken);
+        await chatNotificationService.SendMessageAsync(removeMessage.Adapt<MessageReadDto>(), cancellationToken);
         await chatNotificationService.RemoveMemberAsync(targetMember, cancellationToken);
 
         return chat.Adapt<ChatReadDto>();

@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.Message;
+using Application.Services.Interfaces;
 using Application.Services.Interfaces.Notification;
 using Contracts.DataAccess.Interfaces;
 using Contracts.Redis.Repositories;
@@ -15,18 +16,19 @@ public class ChatNotificationService(
     IHubContext<ChatHub> chatHub,
     INotificationRepository notificationRepository,
     IChatMembersRepository chatMembersRepository,
-    IConnectionRepository connectionRepository) 
+    IConnectionRepository connectionRepository,
+    IExtraLoader<MessageReadDto> messageExtraLoader) 
     : IChatNotificationService
 {
     private string GetGroupName(Guid chatId) => $"{Prefixes.Chat}{chatId}";
     
-    public async Task SendMessageAsync(Message message, CancellationToken cancellationToken)
+    public async Task SendMessageAsync(MessageReadDto messageReadDto, CancellationToken cancellationToken)
     {
-        var chatMembers = await chatMembersRepository.GetChatMembersAsync(message.ChatId, cancellationToken);
+        var chatMembers = await chatMembersRepository.GetChatMembersAsync(messageReadDto.ChatId, cancellationToken);
         
         foreach (var member in chatMembers)
         {
-            if (member.UserId == message.SenderId)
+            if (member.UserId == messageReadDto.Sender.Id)
             {
                 continue;
             }
@@ -37,8 +39,10 @@ public class ChatNotificationService(
             await notificationRepository.AddAsync(notification, cancellationToken);
         }
         
-        await chatHub.Clients.Group(GetGroupName(message.ChatId)).SendAsync(
-            ChatHubEvents.MessageSent, message.Adapt<MessageReadDto>(), cancellationToken);
+        await messageExtraLoader.LoadExtraInformationAsync(messageReadDto, cancellationToken);
+        
+        await chatHub.Clients.Group(GetGroupName(messageReadDto.ChatId)).SendAsync(
+            ChatHubEvents.MessageSent, messageReadDto, cancellationToken);
     }
 
     public async Task RemoveMemberAsync(ChatMember member, CancellationToken cancellationToken)

@@ -56,6 +56,6 @@ public class SendMessageCommandHandler(
         await messageRepository.AddAsync(message, cancellationToken);
         await messageRepository.SaveChangesAsync(cancellationToken);
 
-        await chatNotificationService.SendMessageAsync(message, cancellationToken);
+        await chatNotificationService.SendMessageAsync(message.Adapt<MessageReadDto>(), cancellationToken);
     }
 }
