@@ -10,25 +10,13 @@ namespace DataAccess.Repositories;
 
 internal class MessageRepository(BaseDbContext context) : IMessageRepository
 {
-    public async Task<IList<Message>> GetMessagesByChatIdAsync(Guid chatId, PageInfo pageInfo, MessageIncludes includes, CancellationToken cancellationToken, bool excludeDelayed = true)
-    {
-        return await context.Messages
-            .OrderByDescending(x => x.Date)
-            .Where(x => x.ChatId == chatId)
-            .ExcludeDelayed(excludeDelayed)
-            .IncludeReactions(includes.IncludeReactions)
-            .IncludeSender(includes.IncludeSender)
-            .Paged(pageInfo)
-            .ToListAsync(cancellationToken);
-    }
-
     public async Task AddAsync(Message message, CancellationToken cancellationToken)
     {
         await context.AddAsync(message, cancellationToken);
     }
 
     public async Task<IList<Message>> GetAvailableToUserMessagesAsync(
-        Guid messageId, 
+        Guid chatId, 
         Guid userId, 
         MessageIncludes includes, 
         PageInfo pageInfo,
@@ -36,20 +24,20 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
         bool trackChanges = false, 
         bool excludeDelayed = true)
     {
-        var message = await context.Messages
+        var chat = await context.Chats
             .AsNoTracking()
-            .Where(m => m.Id == messageId)
-            .Select(m => new { m.ChatId })
+            .Where(chat => chat.Id == chatId)
+            .Select(chat => new { chat.Id })
             .FirstOrDefaultAsync(cancellationToken);
 
-        if (message == null)
+        if (chat == null)
         {
             return new List<Message>();
         }
 
         var chatMember = await context.ChatMembers
             .AsNoTracking()
-            .FirstOrDefaultAsync(cm => cm.UserId == userId && cm.ChatId == message.ChatId, cancellationToken);
+            .FirstOrDefaultAsync(cm => cm.UserId == userId && cm.ChatId == chat.Id, cancellationToken);
 
         if (chatMember == null)
         {
@@ -57,8 +45,8 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
         }
 
         var query = context.Messages
-            .Where(m => m.ChatId == message.ChatId)
             .OrderByDescending(m => m.Date)
+            .Where(m => m.ChatId == chat.Id)
             .FilterByDate(chatMember.JoinDate, chatMember.RemoveDate)
             .ExcludeDelayed(excludeDelayed)
             .IncludeReactions(includes.IncludeReactions)

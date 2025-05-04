@@ -1,6 +1,7 @@
 ﻿using Application.Dtos.Chat;
 using Application.Dtos.Message;
 using Application.Helpers.PermissionsHelpers;
+using Application.Services.Interfaces;
 using Application.Services.Interfaces.Notification;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models.Include;
@@ -16,7 +17,8 @@ public class AddMemberToChatCommandHandler(
     IUserRepository userRepository,
     IMessageRepository messageRepository,
     IChatMembersRepository chatMembersRepository,
-    IChatNotificationService chatNotificationService) 
+    IChatNotificationService chatNotificationService,
+    IExtraLoader<ChatReadDto> chatExtraLoader) 
     : IRequestHandler<AddMemberToChatCommand, ChatReadDto>
 {
     private static string GetAddMessage(Domain.Entities.User initiator, Domain.Entities.User user) => $"{user.Username} was added by {initiator.Username}";
@@ -53,6 +55,8 @@ public class AddMemberToChatCommandHandler(
         var chatMembers = await chatMembersRepository.GetChatMembersAsync(request.ChatId, new ChatMemberIncludes{ IncludeUser = true }, cancellationToken, false);
 
         var currentDate = DateTime.UtcNow;
+        var chatReadDto = chat.Adapt<ChatReadDto>();
+        await chatExtraLoader.LoadExtraInformationAsync(chatReadDto, cancellationToken);
         var existingChatMember = chatMembers.FirstOrDefault(m => m.UserId == request.UserId);
         if (existingChatMember is not null)
         {
@@ -60,23 +64,21 @@ public class AddMemberToChatCommandHandler(
             {
                 throw new ConflictException("User is already a member of this chat");
             }
-            else
+
+            var backMessage = new Domain.Entities.Message
             {
-                var backMessage = new Domain.Entities.Message
-                {
-                    Date = currentDate,
-                    ChatId = chat.Id,
-                    Text = GetAddMessage(initiatorMember.User, existingChatMember.User)
-                };
+                Date = currentDate,
+                ChatId = chat.Id,
+                Text = GetAddMessage(initiatorMember.User, existingChatMember.User)
+            };
         
-                await messageRepository.AddAsync(backMessage, cancellationToken);
-                await chatRepository.SaveChangesAsync(cancellationToken);
+            await messageRepository.AddAsync(backMessage, cancellationToken);
+            await chatRepository.SaveChangesAsync(cancellationToken);
                 
-                await chatNotificationService.SendMessageToGroupAsync(backMessage.Adapt<MessageReadDto>(), cancellationToken);
-                await chatNotificationService.AddMemberToGroupAsync(existingChatMember, cancellationToken);
+            await chatNotificationService.SendMessageToGroupAsync(backMessage.Adapt<MessageReadDto>(), cancellationToken);
+            await chatNotificationService.AddMemberToGroupAsync(existingChatMember, chatReadDto, cancellationToken);
         
-                return chat.Adapt<ChatReadDto>();
-            }
+            return chatReadDto;
         }
         
         var user = await userRepository.GetUserByIdAsync(request.UserId, cancellationToken, true);
@@ -103,10 +105,10 @@ public class AddMemberToChatCommandHandler(
         await messageRepository.AddAsync(addMessage, cancellationToken);
         await chatMembersRepository.AddChatMemberAsync(newMember, cancellationToken);
         await chatRepository.SaveChangesAsync(cancellationToken);
-        
-        await chatNotificationService.AddMemberToGroupAsync(newMember, cancellationToken);
+
+        await chatNotificationService.AddMemberToGroupAsync(newMember, chatReadDto, cancellationToken);
         await chatNotificationService.SendMessageToGroupAsync(addMessage.Adapt<MessageReadDto>(), cancellationToken);
         
-        return chat.Adapt<ChatReadDto>();
+        return chatReadDto;
     }
 }

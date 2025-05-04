@@ -6,7 +6,6 @@ namespace Contracts.DataAccess.Interfaces;
 
 public interface IMessageRepository
 {
-    Task<IList<Message>> GetMessagesByChatIdAsync(Guid chatId, PageInfo pageInfo, MessageIncludes includes, CancellationToken cancellationToken, bool excludeDelayed = true);
     Task AddAsync(Message message, CancellationToken cancellationToken);
     Task<IList<Message>> GetAvailableToUserMessagesAsync(
         Guid messageId, 

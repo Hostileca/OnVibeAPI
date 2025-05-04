@@ -28,7 +28,7 @@ public class ChatNotificationService(
         
         foreach (var member in chatMembers)
         {
-            if (member.UserId == messageReadDto.Sender.Id)
+            if (messageReadDto.Sender is not null && member.UserId == messageReadDto.Sender.Id)
             {
                 continue;
             }
@@ -50,20 +50,19 @@ public class ChatNotificationService(
         await Task.WhenAll(removeTasks);
     }
 
-    public async Task AddMemberToGroupAsync(ChatMember member, CancellationToken cancellationToken)
+    public async Task AddMemberToGroupAsync(ChatMember member, ChatReadDto chatReadDto, CancellationToken cancellationToken)
     {
         await AddMemberConnectionsToGroupAsync(member, cancellationToken);
-        await chatHub.Clients.Group(GetGroupName(member.Chat.Id)).SendAsync(
-            ChatHubEvents.ChatAdded, member.Chat.Adapt<ChatReadDto>(), cancellationToken);
+        await chatHub.Clients.Group(GetGroupName(chatReadDto.Id)).SendAsync(
+            ChatHubEvents.ChatAdded, chatReadDto, cancellationToken);
     }
     
-    public async Task AddMembersToGroupAsync(IEnumerable<ChatMember> members, CancellationToken cancellationToken)
+    public async Task AddMembersToGroupAsync(IEnumerable<ChatMember> members, ChatReadDto chatReadDto, CancellationToken cancellationToken)
     {
         var addTasks = members.Select(member => AddMemberConnectionsToGroupAsync(member, cancellationToken));
-        var chat = members.FirstOrDefault().Chat;
         await Task.WhenAll(addTasks);
-        await chatHub.Clients.Group(GetGroupName(chat.Id)).SendAsync(
-            ChatHubEvents.ChatAdded, chat.Adapt<ChatReadDto>(), cancellationToken);
+        await chatHub.Clients.Group(GetGroupName(chatReadDto.Id)).SendAsync(
+            ChatHubEvents.ChatAdded, chatReadDto, cancellationToken);
     }
 
     private async Task AddMemberConnectionsToGroupAsync(ChatMember member, CancellationToken cancellationToken)

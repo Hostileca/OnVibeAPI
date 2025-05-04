@@ -1,5 +1,6 @@
 ﻿using Application.Dtos.Chat;
 using Application.Dtos.Message;
+using Application.Services.Interfaces;
 using Application.Services.Interfaces.Notification;
 using Contracts.DataAccess.Interfaces;
 using Domain.Entities;
@@ -12,8 +13,8 @@ namespace Application.UseCases.Chat.Commands.CreateChat;
 public class CreateChatCommandHandler(
     IChatRepository chatRepository,
     IUserRepository userRepository,
-    IMessageRepository messageRepository,
-    IChatNotificationService chatNotificationService) 
+    IChatNotificationService chatNotificationService,
+    IExtraLoader<ChatReadDto> chatExtraLoader) 
     : IRequestHandler<CreateChatCommand, ChatReadDto>
 {
     private static string GetCreateMessage(Domain.Entities.User initiator, Domain.Entities.Chat chat) => $"{initiator.Username} created a chat {chat.Name}";
@@ -48,14 +49,16 @@ public class CreateChatCommandHandler(
             ChatId = chat.Id,
             Text = GetCreateMessage(users.FirstOrDefault(u => u.Id == request.InitiatorId), chat)
         };
-        
-        await messageRepository.AddAsync(createMessage, cancellationToken);
+        chat.Messages = new List<Domain.Entities.Message> { createMessage };
+
         await chatRepository.AddChatAsync(chat, cancellationToken);
         await chatRepository.SaveChangesAsync(cancellationToken);
 
-        await chatNotificationService.AddMembersToGroupAsync(chat.Members, cancellationToken);
+        var chatReadDto = chat.Adapt<ChatReadDto>();
+        await chatExtraLoader.LoadExtraInformationAsync(chatReadDto, cancellationToken);
+        await chatNotificationService.AddMembersToGroupAsync(chat.Members, chatReadDto, cancellationToken);
         await chatNotificationService.SendMessageToGroupAsync(createMessage.Adapt<MessageReadDto>(), cancellationToken);
         
-        return chat.Adapt<ChatReadDto>();
+        return chatReadDto;
     }
 }
