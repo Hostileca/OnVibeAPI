@@ -104,8 +104,8 @@ public class AddMemberToChatCommandHandler(
         await chatMembersRepository.AddChatMemberAsync(newMember, cancellationToken);
         await chatRepository.SaveChangesAsync(cancellationToken);
         
-        await chatNotificationService.SendMessageToGroupAsync(addMessage.Adapt<MessageReadDto>(), cancellationToken);
         await chatNotificationService.AddMemberToGroupAsync(newMember, cancellationToken);
+        await chatNotificationService.SendMessageToGroupAsync(addMessage.Adapt<MessageReadDto>(), cancellationToken);
         
         return chat.Adapt<ChatReadDto>();
     }
