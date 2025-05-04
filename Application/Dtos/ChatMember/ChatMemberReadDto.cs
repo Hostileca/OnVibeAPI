@@ -8,4 +8,5 @@ public class ChatMemberReadDto
     public Guid ChatId { get; set; }
     public ChatRole Role { get; set; }
     public DateTime JoinDate { get; set; }
+    public DateTime? RemoveDate { get; set; }
 }

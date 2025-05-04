@@ -9,18 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="add new notifications">
-      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Migrations/20250426151927_Init.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Migrations/20250426151927_Init.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Migrations/BaseDbContextModelSnapshot.cs" afterDir="false" />
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/ChatReadDtoExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/ChatReadDtoExtraLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IMessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IMessageRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Entities/ChatMember.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/ChatMember.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/ChatMemberConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Configurations/ChatMemberConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,17 +37,12 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/Services/Implementations/Notification/ChatNotificationService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/Services/Implementations/Notification/ChatNotificationService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/Services/Interfaces/Notification/IChatNotificationService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Application/UseCases/Message/Commands/SendMessage/SendMessageCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Application/UseCases/User/Queries/GetUserAvatar/GetUserAvatarQuery.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Contracts.DataAccess/Interfaces/IMessageRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Domain/Entities/ChatMember.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/MessageNotification.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Notifications/NotificationBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Entities/Post.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/Infrastructure.SignalR/Hubs/ChatHub.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/kiril/RiderProjects/OnVibeAPI/OnVibeAPI/DI/Registration.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -74,29 +59,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.OnVibeAPI: IIS Express.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.OnVibeAPI: http.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.OnVibeAPI: https.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.OnVibeAPI: IIS Express.executor": "Run",
+    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Debug",
+    ".NET Launch Settings Profile.OnVibeAPI: https.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;yaml&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "yaml"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.OnVibeAPI: http">
     <configuration name="OnVibeAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" />
@@ -220,23 +205,8 @@
       <workItem from="1746205628586" duration="3698000" />
       <workItem from="1746266954190" duration="15018000" />
       <workItem from="1746296178810" duration="2843000" />
-      <workItem from="1746305464968" duration="2055000" />
-    </task>
-    <task id="LOCAL-00004" summary="git init">
-      <option name="closed" value="true" />
-      <created>1741970760336</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1741970760336</updated>
-    </task>
-    <task id="LOCAL-00005" summary="iu">
-      <option name="closed" value="true" />
-      <created>1742142864851</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1742142864851</updated>
+      <workItem from="1746305464968" duration="3127000" />
+      <workItem from="1746342894724" duration="1345000" />
     </task>
     <task id="LOCAL-00006" summary="add hangfire">
       <option name="closed" value="true" />
@@ -614,7 +584,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746305500245</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="get messages upgrade">
+      <option name="closed" value="true" />
+      <created>1746307550001</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1746307550001</updated>
+    </task>
+    <task id="LOCAL-00054" summary="fix">
+      <option name="closed" value="true" />
+      <created>1746308565125</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1746308565125</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,7 +621,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="fixes" />
     <MESSAGE value="Move loaders" />
     <MESSAGE value="fix loaders" />
     <MESSAGE value="refactor" />
@@ -646,7 +631,6 @@
     <MESSAGE value="Add IsLiked to LikeReadDto.cs" />
     <MESSAGE value="Add HttpContextAccessor" />
     <MESSAGE value="Add LikeConfigs.cs" />
-    <MESSAGE value="fix" />
     <MESSAGE value="add IsSubscribed" />
     <MESSAGE value="upsert subscription" />
     <MESSAGE value="Add get subscriptions" />
@@ -660,7 +644,9 @@
     <MESSAGE value="Exclude delayed!" />
     <MESSAGE value="fix send message with delay" />
     <MESSAGE value="add new notifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="add new notifications" />
+    <MESSAGE value="get messages upgrade" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
