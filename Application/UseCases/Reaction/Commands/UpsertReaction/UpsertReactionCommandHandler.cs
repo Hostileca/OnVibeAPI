@@ -25,12 +25,23 @@ public class UpsertReactionCommandHandler(
         
         var reaction = message.Reactions.FirstOrDefault(r => r.SenderId == request.InitiatorId);
         
-        if (reaction is not null)
+        if (reaction is null)
+        {
+            message.Reactions.Add(request.Adapt<Domain.Entities.Reaction>()); 
+            await messageRepository.SaveChangesAsync(cancellationToken);
+            
+            return Unit.Value;
+        }
+        
+        if (request.Emoji is not null)
+        {
+            reaction.Emoji = request.Emoji;
+        }
+        else
         {
             message.Reactions.Remove(reaction);
         }
         
-        message.Reactions.Add(request.Adapt<Domain.Entities.Reaction>()); 
         await messageRepository.SaveChangesAsync(cancellationToken);
 
         return Unit.Value;
