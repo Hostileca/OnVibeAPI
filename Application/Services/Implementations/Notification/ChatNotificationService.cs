@@ -1,5 +1,6 @@
 ﻿using Application.Dtos.Chat;
 using Application.Dtos.Message;
+using Application.Dtos.Reaction;
 using Application.Services.Interfaces.Notification;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models.Include;
@@ -63,6 +64,19 @@ public class ChatNotificationService(
         await Task.WhenAll(addTasks);
         await chatHub.Clients.Group(GetGroupName(chatReadDto.Id)).SendAsync(
             ChatHubEvents.ChatAdded, chatReadDto, cancellationToken);
+    }
+
+    public async Task SendReactionToGroupAsync(
+        ReactionReadDto reactionReadDto, 
+        Guid chatId, 
+        CancellationToken cancellationToken,
+        bool isRemoved = false)
+    {
+        var eventName = isRemoved ? ChatHubEvents.ReactionRemoved : ChatHubEvents.ReactionSent;
+
+        await chatHub.Clients
+            .Group(GetGroupName(chatId))
+            .SendAsync(eventName, reactionReadDto, cancellationToken);
     }
 
     private async Task AddMemberConnectionsToGroupAsync(ChatMember member, CancellationToken cancellationToken)

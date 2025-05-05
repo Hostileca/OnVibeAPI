@@ -5,4 +5,5 @@ public static class ChatHubEvents
     public const string MessageSent = "MessageSent";
     public const string ChatAdded = "ChatAdded";
     public const string ReactionSent = "ReactionSent";
+    public const string ReactionRemoved = "ReactionRemoved";
 }
