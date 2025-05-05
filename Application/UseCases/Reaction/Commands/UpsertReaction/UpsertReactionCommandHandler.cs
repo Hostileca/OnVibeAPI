@@ -59,14 +59,18 @@ public class UpsertReactionCommandHandler(
 
     private async Task UpdateReactionAsync(Domain.Entities.Reaction reaction, string emoji, Guid chatId, CancellationToken cancellationToken)
     {
+        await chatNotificationService.SendReactionToGroupAsync(
+            reaction.Adapt<ReactionReadDto>(),
+            chatId,
+            cancellationToken,true);
+        
         reaction.Emoji = emoji;
         await messageRepository.SaveChangesAsync(cancellationToken);
 
         await chatNotificationService.SendReactionToGroupAsync(
             reaction.Adapt<ReactionReadDto>(),
             chatId,
-            cancellationToken,
-            isRemoved: true);
+            cancellationToken);
     }
 
     private async Task RemoveReactionAsync(Domain.Entities.Message message, Domain.Entities.Reaction reaction, Guid chatId, CancellationToken cancellationToken)
@@ -77,6 +81,7 @@ public class UpsertReactionCommandHandler(
         await chatNotificationService.SendReactionToGroupAsync(
             reaction.Adapt<ReactionReadDto>(),
             chatId,
-            cancellationToken);
+            cancellationToken,
+            true);
     }
 }

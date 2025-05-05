@@ -9,12 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="fix reaction validation">
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="add notifications to reactions">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Interfaces/Notification/IChatNotificationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Interfaces/Notification/IChatNotificationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.SignalR/Constants/ChatHubEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.SignalR/Constants/ChatHubEvents.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,15 +212,7 @@
       <workItem from="1746342894724" duration="6520000" />
       <workItem from="1746366769379" duration="399000" />
       <workItem from="1746367318105" duration="7312000" />
-      <workItem from="1746462930836" duration="5870000" />
-    </task>
-    <task id="LOCAL-00016" summary="refactor">
-      <option name="closed" value="true" />
-      <created>1745147375738</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1745147375738</updated>
+      <workItem from="1746462930836" duration="7641000" />
     </task>
     <task id="LOCAL-00017" summary="Add validators">
       <option name="closed" value="true" />
@@ -610,7 +598,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746474480641</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="add notifications to reactions">
+      <option name="closed" value="true" />
+      <created>1746475092094</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1746475092094</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,7 +627,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="replace add and remove like with upsert" />
     <MESSAGE value="Add IsLiked to LikeReadDto.cs" />
     <MESSAGE value="Add HttpContextAccessor" />
     <MESSAGE value="Add LikeConfigs.cs" />
@@ -656,7 +651,8 @@
     <MESSAGE value="upsert reaction fix" />
     <MESSAGE value="fix" />
     <MESSAGE value="fix reaction validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix reaction validation" />
+    <MESSAGE value="add notifications to reactions" />
+    <option name="LAST_COMMIT_MESSAGE" value="add notifications to reactions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
