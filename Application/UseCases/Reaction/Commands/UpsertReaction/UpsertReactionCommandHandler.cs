@@ -16,7 +16,8 @@ public class UpsertReactionCommandHandler(
             request.MessageId,
             request.InitiatorId,
             new MessageIncludes { IncludeReactions = true },
-            cancellationToken);
+            cancellationToken,
+            true);
         
         if (message is null)
         {
@@ -33,7 +34,7 @@ public class UpsertReactionCommandHandler(
             return Unit.Value;
         }
         
-        if (request.Emoji is not null)
+        if (!string.IsNullOrEmpty(request.Emoji))
         {
             reaction.Emoji = request.Emoji;
         }

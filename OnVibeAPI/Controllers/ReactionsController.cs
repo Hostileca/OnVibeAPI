@@ -9,7 +9,7 @@ namespace OnVibeAPI.Controllers;
 public class ReactionsController(IMediator mediator) : ControllerBase
 {
     [HttpPut]
-    public async Task<IActionResult> UpsertReaction([FromForm] UpsertReactionRequest upsertReactionRequest, CancellationToken cancellationToken)
+    public async Task<IActionResult> UpsertReaction([FromBody] UpsertReactionRequest upsertReactionRequest, CancellationToken cancellationToken)
     {
         var command = new UpsertReactionCommand
         {
