@@ -16,7 +16,8 @@ public class UpsertReactionCommandHandler(
             request.MessageId,
             request.InitiatorId,
             new MessageIncludes { IncludeReactions = true },
-            cancellationToken);
+            cancellationToken,
+            true);
         
         if (message is null)
         {
