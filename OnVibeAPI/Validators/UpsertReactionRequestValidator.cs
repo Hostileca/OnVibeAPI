@@ -9,8 +9,10 @@ public class UpsertReactionRequestValidator : AbstractValidator<UpsertReactionRe
     {
         RuleFor(x => x.MessageId)
             .IsGuid();
-        
+
         RuleFor(x => x.Emoji)
-            .IsEmoji();
+            .IsEmoji()
+            .When(x => x.Emoji != null)
+            .WithMessage("Invalid emoji");
     }
 }
