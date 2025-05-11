@@ -27,18 +27,7 @@ public class ChatNotificationService(
     {
         var chatMembers = await chatMembersRepository.GetChatMembersAsync(messageReadDto.ChatId, new ChatMemberIncludes(), cancellationToken);
         
-        foreach (var member in chatMembers)
-        {
-            if (messageReadDto.Sender is not null && member.UserId == messageReadDto.Sender.Id)
-            {
-                continue;
-            }
-            
-            var notification = member.Adapt<MessageNotification>();
-            notification.UserId = member.UserId;
-            
-            await notificationRepository.AddAsync(notification, cancellationToken);
-        }
+        
         
         await chatHub.Clients.Group(GetGroupName(messageReadDto.ChatId)).SendAsync(
             ChatHubEvents.MessageSent, messageReadDto, cancellationToken);

@@ -9,8 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="add notifications to reactions">
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/NotificationConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/NotificationConfigs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,29 +65,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.OnVibeAPI: IIS Express.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.OnVibeAPI: http.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.OnVibeAPI: https.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.OnVibeAPI: IIS Express.executor": "Run",
+    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Debug",
+    ".NET Launch Settings Profile.OnVibeAPI: https.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;yaml&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "yaml"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.OnVibeAPI: http">
     <configuration name="OnVibeAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" />
@@ -212,15 +215,12 @@
       <workItem from="1746342894724" duration="6520000" />
       <workItem from="1746366769379" duration="399000" />
       <workItem from="1746367318105" duration="7312000" />
-      <workItem from="1746462930836" duration="7641000" />
-    </task>
-    <task id="LOCAL-00017" summary="Add validators">
-      <option name="closed" value="true" />
-      <created>1745150190314</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1745150190316</updated>
+      <workItem from="1746462930836" duration="8360000" />
+      <workItem from="1746553851334" duration="512000" />
+      <workItem from="1746640140909" duration="1318000" />
+      <workItem from="1746730218210" duration="1188000" />
+      <workItem from="1746870004772" duration="706000" />
+      <workItem from="1746952262884" duration="4765000" />
     </task>
     <task id="LOCAL-00018" summary="funny big fix">
       <option name="closed" value="true" />
@@ -606,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746475092094</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="fix">
+      <option name="closed" value="true" />
+      <created>1746476784171</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1746476784171</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,10 +657,10 @@
     <MESSAGE value="Add MessageId to ReactionReadDto" />
     <MESSAGE value="fix upsert reaction" />
     <MESSAGE value="upsert reaction fix" />
-    <MESSAGE value="fix" />
     <MESSAGE value="fix reaction validation" />
     <MESSAGE value="add notifications to reactions" />
-    <option name="LAST_COMMIT_MESSAGE" value="add notifications to reactions" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
