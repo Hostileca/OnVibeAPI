@@ -10,6 +10,7 @@ public class NotificationConfigs : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<Message, MessageNotification>()
+            .Map(dest => dest.Id, _ => Guid.NewGuid())
             .Map(dest => dest.MessageId, src => src.Id)
             .Map(dest => dest.Date, _ => DateTime.UtcNow)
             .Map(dest => dest.IsRead, _ => false)

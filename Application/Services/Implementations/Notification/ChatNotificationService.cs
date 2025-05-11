@@ -16,8 +16,6 @@ namespace Application.Services.Implementations.Notification;
 
 public class ChatNotificationService(
     IHubContext<ChatHub> chatHub,
-    INotificationRepository notificationRepository,
-    IChatMembersRepository chatMembersRepository,
     IConnectionRepository connectionRepository) 
     : IChatNotificationService
 {
@@ -25,10 +23,6 @@ public class ChatNotificationService(
     
     public async Task SendMessageToGroupAsync(MessageReadDto messageReadDto, CancellationToken cancellationToken)
     {
-        var chatMembers = await chatMembersRepository.GetChatMembersAsync(messageReadDto.ChatId, new ChatMemberIncludes(), cancellationToken);
-        
-        
-        
         await chatHub.Clients.Group(GetGroupName(messageReadDto.ChatId)).SendAsync(
             ChatHubEvents.MessageSent, messageReadDto, cancellationToken);
     }

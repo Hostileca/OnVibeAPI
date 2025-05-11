@@ -14,18 +14,20 @@ internal class NotificationRepository(BaseDbContext context) : INotificationRepo
     }
 
     public async Task<IList<NotificationBase>> GetUserNotificationsByIdsAsync(Guid userId, IList<Guid> ids, CancellationToken cancellationToken,
-        bool trackChanges = false)
+        bool trackChanges = false, bool excludeDelayed = true)
     {
         return await context.Notifications
+            .ExcludeDelayed(excludeDelayed)
             .TrackChanges(trackChanges)
             .Where(x => x.UserId == userId && ids.Contains(x.Id))
             .ToListAsync(cancellationToken); 
     }
 
     public async Task<IList<NotificationBase>> GetUserNotificationsAsync(Guid userId, bool isRead, CancellationToken cancellationToken,
-        bool trackChanges = false)
+        bool trackChanges = false, bool excludeDelayed = true)
     {
         return await context.Notifications
+            .ExcludeDelayed(excludeDelayed)
             .TrackChanges(trackChanges)
             .Where(x => x.UserId == userId && x.IsRead == isRead)
             .ToListAsync(cancellationToken);

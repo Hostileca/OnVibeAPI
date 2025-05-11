@@ -18,6 +18,7 @@ public class MessageConfigs : IRegister
         config.NewConfig<SendMessageCommand, Message>()
             .Map(dest => dest.SenderId, src => src.InitiatorId)
             .Map(dest => dest.Date, _ => DateTime.UtcNow)
+            .Map(dest => dest.Reactions, _ => new List<Reaction>())
             .AfterMapping((src, dest) => 
             {
                 if (src.Attachments is null)
