@@ -9,14 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="Add notification on new messages">
-      <change afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/NotificationQueryableExtensions.cs" afterDir="false" />
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/MessageConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/MessageConfigs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/Notification/ChatNotificationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/INotificationRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/INotificationRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/NotificationRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/NotificationRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/AddMemberToChat/AddMemberToChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/AddMemberToChat/AddMemberToChatCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatQueryableExtensions.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,29 +64,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.OnVibeAPI: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Debug",
-    ".NET Launch Settings Profile.OnVibeAPI: https.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.OnVibeAPI: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.OnVibeAPI: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.OnVibeAPI: https.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "yaml"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;yaml&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.OnVibeAPI: http">
     <configuration name="OnVibeAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OnVibeAPI/OnVibeAPI.csproj" />
@@ -223,15 +219,8 @@
       <workItem from="1746640140909" duration="1318000" />
       <workItem from="1746730218210" duration="1188000" />
       <workItem from="1746870004772" duration="706000" />
-      <workItem from="1746952262884" duration="6600000" />
-    </task>
-    <task id="LOCAL-00019" summary="include sender to message">
-      <option name="closed" value="true" />
-      <created>1745156085181</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1745156085182</updated>
+      <workItem from="1746952262884" duration="12827000" />
+      <workItem from="1746993470583" duration="841000" />
     </task>
     <task id="LOCAL-00020" summary="Update user entity">
       <option name="closed" value="true" />
@@ -617,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746964728349</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1746966865444</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1746966865444</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,7 +635,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add HttpContextAccessor" />
     <MESSAGE value="Add LikeConfigs.cs" />
     <MESSAGE value="add IsSubscribed" />
     <MESSAGE value="upsert subscription" />
@@ -663,7 +659,8 @@
     <MESSAGE value="add notifications to reactions" />
     <MESSAGE value="fix" />
     <MESSAGE value="Add notification on new messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add notification on new messages" />
+    <MESSAGE value="fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -693,32 +690,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs</url>
-          <line>56</line>
-          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Application\UseCases\Message\Commands\SendMessage\SendMessageCommandHandler.cs" containingFunctionPresentation="Method 'Handle'">
-            <startOffsets>
-              <option value="2039" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2099" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs</url>
-          <line>85</line>
-          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Application\UseCases\Message\Commands\SendMessage\SendMessageCommandHandler.cs" containingFunctionPresentation="Method 'CreateNotifications'">
-            <startOffsets>
-              <option value="3244" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3279" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs</url>

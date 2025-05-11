@@ -65,6 +65,7 @@ public class AddMemberToChatCommandHandler(
                 throw new ConflictException("User is already a member of this chat");
             }
 
+            existingChatMember.RemoveDate = null;
             var backMessage = new Domain.Entities.Message
             {
                 Date = currentDate,

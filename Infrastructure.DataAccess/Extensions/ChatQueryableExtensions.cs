@@ -7,13 +7,13 @@ internal static class ChatQueryableExtensions
 {
     public static IQueryable<Chat> IncludeChatMembers(
         this IQueryable<Chat> chats,
-        bool includeUsers)
+        bool includeChatMembers)
     {
-        if (!includeUsers)
+        if (!includeChatMembers)
         {
             return chats;
         }
 
-        return chats.Include(chat => chat.Members);
+        return chats.Include(chat => chat.Members.Where(cm => cm.RemoveDate != null));
     }
 }
