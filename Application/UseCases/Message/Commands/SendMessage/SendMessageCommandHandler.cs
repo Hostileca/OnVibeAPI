@@ -92,15 +92,8 @@ public class SendMessageCommandHandler(
             
             var notification = message.Adapt<MessageNotification>();
             notification.UserId = member.UserId;
-            try
-            {
-                await notificationRepository.AddAsync(notification, cancellationToken);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            
+            await notificationRepository.AddAsync(notification, cancellationToken);
         }
     }
 }

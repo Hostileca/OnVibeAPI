@@ -21,16 +21,29 @@ internal class PostRepository(BaseDbContext context) : IPostRepository
         await context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<IList<Post>> GetPostsByUserIdAsync(Guid id, PostIncludes includes, PageInfo pageInfo, CancellationToken cancellationToken)
+    public async Task<IList<Post>> GetPostsByUserIdAsync(Guid userId, PostIncludes includes, PageInfo pageInfo, CancellationToken cancellationToken)
     {
         return await context.Posts
-            .Where(x => x.UserId == id)
+            .Where(x => x.UserId == userId)
             .OrderByDescending(x => x.Date)
             .IncludeUser(includes.IncludeUser)
             .Paged(pageInfo)
             .ToListAsync(cancellationToken);
     }
 
+    public async Task<IList<Post>> GetWallByUserIdAsync(Guid userId, PostIncludes includes, PageInfo pageInfo, CancellationToken cancellationToken)
+    {
+        var userSubscriptions = context.Subscriptions
+            .Where(sub => sub.SubscribedById == userId)
+            .Select(sub => sub.SubscribedToId);
+
+        return await context.Posts
+            .Where(post => userSubscriptions.Contains(post.UserId))
+            .OrderByDescending(post => post.Date)
+            .IncludeUser(includes.IncludeUser)
+            .Paged(pageInfo)
+            .ToListAsync(cancellationToken);
+    }
 
     public async Task<Post?> GetPostByIdAsync(Guid id, CancellationToken cancellationToken, bool trackChanges = false)
     {

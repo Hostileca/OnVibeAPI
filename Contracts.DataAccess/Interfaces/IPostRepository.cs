@@ -8,7 +8,8 @@ public interface IPostRepository
 { 
     Task AddPostAsync(Post post, CancellationToken cancellationToken); 
     Task SaveChangesAsync(CancellationToken cancellationToken); 
-    Task<IList<Post>> GetPostsByUserIdAsync(Guid id, PostIncludes includes, PageInfo pageInfo, CancellationToken cancellationToken); 
+    Task<IList<Post>> GetPostsByUserIdAsync(Guid userId, PostIncludes includes, PageInfo pageInfo, CancellationToken cancellationToken);
+    Task<IList<Post>> GetWallByUserIdAsync(Guid userId, PostIncludes includes, PageInfo pageInfo, CancellationToken cancellationToken);
     Task<Post?> GetPostByIdAsync(Guid id, CancellationToken cancellationToken, bool trackChanges = false);
     Task<int> GetUserPostsCountAsync(Guid userId, CancellationToken cancellationToken);
 }

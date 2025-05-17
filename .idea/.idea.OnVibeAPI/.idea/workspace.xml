@@ -10,9 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Post/Queries/GetUserWall/GetUserWallQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UseCases/Post/Queries/GetUserWall/GetUserWallQueryHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/AddMemberToChat/AddMemberToChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/AddMemberToChat/AddMemberToChatCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IPostRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IPostRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatQueryableExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/PostRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/PostRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/PostsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/PostsController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,15 +225,10 @@
       <workItem from="1746730218210" duration="1188000" />
       <workItem from="1746870004772" duration="706000" />
       <workItem from="1746952262884" duration="12827000" />
-      <workItem from="1746993470583" duration="841000" />
-    </task>
-    <task id="LOCAL-00020" summary="Update user entity">
-      <option name="closed" value="true" />
-      <created>1745604981926</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1745604981926</updated>
+      <workItem from="1746993470583" duration="987000" />
+      <workItem from="1747160060761" duration="3515000" />
+      <workItem from="1747422045148" duration="2653000" />
+      <workItem from="1747483774652" duration="5798000" />
     </task>
     <task id="LOCAL-00021" summary="(((">
       <option name="closed" value="true" />
@@ -614,7 +614,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746966865444</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="fix chat members">
+      <option name="closed" value="true" />
+      <created>1746994325904</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1746994325905</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,7 +643,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add LikeConfigs.cs" />
     <MESSAGE value="add IsSubscribed" />
     <MESSAGE value="upsert subscription" />
     <MESSAGE value="Add get subscriptions" />
@@ -660,7 +667,8 @@
     <MESSAGE value="fix" />
     <MESSAGE value="Add notification on new messages" />
     <MESSAGE value="fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
+    <MESSAGE value="fix chat members" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix chat members" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -692,17 +700,17 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/UseCases/Message/Commands/SendMessage/SendMessageCommandHandler.cs</url>
-          <line>100</line>
-          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Application\UseCases\Message\Commands\SendMessage\SendMessageCommandHandler.cs" containingFunctionPresentation="Method 'CreateNotifications'">
+          <url>file://$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs</url>
+          <line>36</line>
+          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Application\UseCases\Message\Queries\GetChatMessages\GetChatMessagesQueryHandler.cs" containingFunctionPresentation="Method 'Handle'">
             <startOffsets>
-              <option value="3720" />
+              <option value="1246" />
             </startOffsets>
             <endOffsets>
-              <option value="3741" />
+              <option value="1313" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="12" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

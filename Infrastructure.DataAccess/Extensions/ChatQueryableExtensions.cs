@@ -14,6 +14,6 @@ internal static class ChatQueryableExtensions
             return chats;
         }
 
-        return chats.Include(chat => chat.Members.Where(cm => cm.RemoveDate != null));
+        return chats.Include(chat => chat.Members.Where(cm => cm.RemoveDate != DateTime.MinValue ));
     }
 }
