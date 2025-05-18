@@ -73,7 +73,7 @@ public class RemoveMemberFromChatCommandHandler(
         }
 
         var targetMember = chat.Members.FirstOrDefault(m => m.UserId == request.UserId);
-        if (targetMember is null)
+        if (targetMember is null || targetMember.IsRemoved)
         {
             throw new NotFoundException(typeof(Domain.Entities.ChatMember), request.UserId.ToString());
         }
