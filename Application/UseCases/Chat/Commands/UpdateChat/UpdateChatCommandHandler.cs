@@ -38,13 +38,12 @@ public class UpdateChatCommandHandler(
         {
             throw new ForbiddenException("You don't have permissions to update this chat");
         }
-
+        
         request.Adapt(chat);
+        await chatRepository.SaveChangesAsync(cancellationToken);
         
         var chatReadDto = chat.Adapt<ChatReadDto>();
         await chatExtraLoader.LoadExtraInformationAsync(chatReadDto, cancellationToken);
-        
-        await chatRepository.SaveChangesAsync(cancellationToken);
         
         return chatReadDto;
     }

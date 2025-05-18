@@ -16,11 +16,6 @@ public class GetUserAvatarQueryHandler(IUserRepository userRepository) : IReques
             throw new NotFoundException(typeof(Domain.Entities.User), request.UserId.ToString());
         }
         
-        if (user.Avatar is null)
-        {
-            throw new NotFoundException("Image is null");
-        }
-        
         return user.Avatar is null ? [] : Base64Converter.ConvertToByteArray(user.Avatar);
     }
 }
