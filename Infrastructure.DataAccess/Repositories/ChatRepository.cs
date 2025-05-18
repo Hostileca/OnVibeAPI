@@ -32,8 +32,9 @@ internal class ChatRepository(BaseDbContext context) : IChatRepository
 
         var chatsQuery = query.Select(q => q.Chat)
             .Paged(pageInfo);
-        
-        chatsQuery = chatsQuery.IncludeChatMembers(includes.IncludeChatMembers);
+
+        chatsQuery = chatsQuery
+            .IncludeChatMembers(includes.IncludeChatMembers);
 
         return await chatsQuery.ToListAsync(cancellationToken);
     }

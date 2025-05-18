@@ -31,4 +31,11 @@ internal class ChatMembersRepository(BaseDbContext context) : IChatMembersReposi
             .ExcludeRemoved(excludeRemoved)
             .FirstOrDefaultAsync(x => x.ChatId == chatId && x.UserId == userId, cancellationToken);
     }
+
+    public async Task LoadUser(ChatMember chatMember, CancellationToken cancellationToken)
+    {
+        await context.Entry(chatMember)
+            .Reference(cm => cm.User)
+            .LoadAsync(cancellationToken);
+    }
 }

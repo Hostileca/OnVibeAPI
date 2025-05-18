@@ -25,22 +25,18 @@ public class RemoveMemberFromChatCommandHandler(
     {
         var chat = await chatRepository.GetChatByIdAsync(
             request.ChatId, 
-            new ChatIncludes(), 
+            new ChatIncludes
+            {
+                IncludeChatMembers = true
+            }, 
             cancellationToken,
             true);
-
         if (chat is null)
         {
             throw new NotFoundException(typeof(Domain.Entities.Chat), request.ChatId.ToString());
         }
 
-        var initiatorMember = await chatMembersRepository.GetChatMemberAsync(
-            request.InitiatorId,
-            request.ChatId,
-            new ChatMemberIncludes { IncludeUser = true },
-            cancellationToken,
-            true);
-
+        var initiatorMember = chat.Members.FirstOrDefault(member => member.UserId == request.InitiatorId);
         if (initiatorMember is null)
         {
             throw new ForbiddenException("You are not a member of this chat");
@@ -76,18 +72,14 @@ public class RemoveMemberFromChatCommandHandler(
             throw new ForbiddenException("You don't have permissions to remove members from this chat");
         }
 
-        var targetMember = await chatMembersRepository.GetChatMemberAsync(
-            request.UserId,
-            request.ChatId,
-            new ChatMemberIncludes { IncludeUser = true },
-            cancellationToken,
-            true);
-
+        var targetMember = chat.Members.FirstOrDefault(m => m.UserId == request.UserId);
         if (targetMember is null)
         {
             throw new NotFoundException(typeof(Domain.Entities.ChatMember), request.UserId.ToString());
         }
 
+        await chatMembersRepository.LoadUser(initiatorMember, cancellationToken);
+        await chatMembersRepository.LoadUser(targetMember, cancellationToken);
         var removeMessage = new Domain.Entities.Message
         {
             Date = currentDate,
@@ -95,8 +87,9 @@ public class RemoveMemberFromChatCommandHandler(
             Text = GetRemoveMessage(initiatorMember.User, targetMember.User)
         };
 
-        initiatorMember.RemoveDate = currentDate;
+        targetMember.RemoveDate = currentDate;
         await messageRepository.AddAsync(removeMessage, cancellationToken);
+        chat.Members.Remove(targetMember);
         await chatRepository.SaveChangesAsync(cancellationToken);
         
         await chatNotificationService.SendMessageToGroupAsync(removeMessage.Adapt<MessageReadDto>(), cancellationToken);

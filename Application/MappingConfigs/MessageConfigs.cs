@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.Message;
+using Application.Dtos.Reaction;
 using Application.Helpers;
 using Application.UseCases.Message.Commands.SendMessage;
 using Domain.Entities;
@@ -13,7 +14,9 @@ public class MessageConfigs : IRegister
         config.NewConfig<Message, MessageReadDto>()
             .Map(dest => dest.Sender, src => src.Sender, src => src.Sender != null)
             .Map(dest => dest.AttachmentsIds, src => src.Attachments.Select(a => a.Id),
-                src => src.Attachments != null);
+                src => src.Attachments != null)
+            .Map(dest => dest.Reactions, _ => new List<ReactionReadDto>(),
+                src => src.Reactions == null);
 
         config.NewConfig<SendMessageCommand, Message>()
             .Map(dest => dest.SenderId, src => src.InitiatorId)

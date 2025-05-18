@@ -27,37 +27,32 @@ public class AddMemberToChatCommandHandler(
     {
         var chat = await chatRepository.GetChatByIdAsync(
             request.ChatId, 
-            new ChatIncludes(), 
-            cancellationToken);
-        
+            new ChatIncludes
+            {
+                IncludeChatMembers = true,
+            }, 
+            cancellationToken,
+            true);
         if (chat is null)
         {
             throw new NotFoundException(typeof(Domain.Entities.Chat), request.ChatId.ToString());
         }
         
-        var initiatorMember = await chatMembersRepository.GetChatMemberAsync(
-            request.InitiatorId,
-            request.ChatId,
-            new ChatMemberIncludes { IncludeUser = true },
-            cancellationToken,
-            true);
-
+        var initiatorMember = chat.Members.FirstOrDefault(member => member.UserId == request.InitiatorId);
         if (initiatorMember is null)
         {
             throw new ForbiddenException("You are not a member of this chat");
         }
-        
-        if (ChatPermissionsHelper.IsUserHasAccessToManageChat(chat, request.InitiatorId))
+        if (!ChatPermissionsHelper.IsUserHasAccessToManageChat(chat, request.InitiatorId))
         {
             throw new ForbiddenException("You don't have permissions to add members to this chat");
         }
 
-        var chatMembers = await chatMembersRepository.GetChatMembersAsync(request.ChatId, new ChatMemberIncludes{ IncludeUser = true }, cancellationToken, false);
-
         var currentDate = DateTime.UtcNow;
         var chatReadDto = chat.Adapt<ChatReadDto>();
         await chatExtraLoader.LoadExtraInformationAsync(chatReadDto, cancellationToken);
-        var existingChatMember = chatMembers.FirstOrDefault(m => m.UserId == request.UserId);
+        var existingChatMember = chat.Members.FirstOrDefault(m => m.UserId == request.UserId);
+        await chatMembersRepository.LoadUser(initiatorMember, cancellationToken);
         if (existingChatMember is not null)
         {
             if(!existingChatMember.IsRemoved)
@@ -66,6 +61,7 @@ public class AddMemberToChatCommandHandler(
             }
 
             existingChatMember.RemoveDate = null;
+            await chatMembersRepository.LoadUser(existingChatMember, cancellationToken);
             var backMessage = new Domain.Entities.Message
             {
                 Date = currentDate,
@@ -83,7 +79,6 @@ public class AddMemberToChatCommandHandler(
         }
         
         var user = await userRepository.GetUserByIdAsync(request.UserId, cancellationToken, true);
-        
         if (user is null)
         {
             throw new NotFoundException(typeof(Domain.Entities.User), request.UserId.ToString());
@@ -92,7 +87,9 @@ public class AddMemberToChatCommandHandler(
         var newMember = new Domain.Entities.ChatMember
         {
             Chat = chat,
+            ChatId = chat.Id,
             User = user,
+            UserId = user.Id,
             JoinDate = currentDate,
             Role = ChatRole.Member
         };
@@ -104,7 +101,7 @@ public class AddMemberToChatCommandHandler(
         };
         
         await messageRepository.AddAsync(addMessage, cancellationToken);
-        await chatMembersRepository.AddChatMemberAsync(newMember, cancellationToken);
+        chat.Members.Add(newMember);
         await chatRepository.SaveChangesAsync(cancellationToken);
 
         await chatNotificationService.AddMemberToGroupAsync(newMember, chatReadDto, cancellationToken);

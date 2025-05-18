@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace DataAccess.Extensions;
 
@@ -14,6 +15,6 @@ internal static class ChatQueryableExtensions
             return chats;
         }
 
-        return chats.Include(chat => chat.Members.Where(cm => cm.RemoveDate != DateTime.MinValue ));
+        return chats.Include(chat => chat.Members.Where(cm => cm.RemoveDate != DateTime.MinValue));
     }
 }
