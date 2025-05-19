@@ -9,16 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="remove 404 from images">
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/MessageConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/MessageConfigs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/AddMemberToChat/AddMemberToChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/AddMemberToChat/AddMemberToChatCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/RemoveMemberFromChat/RemoveMemberFromChatCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/ChatMember/Commands/RemoveMemberFromChat/RemoveMemberFromChatCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IChatMembersRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IChatMembersRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatQueryableExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatMembersRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatMembersRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/ChatRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Controllers/ChatMembersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Controllers/ChatMembersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/Message.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Message.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +67,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.OnVibeAPI: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Run",
+    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Debug",
     ".NET Launch Settings Profile.OnVibeAPI: https.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -230,23 +224,8 @@
       <workItem from="1747160060761" duration="3515000" />
       <workItem from="1747422045148" duration="2653000" />
       <workItem from="1747483774652" duration="7077000" />
-      <workItem from="1747563697905" duration="11223000" />
-    </task>
-    <task id="LOCAL-00023" summary="Add extra loaders">
-      <option name="closed" value="true" />
-      <created>1745688041993</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1745688041993</updated>
-    </task>
-    <task id="LOCAL-00024" summary="fixes">
-      <option name="closed" value="true" />
-      <created>1745782466352</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1745782466352</updated>
+      <workItem from="1747563697905" duration="16988000" />
+      <workItem from="1747671159137" duration="3777000" />
     </task>
     <task id="LOCAL-00025" summary="Move loaders">
       <option name="closed" value="true" />
@@ -624,7 +603,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747578415756</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="fix chat members">
+      <option name="closed" value="true" />
+      <created>1747582605362</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1747582605362</updated>
+    </task>
+    <task id="LOCAL-00073" summary="FIX">
+      <option name="closed" value="true" />
+      <created>1747582838700</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1747582838700</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +640,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add get subscriptions" />
     <MESSAGE value="update SubscriptionReadDto" />
     <MESSAGE value="Update profile by userId" />
     <MESSAGE value="add redis and connection repository" />
@@ -667,10 +661,11 @@
     <MESSAGE value="fix" />
     <MESSAGE value="Add notification on new messages" />
     <MESSAGE value="fixes" />
-    <MESSAGE value="fix chat members" />
     <MESSAGE value="Add wall" />
     <MESSAGE value="remove 404 from images" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove 404 from images" />
+    <MESSAGE value="fix chat members" />
+    <MESSAGE value="FIX" />
+    <option name="LAST_COMMIT_MESSAGE" value="FIX" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -700,45 +695,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/UseCases/Message/Queries/GetChatMessages/GetChatMessagesQueryHandler.cs</url>
-          <line>50</line>
-          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Application\UseCases\Message\Queries\GetChatMessages\GetChatMessagesQueryHandler.cs" containingFunctionPresentation="Method 'Handle'">
-            <startOffsets>
-              <option value="1702" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1765" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs</url>
-          <line>41</line>
-          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Infrastructure.DataAccess\Repositories\MessageRepository.cs" containingFunctionPresentation="Method 'GetAvailableToUserMessagesAsync'">
-            <startOffsets>
-              <option value="1299" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1322" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs</url>
-          <line>46</line>
-          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Infrastructure.DataAccess\Repositories\MessageRepository.cs" containingFunctionPresentation="Method 'GetAvailableToUserMessagesAsync'">
-            <startOffsets>
-              <option value="1392" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1801" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

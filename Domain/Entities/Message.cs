@@ -11,7 +11,7 @@ public class Message
     public Guid? SenderId { get; set; }
     public Chat Chat { get; set; }
     public Guid ChatId { get; set; }
-    public IList<Reaction> Reactions { get; set; }
-    public IList<MessageAttachment> Attachments { get; set; }
+    public IList<Reaction> Reactions { get; set; } = new List<Reaction>();
+    public IList<MessageAttachment> Attachments { get; set; } = new List<MessageAttachment>();
     public IList<MessageNotification> Notifications { get; set; }
 }
