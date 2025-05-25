@@ -8,7 +8,7 @@ public interface IMessageRepository
 {
     Task AddAsync(Message message, CancellationToken cancellationToken);
     Task<IList<Message>> GetAvailableToUserMessagesAsync(
-        Guid messageId, 
+        Guid chatId,
         Guid userId, 
         MessageIncludes includes, 
         PageInfo pageInfo,
@@ -17,6 +17,7 @@ public interface IMessageRepository
         bool excludeDelayed = true);
     Task<Message?> GetAvailableToUserMessageAsync(
         Guid messageId, 
+        Guid chatId,
         Guid userId, 
         MessageIncludes includes, 
         CancellationToken cancellationToken,

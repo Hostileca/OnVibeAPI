@@ -24,31 +24,10 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
         bool trackChanges = false, 
         bool excludeDelayed = true)
     {
-        var chat = await context.Chats
-            .AsNoTracking()
-            .Where(chat => chat.Id == chatId)
-            .Select(chat => new { chat.Id })
-            .FirstOrDefaultAsync(cancellationToken);
+        var memberPeriod = await context.ChatMembers.GetChatMemberPeriod(cancellationToken);
 
-        if (chat == null)
-        {
-            return new List<Message>();
-        }
-
-        var chatMember = await context.ChatMembers
-            .AsNoTracking()
-            .FirstOrDefaultAsync(cm => cm.UserId == userId && cm.ChatId == chat.Id, cancellationToken);
-
-        if (chatMember == null)
-        {
-            return new List<Message>();
-        }
-
-        var query = context.Messages
-            .OrderByDescending(m => m.Date)
-            .Where(m => m.ChatId == chat.Id)
-            .FilterByDate(chatMember.JoinDate, chatMember.RemoveDate)
-            .ExcludeDelayed(excludeDelayed)
+        var query = context.Messages.GetAvailableToUserMessagesQuery(
+                chatId, userId, excludeDelayed, memberPeriod.joinDate, memberPeriod.removeDate)
             .IncludeReactions(includes.IncludeReactions)
             .IncludeSender(includes.IncludeSender)
             .TrackChanges(trackChanges)
@@ -57,22 +36,18 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
         return await query.ToListAsync(cancellationToken);
     }
 
-    public async Task<Message?> GetAvailableToUserMessageAsync(Guid messageId, Guid userId, MessageIncludes includes,
+    public async Task<Message?> GetAvailableToUserMessageAsync(Guid messageId, Guid chatId, Guid userId, MessageIncludes includes,
         CancellationToken cancellationToken, bool trackChanges = false, bool excludeDelayed = true)
     {
-        var chatMember = await context.ChatMembers.AsNoTracking().FirstOrDefaultAsync(chatMember =>
-            chatMember.UserId == userId && chatMember.Chat.Messages.Any(message => message.Id == messageId), cancellationToken);
-        if (chatMember is null)
-        {
-            return null;
-        }
-        return await context.Messages
-            .FilterByDate(chatMember.JoinDate, chatMember.RemoveDate)
-            .ExcludeDelayed(excludeDelayed)
+        var memberPeriod = await context.ChatMembers.GetChatMemberPeriod(cancellationToken);
+
+        var query = context.Messages.GetAvailableToUserMessagesQuery(
+                chatId, userId, excludeDelayed, memberPeriod.joinDate, memberPeriod.removeDate)
             .IncludeReactions(includes.IncludeReactions)
             .IncludeSender(includes.IncludeSender)
-            .TrackChanges(trackChanges)
-            .FirstOrDefaultAsync(x => x.Id == messageId && x.Chat.Members.Any(cm => cm.UserId == userId), cancellationToken);
+            .TrackChanges(trackChanges);
+            
+        return await query.FirstOrDefaultAsync(x => x.Id == messageId, cancellationToken);
     }
 
     public async Task SaveChangesAsync(CancellationToken cancellationToken)

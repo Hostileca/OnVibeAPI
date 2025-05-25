@@ -54,4 +54,21 @@ public static class MessageQueryableExtensions
 
         return messages;
     }
+    
+    public static IQueryable<Message> GetAvailableToUserMessagesQuery(
+        this IQueryable<Message> messages,
+        Guid chatId, 
+        Guid userId, 
+        bool excludeDelayed,
+        DateTime joinDate,
+        DateTime? removeDate)
+    {
+        return messages
+            .OrderByDescending(m => m.Date)
+            .Where(message => 
+                message.ChatId == chatId &&
+                message.Chat.Members.Any(member => member.UserId == userId))
+            .FilterByDate(joinDate, removeDate)
+            .ExcludeDelayed(excludeDelayed);
+    }
 }

@@ -28,4 +28,14 @@ public static class ChatMemberQueryableExtensions
 
         return chatMember.Where(message => !message.RemoveDate.HasValue);
     }
+
+    public static async Task<(DateTime joinDate, DateTime? removeDate)> GetChatMemberPeriod(
+        this IQueryable<ChatMember> chatMembers, 
+        CancellationToken cancellationToken)
+    {
+        return await chatMembers
+            .AsNoTracking()
+            .Select(cm => new ValueTuple<DateTime, DateTime?>(cm.JoinDate, cm.RemoveDate))
+            .FirstOrDefaultAsync(cancellationToken);
+    }
 }

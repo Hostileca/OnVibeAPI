@@ -10,6 +10,7 @@ namespace Application.Services.Implementations.ExtraLoaders;
 
 public class ChatReadDtoExtraLoader(
     IMessageRepository messageRepository,
+    INotificationRepository notificationRepository,
     IUserContext userContext) 
     : ExtraLoaderBase<ChatReadDto>
 {
@@ -29,6 +30,7 @@ public class ChatReadDtoExtraLoader(
         if (message is not null)
         {
             dto.Preview = message.Adapt<MessageReadDto>();
+            dto.UnreadMessagesCount = await notificationRepository.GetUnreadMessagesInChatCountAsync(dto.Id, userContext.InitiatorId, cancellationToken);
         }
     }
 }

@@ -17,6 +17,7 @@ public class UpsertReactionCommandHandler(
     {
         var message = await messageRepository.GetAvailableToUserMessageAsync(
             request.MessageId,
+            request.ChatId,
             request.InitiatorId,
             new MessageIncludes { IncludeReactions = true },
             cancellationToken,

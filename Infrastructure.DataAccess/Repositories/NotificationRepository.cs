@@ -23,6 +23,17 @@ internal class NotificationRepository(BaseDbContext context) : INotificationRepo
             .ToListAsync(cancellationToken); 
     }
 
+    public async Task<bool> IsMessageReadByUserAsync(Guid userId, Guid messageId, CancellationToken cancellationToken)
+    {
+        return await context.MessageNotifications
+            .AnyAsync(x => x.UserId == userId && x.MessageId == messageId && x.IsRead, cancellationToken);
+    }
+
+    public async Task<int> GetUnreadMessagesInChatCountAsync(Guid chatId, Guid userId, CancellationToken cancellationToken)
+    {
+        return await context.MessageNotifications.CountAsync(x => x.UserId == userId && x.Message.ChatId == chatId, cancellationToken);
+    }
+
     public async Task<IList<NotificationBase>> GetUserNotificationsAsync(Guid userId, bool isRead, CancellationToken cancellationToken,
         bool trackChanges = false, bool excludeDelayed = true)
     {

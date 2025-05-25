@@ -9,4 +9,5 @@ public class MessageReadDto : MessageReadDtoBase
     public IList<Guid> AttachmentsIds { get; set; }
     public IList<ReactionReadDto> Reactions { get; set; }
     public DateTime Date { get; set; }
+    public bool IsRead { get; set; }
 }

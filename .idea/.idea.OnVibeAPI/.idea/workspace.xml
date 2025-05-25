@@ -11,8 +11,19 @@
   <component name="ChangeListManager">
     <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/MappingConfigs/MessageConfigs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/MappingConfigs/MessageConfigs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Entities/Message.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Message.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dtos/Chat/ChatReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Chat/ChatReadDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dtos/Message/MessageReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Message/MessageReadDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/ChatReadDtoExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/ChatReadDtoExtraLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/MessageReadDtoExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/MessageReadDtoExtraLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IMessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IMessageRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/INotificationRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/INotificationRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatMemberQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatMemberQueryableExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/NotificationRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/NotificationRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Requests/Reaction/UpsertReactionRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Requests/Reaction/UpsertReactionRequest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +78,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.OnVibeAPI: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Debug",
+    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Run",
     ".NET Launch Settings Profile.OnVibeAPI: https.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -225,15 +236,8 @@
       <workItem from="1747422045148" duration="2653000" />
       <workItem from="1747483774652" duration="7077000" />
       <workItem from="1747563697905" duration="16988000" />
-      <workItem from="1747671159137" duration="3777000" />
-    </task>
-    <task id="LOCAL-00025" summary="Move loaders">
-      <option name="closed" value="true" />
-      <created>1745782927468</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1745782927468</updated>
+      <workItem from="1747671159137" duration="5588000" />
+      <workItem from="1748189288278" duration="5133000" />
     </task>
     <task id="LOCAL-00026" summary="refactor">
       <option name="closed" value="true" />
@@ -619,7 +623,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747582838700</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="fix nulls">
+      <option name="closed" value="true" />
+      <created>1747676736114</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1747676736114</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -640,7 +652,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="update SubscriptionReadDto" />
     <MESSAGE value="Update profile by userId" />
     <MESSAGE value="add redis and connection repository" />
     <MESSAGE value="what have I done? idk..." />
@@ -665,7 +676,8 @@
     <MESSAGE value="remove 404 from images" />
     <MESSAGE value="fix chat members" />
     <MESSAGE value="FIX" />
-    <option name="LAST_COMMIT_MESSAGE" value="FIX" />
+    <MESSAGE value="fix nulls" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix nulls" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
