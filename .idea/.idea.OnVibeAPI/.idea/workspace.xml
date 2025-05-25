@@ -9,22 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dtos/Chat/ChatReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Chat/ChatReadDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Dtos/Message/MessageReadDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Message/MessageReadDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/ChatReadDtoExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/ChatReadDtoExtraLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/MessageReadDtoExtraLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Implementations/ExtraLoaders/MessageReadDtoExtraLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UseCases/Reaction/Commands/UpsertReaction/UpsertReactionCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IMessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/IMessageRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/INotificationRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DataAccess/Interfaces/INotificationRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatMemberQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/ChatMemberQueryableExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Extensions/MessageQueryableExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/NotificationRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/NotificationRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/Requests/Reaction/UpsertReactionRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/Requests/Reaction/UpsertReactionRequest.cs" afterDir="false" />
-    </list>
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="refactor" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +63,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.OnVibeAPI: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Run",
+    ".NET Launch Settings Profile.OnVibeAPI: http.executor": "Debug",
     ".NET Launch Settings Profile.OnVibeAPI: https.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -237,15 +222,7 @@
       <workItem from="1747483774652" duration="7077000" />
       <workItem from="1747563697905" duration="16988000" />
       <workItem from="1747671159137" duration="5588000" />
-      <workItem from="1748189288278" duration="5133000" />
-    </task>
-    <task id="LOCAL-00026" summary="refactor">
-      <option name="closed" value="true" />
-      <created>1745785591652</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1745785591652</updated>
+      <workItem from="1748189288278" duration="7102000" />
     </task>
     <task id="LOCAL-00027" summary="fix loaders">
       <option name="closed" value="true" />
@@ -631,7 +608,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747676736114</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="refactor">
+      <option name="closed" value="true" />
+      <created>1748197569389</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1748197569390</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,7 +637,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Update profile by userId" />
     <MESSAGE value="add redis and connection repository" />
     <MESSAGE value="what have I done? idk..." />
     <MESSAGE value="fix hub" />
@@ -677,7 +661,8 @@
     <MESSAGE value="fix chat members" />
     <MESSAGE value="FIX" />
     <MESSAGE value="fix nulls" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix nulls" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -707,6 +692,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure.DataAccess/Repositories/MessageRepository.cs</url>
+          <line>49</line>
+          <properties documentPath="C:\Users\kiril\RiderProjects\OnVibeAPI\Infrastructure.DataAccess\Repositories\MessageRepository.cs" containingFunctionPresentation="Method 'GetAvailableToUserMessageAsync'">
+            <startOffsets>
+              <option value="1980" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2062" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
