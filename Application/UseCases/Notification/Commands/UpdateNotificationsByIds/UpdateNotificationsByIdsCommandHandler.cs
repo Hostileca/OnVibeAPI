@@ -27,41 +27,10 @@ public sealed class UpdateNotificationsByIdsCommandHandler(
         foreach (var notification in notifications)
         {
             notification.IsRead = true;
-            switch (notification)
-            {
-                case MessageNotification messageNotification:
-                    await SendMessageReadNotification(messageNotification, request.InitiatorId, cancellationToken);
-                    break;
-            }
         }
         
         await notificationRepository.SaveChangesAsync(cancellationToken);
 
         return Unit.Value;
-    }
-
-    private async Task SendMessageReadNotification(MessageNotification messageNotification, Guid initiatorId, CancellationToken cancellationToken)
-    {
-        var message = await messageRepository.GetMessageByIdAsync(messageNotification.MessageId, new MessageIncludes(), cancellationToken);
-
-        if (message == null)
-        {
-            throw new NotFoundException(typeof(Domain.Entities.Message), messageNotification.MessageId.ToString());
-        }
-        
-        var chat = await chatRepository.GetChatByIdAsync(
-            message.ChatId, 
-            new ChatIncludes
-            {
-                IncludeChatMembers = true
-            }, 
-            cancellationToken);
-        
-        if (chat == null)
-        {
-            throw new NotFoundException(typeof(Domain.Entities.Chat), message.ChatId.ToString());
-        }
-        
-        await chatNotificationService.SendMessageReadToGroupAsync(message.Id, initiatorId, chat.Id, cancellationToken);
     }
 }

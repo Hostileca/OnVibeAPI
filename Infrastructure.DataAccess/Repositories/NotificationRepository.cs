@@ -46,7 +46,18 @@ internal class NotificationRepository(BaseDbContext context) : INotificationRepo
 
     public async Task<IDictionary<Guid, bool>> GetMessageUserToReadAsync(Guid messageId, CancellationToken cancellationToken)
     {
-        return await context.MessageNotifications.ToDictionaryAsync(x => x.UserId, x => x.IsRead, cancellationToken);
+        return await context.MessageNotifications
+            .Where(notification => notification.MessageId == messageId)
+            .ToDictionaryAsync(x => x.UserId, x => x.IsRead, cancellationToken);
+    }
+
+    public async Task MarkNotificationsAsReadAsync(IEnumerable<Guid> ids, CancellationToken cancellationToken)
+    {
+        await context.Notifications
+            .Where(n => ids.Contains(n.Id))
+            .ExecuteUpdateAsync(setters => setters
+                    .SetProperty(n => n.IsRead, true), 
+                cancellationToken);
     }
 
     public async Task SaveChangesAsync(CancellationToken cancellationToken)

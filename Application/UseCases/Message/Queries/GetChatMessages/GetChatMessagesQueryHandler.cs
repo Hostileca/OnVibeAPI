@@ -2,6 +2,7 @@
 using Application.Dtos.Page;
 using Application.Helpers.PermissionsHelpers;
 using Application.Services.Interfaces;
+using Application.Services.Interfaces.Notification;
 using Contracts.DataAccess.Interfaces;
 using Contracts.DataAccess.Models;
 using Contracts.DataAccess.Models.Include;
@@ -14,7 +15,9 @@ namespace Application.UseCases.Message.Queries.GetChatMessages;
 public class GetChatMessagesQueryHandler(
     IChatRepository chatRepository,
     IMessageRepository messageRepository,
-    IExtraLoader<MessageReadDto> messageExtraLoader)
+    INotificationRepository notificationRepository,
+    IExtraLoader<MessageReadDto> messageExtraLoader,
+    IChatNotificationService chatNotificationService)
     : IRequestHandler<GetChatMessagesQuery, PagedResponse<MessageReadDto>>
 {
     public async Task<PagedResponse<MessageReadDto>> Handle(GetChatMessagesQuery request, CancellationToken cancellationToken)
@@ -43,11 +46,20 @@ public class GetChatMessagesQueryHandler(
             new MessageIncludes
             {
                 IncludeReactions = true,
-                IncludeSender = true
+                IncludeSender = true,
+                IncludeNotifications = true
             },
             request.PageData.Adapt<PageInfo>(),
             cancellationToken);
 
+        var notificationsIds = messages
+            .SelectMany(message => message.Notifications
+                .Where(notification => notification.UserId == request.InitiatorId))
+            .Select(notification => notification.Id);
+        await notificationRepository.MarkNotificationsAsReadAsync(notificationsIds, cancellationToken);
+        var messagesIds = messages.Select(message => message.Id).ToList();
+        await chatNotificationService.SendMessageReadToGroupAsync(messagesIds, request.InitiatorId, chat.Id, cancellationToken);
+        
         var messagesReadDtos = messages.Adapt<IList<MessageReadDto>>();
         await messageExtraLoader.LoadExtraInformationAsync(messagesReadDtos, cancellationToken);
         var result = new PagedResponse<MessageReadDto>(messagesReadDtos, request.PageData.PageNumber, request.PageData.PageSize);

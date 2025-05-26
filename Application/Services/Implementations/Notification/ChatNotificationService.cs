@@ -40,6 +40,14 @@ public class ChatNotificationService(
             cancellationToken);
     }
 
+    public async Task SendMessageReadToGroupAsync(IList<Guid> messageIds, Guid userId, Guid chatId, CancellationToken cancellationToken)
+    {
+        foreach (var messageId in messageIds)
+        {
+            await SendMessageReadToGroupAsync(messageId, userId, chatId, cancellationToken);
+        }
+    }
+
     public async Task RemoveMemberFromGroupAsync(ChatMember member, CancellationToken cancellationToken)
     {
         var connectionsIds = await connectionRepository.GetConnectionsAsync(member.UserId);

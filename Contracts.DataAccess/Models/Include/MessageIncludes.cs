@@ -2,6 +2,7 @@
 
 public class MessageIncludes
 {
-    public bool IncludeReactions { get; set; }
-    public bool IncludeSender { get; set; }
+    public bool IncludeReactions { get; init; }
+    public bool IncludeSender { get; init; }
+    public bool IncludeNotifications { get; init; }
 }

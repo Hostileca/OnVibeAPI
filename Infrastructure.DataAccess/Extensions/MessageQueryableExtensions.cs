@@ -41,7 +41,8 @@ public static class MessageQueryableExtensions
     {
         return messages
             .IncludeReactions(includes.IncludeReactions)
-            .IncludeSender(includes.IncludeSender);
+            .IncludeSender(includes.IncludeSender)
+            .IncludeNotifications(includes.IncludeNotifications);
     }
     
     private static IQueryable<Message> IncludeReactions(
@@ -66,6 +67,18 @@ public static class MessageQueryableExtensions
         }
 
         return messages.Include(message => message.Sender);
+    }
+    
+    private static IQueryable<Message> IncludeNotifications(
+        this IQueryable<Message> messages,
+        bool includeNotifications)
+    {
+        if (!includeNotifications)
+        {
+            return messages;
+        }
+
+        return messages.Include(message => message.Notifications);
     }
     
     private static IQueryable<Message> FilterByDate(
