@@ -15,6 +15,16 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
         await context.AddAsync(message, cancellationToken);
     }
 
+    public async Task<Message?> GetMessageByIdAsync(Guid messageId, MessageIncludes includes, CancellationToken cancellationToken,
+        bool trackChanges = false, bool excludeDelayed = true)
+    {
+        return await context.Messages
+            .Includes(includes)
+            .TrackChanges(trackChanges)
+            .ExcludeDelayed(excludeDelayed)
+            .FirstOrDefaultAsync(message => message.Id == messageId, cancellationToken);
+    }
+
     public async Task<IList<Message>> GetAvailableToUserMessagesAsync(
         Guid chatId, 
         Guid userId, 
@@ -28,8 +38,7 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
 
         var query = context.Messages.GetAvailableToUserMessagesQuery(
                 chatId, userId, excludeDelayed, memberPeriod.joinDate, memberPeriod.removeDate)
-            .IncludeReactions(includes.IncludeReactions)
-            .IncludeSender(includes.IncludeSender)
+            .Includes(includes)
             .TrackChanges(trackChanges)
             .Paged(pageInfo);
 
@@ -43,8 +52,7 @@ internal class MessageRepository(BaseDbContext context) : IMessageRepository
 
         var query = context.Messages.GetAvailableToUserMessagesQuery(
                 chatId, userId, excludeDelayed, memberPeriod.joinDate, memberPeriod.removeDate)
-            .IncludeReactions(includes.IncludeReactions)
-            .IncludeSender(includes.IncludeSender)
+            .Includes(includes)
             .TrackChanges(trackChanges);
             
         return await query.FirstOrDefaultAsync(x => x.Id == messageId, cancellationToken);

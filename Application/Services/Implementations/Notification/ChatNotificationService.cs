@@ -27,6 +27,19 @@ public class ChatNotificationService(
             ChatHubEvents.MessageSent, messageReadDto, cancellationToken);
     }
 
+    public async Task SendMessageReadToGroupAsync(Guid messageId, Guid userId, Guid chatId, CancellationToken cancellationToken)
+    {
+        await chatHub.Clients.Group(GetGroupName(chatId)).SendAsync(
+            ChatHubEvents.MessageRead, 
+            new
+            {
+                ChatId = chatId, 
+                MessageId = messageId, 
+                UserId = userId
+            }, 
+            cancellationToken);
+    }
+
     public async Task RemoveMemberFromGroupAsync(ChatMember member, CancellationToken cancellationToken)
     {
         var connectionsIds = await connectionRepository.GetConnectionsAsync(member.UserId);
