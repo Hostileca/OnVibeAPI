@@ -14,5 +14,6 @@ public class MessageReadDtoExtraLoader(
     {
         dto.AttachmentsIds = await attachmentRepository.GetAttachmentsIdsByMessageIdAsync(dto.Id, cancellationToken);
         dto.IsRead = await notificationRepository.IsMessageReadByUserAsync(userContext.InitiatorId, dto.Id, cancellationToken);
+        dto.UserToRead = await notificationRepository.GetMessageUserToReadAsync(dto.Id, cancellationToken);
     }
 }

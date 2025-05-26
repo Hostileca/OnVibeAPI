@@ -11,7 +11,8 @@ namespace Application.Services.Implementations.ExtraLoaders;
 public class ChatReadDtoExtraLoader(
     IMessageRepository messageRepository,
     INotificationRepository notificationRepository,
-    IUserContext userContext) 
+    IUserContext userContext,
+    IExtraLoader<MessageReadDto> messageReadDtoExtraLoader) 
     : ExtraLoaderBase<ChatReadDto>
 {
     public override async Task LoadExtraInformationAsync(ChatReadDto dto, CancellationToken cancellationToken = default)
@@ -29,7 +30,9 @@ public class ChatReadDtoExtraLoader(
 
         if (message is not null)
         {
-            dto.Preview = message.Adapt<MessageReadDto>();
+            var messageReadDto = message.Adapt<MessageReadDto>();
+            await messageReadDtoExtraLoader.LoadExtraInformationAsync(messageReadDto, cancellationToken);
+            dto.Preview = messageReadDto;
             dto.UnreadMessagesCount = await notificationRepository.GetUnreadMessagesInChatCountAsync(dto.Id, userContext.InitiatorId, cancellationToken);
         }
     }

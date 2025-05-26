@@ -9,5 +9,6 @@ public interface INotificationRepository
     Task<bool> IsMessageReadByUserAsync(Guid userId, Guid messageId, CancellationToken cancellationToken);
     Task<int> GetUnreadMessagesInChatCountAsync(Guid chatId, Guid userId, CancellationToken cancellationToken);
     Task<IList<NotificationBase>> GetUserNotificationsAsync(Guid userId, bool isRead, CancellationToken cancellationToken, bool trackChanges = false, bool excludeDelayed = true);
+    Task<IDictionary<Guid, bool>> GetMessageUserToReadAsync(Guid messageId, CancellationToken cancellationToken);
     Task SaveChangesAsync(CancellationToken cancellationToken);
 }
