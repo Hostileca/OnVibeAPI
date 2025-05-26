@@ -1,17 +1,11 @@
-﻿using Application.Services.Interfaces.Notification;
-using Contracts.DataAccess.Interfaces;
-using Contracts.DataAccess.Models.Include;
-using Domain.Entities.Notifications;
+﻿using Contracts.DataAccess.Interfaces;
 using Domain.Exceptions;
 using MediatR;
 
 namespace Application.UseCases.Notification.Commands.UpdateNotificationsByIds;
 
 public sealed class UpdateNotificationsByIdsCommandHandler(
-    INotificationRepository notificationRepository,
-    IMessageRepository messageRepository,
-    IChatRepository chatRepository,
-    IChatNotificationService  chatNotificationService)
+    INotificationRepository notificationRepository)
     : IRequestHandler<UpdateNotificationsByIdsCommand, Unit>
 {
     public async Task<Unit> Handle(UpdateNotificationsByIdsCommand request, CancellationToken cancellationToken)
