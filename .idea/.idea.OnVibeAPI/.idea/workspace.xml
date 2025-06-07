@@ -9,18 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="add user to read to message">
-      <change afterPath="$PROJECT_DIR$/OnVibeAPI/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OnVibeAPI/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OnVibeAPI/docker-compose-dev.yaml" afterDir="false" />
+    <list default="true" id="c9fcc1f0-b9dd-4760-bcb7-063271e28d2c" name="Changes" comment="container deply">
+      <change afterPath="$PROJECT_DIR$/OnVibeAPI/appsettings.Production.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnVibeAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.DataAccess/Contexts/BaseDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.DataAccess/Contexts/BaseDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/.env" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/DI/Registration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/DI/Registration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/appsettings.Container.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/docker-compose-container.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/postgres.Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnVibeAPI/remind.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OnVibeAPI/remind.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,14 +227,6 @@
       <workItem from="1747671159137" duration="5588000" />
       <workItem from="1748189288278" duration="7791000" />
       <workItem from="1748275877894" duration="6363000" />
-    </task>
-    <task id="LOCAL-00030" summary="extra loaders are services">
-      <option name="closed" value="true" />
-      <created>1745864951260</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1745864951260</updated>
     </task>
     <task id="LOCAL-00031" summary="Add IsLiked to PostReadDto.cs">
       <option name="closed" value="true" />
@@ -629,7 +612,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748281517432</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="container deply">
+      <option name="closed" value="true" />
+      <created>1749320909740</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1749320909756</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +641,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="what have I done? idk..." />
     <MESSAGE value="fix hub" />
     <MESSAGE value="fix hubs" />
     <MESSAGE value="message read dto to chat hub" />
@@ -675,7 +665,8 @@
     <MESSAGE value="fix" />
     <MESSAGE value="refactor" />
     <MESSAGE value="add user to read to message" />
-    <option name="LAST_COMMIT_MESSAGE" value="add user to read to message" />
+    <MESSAGE value="container deply" />
+    <option name="LAST_COMMIT_MESSAGE" value="container deply" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
