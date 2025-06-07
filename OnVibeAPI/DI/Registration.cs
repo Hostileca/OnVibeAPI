@@ -1,11 +1,13 @@
 ﻿using System.Reflection;
 using System.Text;
+using DataAccess.Contexts;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Hangfire;
 using Infrastructure.SignalR.Hubs;
 using Mapster;
 using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using OnVibeAPI.Middlewares;
@@ -121,6 +123,7 @@ public static class Registration
     
     public static void StartApplication(this WebApplication webApplication)
     {
+        webApplication.UpdateMigrations();
         webApplication.UseSwagger();
         webApplication.UseSwaggerUI();
         webApplication.MapHub<ChatHub>("/hubs/chats");
@@ -134,5 +137,12 @@ public static class Registration
         webApplication.UseAuthentication();
         webApplication.UseAuthorization();
         webApplication.Run();
+    }
+
+    private static void UpdateMigrations(this WebApplication webApplication)
+    {
+        using var scope = webApplication.Services.CreateScope();
+        var appDbContext = scope.ServiceProvider.GetRequiredService<BaseDbContext>();
+        appDbContext.Database.Migrate();
     }
 }

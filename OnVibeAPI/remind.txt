@@ -1,2 +1,5 @@
 ﻿dotnet ef migrations add Init --verbose --project Infrastructure.DataAccess --startup-project OnVibeAPI
 dotnet ef database update --verbose --project Infrastructure.DataAccess --startup-project OnVibeAPI
+
+docker build --no-cache -t name -f ProjectDirectory/Dockerfile ./
+docker-compose -f docker-compose-container.yaml up -d

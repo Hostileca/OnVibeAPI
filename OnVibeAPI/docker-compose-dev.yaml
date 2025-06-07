@@ -37,6 +37,3 @@ services:
     container_name: onVibeRedis
     ports:
       - "6379:6379"
-
-    
-    

@@ -1,0 +1,37 @@
+﻿version: '3.8'
+
+services:
+  postgres:
+    container_name: onVibePostgresDb
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  redis:
+    image: redis:6.2
+    container_name: onVibeRedis
+    ports:
+      - "6379:6379"
+    
+  on-vibe-api:
+    container_name: OnVibeAPI
+    build:
+      context: ../
+      dockerfile: OnVibeAPI/Dockerfile
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Container
+    restart: always
